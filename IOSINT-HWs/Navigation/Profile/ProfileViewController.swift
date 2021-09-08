@@ -102,7 +102,7 @@ class ProfileViewController: UIViewController {
                 self.animatedProfileHeaderView.avatarImageView.frame = .init(x: 16, y: 63, width: 120, height: 120)
                 self.animatedProfileHeaderView.avatarImageView.layer.cornerRadius = 60
                 self.transparentUIView.alpha = 0
-                self.animatedProfileHeaderView.avatarImageView.alpha = 0.5
+                self.animatedProfileHeaderView.avatarImageView.alpha = 0
                 
                 
             }, completion: {_ in
