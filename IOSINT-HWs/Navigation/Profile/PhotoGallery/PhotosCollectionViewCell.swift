@@ -14,7 +14,6 @@ class PhotosCollectionViewCell: UICollectionViewCell {
         didSet {
             guard let peselPhoto = peselPhoto else { return }
             photoImageView.image = UIImage(named: "\(peselPhoto.photo)")
-            
         }
     }
     
@@ -23,9 +22,7 @@ class PhotosCollectionViewCell: UICollectionViewCell {
         piv.onAutoLayout()
         return piv
     }()
-    
-    
-    
+            
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(photoImageView)
@@ -35,12 +32,9 @@ class PhotosCollectionViewCell: UICollectionViewCell {
             photoImageView.heightAnchor.constraint(equalTo: photoImageView.widthAnchor),
             photoImageView.topAnchor.constraint(equalTo: contentView.topAnchor)
         ])
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    
+    }        
 }
