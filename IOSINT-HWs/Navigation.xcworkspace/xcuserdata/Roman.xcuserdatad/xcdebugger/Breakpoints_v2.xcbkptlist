@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "9526E3E7-4CD3-4852-BA28-7E10DD2D209C"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EEC5DF00-E8DC-409E-A95E-5FD7A5690CF7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Navigation/Profile/ProfileHeaderView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "init(reuseIdentifier:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EEC5DF00-E8DC-409E-A95E-5FD7A5690CF7 - c2a1a8fe3a34de05"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Navigation.ProfileHeaderView.init(reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; Navigation.ProfileHeaderView"
+                  moduleName = "Navigation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Roman/Documents/IOSINT%20Homeworks/IOSINT-HWs/IOSINT-HWs/Navigation/Profile/ProfileHeaderView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "2862">
+               </Location>
+               <Location
+                  uuid = "EEC5DF00-E8DC-409E-A95E-5FD7A5690CF7 - ecf437ab98478bb4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (SnapKit.ConstraintMaker) -&gt; () in Navigation.ProfileHeaderView.init(reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; Navigation.ProfileHeaderView"
+                  moduleName = "Navigation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Roman/Documents/IOSINT%20Homeworks/IOSINT-HWs/IOSINT-HWs/Navigation/Profile/ProfileHeaderView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "76"
+                  endingLineNumber = "76"
+                  offsetFromSymbolStart = "37">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E73E1FA8-388C-4B93-BC3D-7EA053B6D789"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Navigation/Profile/ProfileHeaderView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "init(reuseIdentifier:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E73E1FA8-388C-4B93-BC3D-7EA053B6D789 - c2a1a8fe3a34df68"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Navigation.ProfileHeaderView.init(reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; Navigation.ProfileHeaderView"
+                  moduleName = "Navigation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Roman/Documents/IOSINT%20Homeworks/IOSINT-HWs/IOSINT-HWs/Navigation/Profile/ProfileHeaderView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
+                  offsetFromSymbolStart = "3133">
+               </Location>
+               <Location
+                  uuid = "E73E1FA8-388C-4B93-BC3D-7EA053B6D789 - 35800a49ae9ed41c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (SnapKit.ConstraintMaker) -&gt; () in Navigation.ProfileHeaderView.init(reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; Navigation.ProfileHeaderView"
+                  moduleName = "Navigation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Roman/Documents/IOSINT%20Homeworks/IOSINT-HWs/IOSINT-HWs/Navigation/Profile/ProfileHeaderView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "37">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2D3C12AC-C069-4D17-8FB8-2EDE1DE0702B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Navigation/Profile/ProfileHeaderView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "init(reuseIdentifier:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2D3C12AC-C069-4D17-8FB8-2EDE1DE0702B - c2a1a8fe3a34dfcf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Navigation.ProfileHeaderView.init(reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; Navigation.ProfileHeaderView"
+                  moduleName = "Navigation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Roman/Documents/IOSINT%20Homeworks/IOSINT-HWs/IOSINT-HWs/Navigation/Profile/ProfileHeaderView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "3404">
+               </Location>
+               <Location
+                  uuid = "2D3C12AC-C069-4D17-8FB8-2EDE1DE0702B - 7aac4857bcd67ef8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 (SnapKit.ConstraintMaker) -&gt; () in Navigation.ProfileHeaderView.init(reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; Navigation.ProfileHeaderView"
+                  moduleName = "Navigation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Roman/Documents/IOSINT%20Homeworks/IOSINT-HWs/IOSINT-HWs/Navigation/Profile/ProfileHeaderView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "37">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0EE3FE56-5F16-4DA9-8BCE-6968392890A7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Navigation/Profile/ProfileHeaderView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "init(reuseIdentifier:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0EE3FE56-5F16-4DA9-8BCE-6968392890A7 - c2a1a8fe3a34dc15"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Navigation.ProfileHeaderView.init(reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; Navigation.ProfileHeaderView"
+                  moduleName = "Navigation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Roman/Documents/IOSINT%20Homeworks/IOSINT-HWs/IOSINT-HWs/Navigation/Profile/ProfileHeaderView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "91"
+                  endingLineNumber = "91"
+                  offsetFromSymbolStart = "3675">
+               </Location>
+               <Location
+                  uuid = "0EE3FE56-5F16-4DA9-8BCE-6968392890A7 - 83b88e75c36d8ba1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #5 (SnapKit.ConstraintMaker) -&gt; () in Navigation.ProfileHeaderView.init(reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; Navigation.ProfileHeaderView"
+                  moduleName = "Navigation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Roman/Documents/IOSINT%20Homeworks/IOSINT-HWs/IOSINT-HWs/Navigation/Profile/ProfileHeaderView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "25">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 let reuseID = String(describing: ProfileHeaderView.self)
 
@@ -67,34 +68,32 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         
         subViewsSettings()
         
-        let constraints = [
-            avatarImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 120),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 120),
-            
-            
-            fullNameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
-            fullNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            fullNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 27),
-            
-            statusLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
-            statusLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            statusLabel.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: 40),
-            
-            statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 5),
-            statusTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 152),
-            statusTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            statusTextField.heightAnchor.constraint(equalToConstant: 40),
-            
-            setStatusButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            setStatusButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            setStatusButton.heightAnchor.constraint(equalToConstant: 50),
-            setStatusButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
-            
-            
-        ]
-        NSLayoutConstraint.activate(constraints)
+        avatarImageView.snp.makeConstraints { make in
+            make.leading.top.equalToSuperview().inset(16)
+            make.width.height.equalTo(120)
+        }
+        fullNameLabel.snp.makeConstraints { make in
+            make.leading.equalTo(avatarImageView.snp.trailing).inset(-16)
+            make.trailing.equalToSuperview().inset(-16)
+            make.top.equalToSuperview().inset(27)
+        }
+        statusLabel.snp.makeConstraints { make in
+            make.leading.equalTo(avatarImageView.snp.trailing).inset(-16)
+            make.trailing.equalToSuperview().inset(-16)
+            make.top.equalTo(fullNameLabel.snp.bottom).inset(-40)
+        }
+        statusTextField.snp.makeConstraints { make in
+            make.top.equalTo(statusLabel.snp.bottom).inset(-5)
+            make.leading.equalToSuperview().inset(152)
+            make.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(40)
+        }
+        setStatusButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(16)
+            make.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(50)
+            make.bottom.equalToSuperview().inset(10)
+        }
     }
     
     required init?(coder: NSCoder) {

@@ -9,7 +9,6 @@
 import UIKit
 
 let screnSize = UIScreen.main.bounds
-
     
 class ProfileViewController: UIViewController {
     
@@ -20,8 +19,7 @@ class ProfileViewController: UIViewController {
         view.onAutoLayout()
         return view
     }()
-    
-    
+        
     private var animatedProfileHeaderView: ProfileHeaderView = {
        let phv = ProfileHeaderView()
         phv.onAutoLayout()
@@ -35,8 +33,7 @@ class ProfileViewController: UIViewController {
         button.onAutoLayout()
         return button
     }()
-    
-    
+        
     private var tableView = UITableView(frame: .zero, style: .grouped)
     
     override func viewDidLoad() {
@@ -55,8 +52,6 @@ class ProfileViewController: UIViewController {
         
         animatedProfileHeaderView.avatarImageView.alpha = 0
 
- 
-        
         let constraints = [
             transparentUIView.topAnchor.constraint(equalTo: view.topAnchor),
             transparentUIView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -65,12 +60,8 @@ class ProfileViewController: UIViewController {
             
             closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
             closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            
-
         ]
         NSLayoutConstraint.activate(constraints)
-        
-        
     }
    
     @objc func tapOnProfilePhoto() {
@@ -103,19 +94,16 @@ class ProfileViewController: UIViewController {
                 self.animatedProfileHeaderView.avatarImageView.layer.cornerRadius = 60
                 self.transparentUIView.alpha = 0
                 self.animatedProfileHeaderView.avatarImageView.alpha = 0
-                
-                
+                                
             }, completion: {_ in
                 
                 UIView.animate(withDuration: 0.3, animations: {
                     self.closeButton.alpha = 0
                 })
             })
-            
         }
         deAnimate()
         }
-
     
     private func setupTableView() {
         view.addSubview(tableView)
