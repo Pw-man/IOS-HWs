@@ -92,10 +92,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
 				8B1FD87AB0D912B58E9C73FA /* Pods_Navigation.framework in Frameworks */,
 				306CFF0E26EE6AAB0006072C /* iOSIntPackage in Frameworks */,
-=======
 				30B97D5126E8DD27004DDC78 /* StorageService.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,7 +102,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
->>>>>>> feature/iosint-1
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,11 +235,11 @@
 				060782AA250CE27700A87020 /* Sources */,
 				060782AB250CE27700A87020 /* Frameworks */,
 				060782AC250CE27700A87020 /* Resources */,
-<<<<<<< HEAD
+
 				1B30DF3F2A01D77E122376C9 /* [CP] Embed Pods Frameworks */,
-=======
+
 				30B97D5326E8DD27004DDC78 /* Embed Frameworks */,
->>>>>>> feature/iosint-1
+
 			);
 			buildRules = (
 			);
