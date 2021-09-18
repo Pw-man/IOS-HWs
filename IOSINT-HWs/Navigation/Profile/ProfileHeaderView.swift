@@ -55,7 +55,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         statusTextField.placeholder = "Set your status"
     }
     
-    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
@@ -91,8 +90,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             setStatusButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             setStatusButton.heightAnchor.constraint(equalToConstant: 50),
             setStatusButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
-            
-            
         ]
         NSLayoutConstraint.activate(constraints)
     }
@@ -100,7 +97,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     private var statusText: String = " "
     
@@ -111,13 +107,11 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         
         guard let text = statusLabel.text else {
             return
-            
         }
         print("\(text)")
     }
     
     @objc private func statusTextChanged(_ textFieldInternal: UITextField) {
         statusText = textFieldInternal.text!
-    }
-    
+    }    
 }

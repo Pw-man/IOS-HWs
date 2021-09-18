@@ -79,9 +79,7 @@ class PhotosTableViewCell: UITableViewCell {
     }()
     
     private let screenSize: CGRect = UIScreen.main.bounds
-    
-    
-    
+            
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(stackView)
@@ -129,10 +127,7 @@ class PhotosTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        
     }
-    
 }
 
 extension UIView {
@@ -169,5 +164,4 @@ extension UIView {
         layer.cornerRadius = radius
         layer.maskedCorners = maskedCorners
     }
-    
 }

@@ -10,11 +10,20 @@ import UIKit
 
 let screnSize = UIScreen.main.bounds
 
-    
+struct SchemeCheck {
+    static var isInDebugMode: Bool {
+        #if DEBUG
+        return true
+        #else
+        return false
+        #endif
+    }
+}
+
 class ProfileViewController: UIViewController {
     
     private var transparentUIView: UIView = {
-     let view = UIView()
+        let view = UIView()
         view.backgroundColor = .white
         view.alpha = 0
         view.onAutoLayout()
@@ -23,9 +32,9 @@ class ProfileViewController: UIViewController {
     
     
     private var animatedProfileHeaderView: ProfileHeaderView = {
-       let phv = ProfileHeaderView()
+        let phv = ProfileHeaderView()
         phv.onAutoLayout()
-       return phv
+        return phv
     }()
     
     private var closeButton: UIButton = {
@@ -36,26 +45,30 @@ class ProfileViewController: UIViewController {
         return button
     }()
     
+    func schemeActivator() {
+        if SchemeCheck.isInDebugMode {
+            tableView.backgroundColor = .red
+        } else {
+            tableView.backgroundColor = .green
+        }
+    }
     
     private var tableView = UITableView(frame: .zero, style: .grouped)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupTableView()
         
         guard let crossImg = UIImage(systemName: "xmark.square.fill", withConfiguration: UIImage.SymbolConfiguration(textStyle: .largeTitle)) else { return }
         let redCross = crossImg.withTintColor(.systemRed)
         closeButton.setBackgroundImage(redCross.alpha(1), for: .normal)
         closeButton.setBackgroundImage(redCross.alpha(0.6), for: .highlighted)
-    
+        
         view.addSubview(transparentUIView)
         view.addSubview(animatedProfileHeaderView.avatarImageView)
         view.addSubview(closeButton)
         
         animatedProfileHeaderView.avatarImageView.alpha = 0
-
- 
         
         let constraints = [
             transparentUIView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -65,18 +78,14 @@ class ProfileViewController: UIViewController {
             
             closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
             closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            
-
         ]
         NSLayoutConstraint.activate(constraints)
-        
-        
     }
-   
+    
     @objc func tapOnProfilePhoto() {
         func animate() {
             UIView.animate(withDuration: 0.5, animations: {
-            
+                
                 self.animatedProfileHeaderView.avatarImageView.transform = CGAffineTransform.init(scaleX: 1.01, y: 1.01)
                 self.animatedProfileHeaderView.avatarImageView.center = self.transparentUIView.center
                 self.animatedProfileHeaderView.avatarImageView.frame = .init(x: 0, y: ((screenSize.height - screenSize.width) / 2) , width: screenSize.width, height: screenSize.width)
@@ -90,11 +99,10 @@ class ProfileViewController: UIViewController {
                     self.closeButton.alpha = 1
                 })
             })
-            
         }
         animate()
-        }
- 
+    }
+    
     @objc func closeBigProfileImage() {
         func deAnimate() {
             UIView.animate(withDuration: 0.5, animations: {
@@ -104,24 +112,20 @@ class ProfileViewController: UIViewController {
                 self.transparentUIView.alpha = 0
                 self.animatedProfileHeaderView.avatarImageView.alpha = 0
                 
-                
             }, completion: {_ in
                 
                 UIView.animate(withDuration: 0.3, animations: {
                     self.closeButton.alpha = 0
                 })
             })
-            
         }
         deAnimate()
-        }
-
+    }
     
     private func setupTableView() {
         view.addSubview(tableView)
         tableView.onAutoLayout()
-
-        
+        schemeActivator()
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -135,8 +139,6 @@ class ProfileViewController: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
-        
-        
     }
 }
 
@@ -181,10 +183,7 @@ extension ProfileViewController: UITableViewDelegate {
         let tapOnPhoto = UITapGestureRecognizer(target: self, action: #selector(tapOnProfilePhoto))
         profileHeaderView.avatarImageView.addGestureRecognizer(tapOnPhoto)
         profileHeaderView.avatarImageView.isUserInteractionEnabled = true
-
-        return profileHeaderView
-    
         
+        return profileHeaderView
     }
-
 }
