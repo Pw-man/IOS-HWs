@@ -27,39 +27,12 @@
 		30B97D5126E8DD27004DDC78 /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B97D4A26E8DD27004DDC78 /* StorageService.framework */; };
 		30B97D5226E8DD27004DDC78 /* StorageService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 30B97D4A26E8DD27004DDC78 /* StorageService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		30B97D5726E8DEB4004DDC78 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060782C9250CEE7200A87020 /* Post.swift */; };
-		30B97D5C26E8E711004DDC78 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3011CB352689C12D00C1692E /* PhotosTableViewCell.swift */; };
-		30B97D5D26E8E711004DDC78 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3011CB362689C12E00C1692E /* PhotosViewController.swift */; };
-		30B97D5E26E8E711004DDC78 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306FD877266E55CE0038CA8F /* LogInView.swift */; };
-		30B97D5F26E8E711004DDC78 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3011CB342689C12D00C1692E /* PhotosCollectionViewCell.swift */; };
-		30B97D6026E8E711004DDC78 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060782B5250CE27700A87020 /* FeedViewController.swift */; };
-		30B97D6126E8E711004DDC78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060782B1250CE27700A87020 /* AppDelegate.swift */; };
-		30B97D6226E8E711004DDC78 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306FD873266E414A0038CA8F /* LogInViewController.swift */; };
-		30B97D6326E8E711004DDC78 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060782C5250CEB0A00A87020 /* InfoViewController.swift */; };
-		30B97D6426E8E711004DDC78 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E77E2B2642B6A5009C9D34 /* ProfileHeaderView.swift */; };
-		30B97D6526E8E711004DDC78 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060782B3250CE27700A87020 /* SceneDelegate.swift */; };
-		30B97D6626E8E711004DDC78 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E77E2E2642B727009C9D34 /* ProfileViewController.swift */; };
-		30B97D6726E8E711004DDC78 /* PostsInProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308A099C26726524004A18C4 /* PostsInProfile.swift */; };
-		30B97D6826E8E711004DDC78 /* PeseliPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3011CB2A2689BDBC00C1692E /* PeseliPhotos.swift */; };
-		30B97D6926E8E711004DDC78 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060782C7250CEE5D00A87020 /* PostViewController.swift */; };
-		30B97D6A26E8E711004DDC78 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A87C51267285DD002FFC4D /* PostTableViewCell.swift */; };
-		30B97D6C26E8E711004DDC78 /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B97D4A26E8DD27004DDC78 /* StorageService.framework */; };
-		30B97D6E26E8E711004DDC78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 306FD87A266E8AB50038CA8F /* Assets.xcassets */; };
-		30B97D6F26E8E711004DDC78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 060782BC250CE27A00A87020 /* LaunchScreen.storyboard */; };
-		30B97D7026E8E711004DDC78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 060782B7250CE27700A87020 /* Main.storyboard */; };
-		30B97D7226E8E711004DDC78 /* StorageService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 30B97D4A26E8DD27004DDC78 /* StorageService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		30E77E2C2642B6A5009C9D34 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E77E2B2642B6A5009C9D34 /* ProfileHeaderView.swift */; };
 		30E77E2F2642B727009C9D34 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E77E2E2642B727009C9D34 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		30B97D4F26E8DD27004DDC78 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 060782A6250CE27700A87020 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 30B97D4926E8DD27004DDC78;
-			remoteInfo = StorageService;
-		};
-		30B97D5A26E8E711004DDC78 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 060782A6250CE27700A87020 /* Project object */;
 			proxyType = 1;
@@ -76,17 +49,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				30B97D5226E8DD27004DDC78 /* StorageService.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		30B97D7126E8E711004DDC78 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				30B97D7226E8E711004DDC78 /* StorageService.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,8 +78,6 @@
 		30B97D4A26E8DD27004DDC78 /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B97D4C26E8DD27004DDC78 /* StorageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageService.h; sourceTree = "<group>"; };
 		30B97D4D26E8DD27004DDC78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		30B97D7626E8E711004DDC78 /* NavigationRelease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NavigationRelease.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		30B97D7726E8E711004DDC78 /* NavigationRelease-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "NavigationRelease-Info.plist"; path = "/Users/Roman/Documents/IOSINT Homeworks/IOSINT-HWs/IOSINT-HWs/NavigationRelease-Info.plist"; sourceTree = "<absolute>"; };
 		30E77E2B2642B6A5009C9D34 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		30E77E2E2642B727009C9D34 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -138,14 +98,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		30B97D6B26E8E711004DDC78 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				30B97D6C26E8E711004DDC78 /* StorageService.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -163,7 +115,6 @@
 			children = (
 				060782AE250CE27700A87020 /* Navigation.app */,
 				30B97D4A26E8DD27004DDC78 /* StorageService.framework */,
-				30B97D7626E8E711004DDC78 /* NavigationRelease.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -181,7 +132,6 @@
 				306FD87A266E8AB50038CA8F /* Assets.xcassets */,
 				060782BC250CE27A00A87020 /* LaunchScreen.storyboard */,
 				060782BF250CE27A00A87020 /* Info.plist */,
-				30B97D7726E8E711004DDC78 /* NavigationRelease-Info.plist */,
 				060782C5250CEB0A00A87020 /* InfoViewController.swift */,
 				060782C7250CEE5D00A87020 /* PostViewController.swift */,
 			);
@@ -288,25 +238,6 @@
 			productReference = 30B97D4A26E8DD27004DDC78 /* StorageService.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		30B97D5826E8E711004DDC78 /* NavigationRelease */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 30B97D7326E8E711004DDC78 /* Build configuration list for PBXNativeTarget "NavigationRelease" */;
-			buildPhases = (
-				30B97D5B26E8E711004DDC78 /* Sources */,
-				30B97D6B26E8E711004DDC78 /* Frameworks */,
-				30B97D6D26E8E711004DDC78 /* Resources */,
-				30B97D7126E8E711004DDC78 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				30B97D5926E8E711004DDC78 /* PBXTargetDependency */,
-			);
-			name = NavigationRelease;
-			productName = Navigation;
-			productReference = 30B97D7626E8E711004DDC78 /* NavigationRelease.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -340,7 +271,6 @@
 			targets = (
 				060782AD250CE27700A87020 /* Navigation */,
 				30B97D4926E8DD27004DDC78 /* StorageService */,
-				30B97D5826E8E711004DDC78 /* NavigationRelease */,
 			);
 		};
 /* End PBXProject section */
@@ -360,16 +290,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		30B97D6D26E8E711004DDC78 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				30B97D6E26E8E711004DDC78 /* Assets.xcassets in Resources */,
-				30B97D6F26E8E711004DDC78 /* LaunchScreen.storyboard in Resources */,
-				30B97D7026E8E711004DDC78 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,28 +326,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		30B97D5B26E8E711004DDC78 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				30B97D5C26E8E711004DDC78 /* PhotosTableViewCell.swift in Sources */,
-				30B97D5D26E8E711004DDC78 /* PhotosViewController.swift in Sources */,
-				30B97D5E26E8E711004DDC78 /* LogInView.swift in Sources */,
-				30B97D5F26E8E711004DDC78 /* PhotosCollectionViewCell.swift in Sources */,
-				30B97D6026E8E711004DDC78 /* FeedViewController.swift in Sources */,
-				30B97D6126E8E711004DDC78 /* AppDelegate.swift in Sources */,
-				30B97D6226E8E711004DDC78 /* LogInViewController.swift in Sources */,
-				30B97D6326E8E711004DDC78 /* InfoViewController.swift in Sources */,
-				30B97D6426E8E711004DDC78 /* ProfileHeaderView.swift in Sources */,
-				30B97D6526E8E711004DDC78 /* SceneDelegate.swift in Sources */,
-				30B97D6626E8E711004DDC78 /* ProfileViewController.swift in Sources */,
-				30B97D6726E8E711004DDC78 /* PostsInProfile.swift in Sources */,
-				30B97D6826E8E711004DDC78 /* PeseliPhotos.swift in Sources */,
-				30B97D6926E8E711004DDC78 /* PostViewController.swift in Sources */,
-				30B97D6A26E8E711004DDC78 /* PostTableViewCell.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -435,11 +333,6 @@
 			isa = PBXTargetDependency;
 			target = 30B97D4926E8DD27004DDC78 /* StorageService */;
 			targetProxy = 30B97D4F26E8DD27004DDC78 /* PBXContainerItemProxy */;
-		};
-		30B97D5926E8E711004DDC78 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 30B97D4926E8DD27004DDC78 /* StorageService */;
-			targetProxy = 30B97D5A26E8E711004DDC78 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -675,46 +568,6 @@
 			};
 			name = Release;
 		};
-		30B97D7426E8E711004DDC78 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 79RZ866842;
-				INFOPLIST_FILE = "NavigationRelease-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.artemnovichkov.Navigation-Release";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
-				"SWIFT_ACTIVE_COMPILATION_CONDITIONS[arch=*]" = DEBUG;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		30B97D7526E8E711004DDC78 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 79RZ866842;
-				INFOPLIST_FILE = "NavigationRelease-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.artemnovichkov.Navigation-Release";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -741,15 +594,6 @@
 			buildConfigurations = (
 				30B97D5426E8DD27004DDC78 /* Debug */,
 				30B97D5526E8DD27004DDC78 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		30B97D7326E8E711004DDC78 /* Build configuration list for PBXNativeTarget "NavigationRelease" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				30B97D7426E8E711004DDC78 /* Debug */,
-				30B97D7526E8E711004DDC78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
