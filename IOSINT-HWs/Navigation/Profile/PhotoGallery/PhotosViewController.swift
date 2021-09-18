@@ -66,8 +66,6 @@ extension PhotosViewController: UICollectionViewDataSource {
         cell.peselPhoto = PeseliPhotos.photosArray[indexPath.item]
         return cell
     }
-    
-    
 }
 
 extension PhotosViewController: UICollectionViewDelegateFlowLayout {
@@ -78,11 +76,12 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         8
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         8
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     }
-    
 }

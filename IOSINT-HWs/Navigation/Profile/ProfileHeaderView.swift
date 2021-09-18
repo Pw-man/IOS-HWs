@@ -56,7 +56,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         statusTextField.placeholder = "Set your status"
     }
     
-    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
@@ -94,12 +93,39 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             make.height.equalTo(50)
             make.bottom.equalToSuperview().inset(10)
         }
+
+        let constraints = [
+            avatarImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 120),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 120),
+            
+            
+            fullNameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
+            fullNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            fullNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 27),
+            
+            statusLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
+            statusLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            statusLabel.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: 40),
+            
+            statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 5),
+            statusTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 152),
+            statusTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            statusTextField.heightAnchor.constraint(equalToConstant: 40),
+            
+            setStatusButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            setStatusButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            setStatusButton.heightAnchor.constraint(equalToConstant: 50),
+            setStatusButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+        ]
+        NSLayoutConstraint.activate(constraints)
+
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     private var statusText: String = " "
     
@@ -110,13 +136,11 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         
         guard let text = statusLabel.text else {
             return
-            
         }
         print("\(text)")
     }
     
     @objc private func statusTextChanged(_ textFieldInternal: UITextField) {
         statusText = textFieldInternal.text!
-    }
-    
+    }    
 }
