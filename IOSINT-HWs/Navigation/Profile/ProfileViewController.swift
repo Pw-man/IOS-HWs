@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StorageService
 
 let screnSize = UIScreen.main.bounds
 
@@ -20,9 +21,23 @@ struct SchemeCheck {
     }
 }
 
-
 class ProfileViewController: UIViewController {
     
+    var user : UserService
+    var nameOfUser: String
+    
+    init(user : UserService, name: String) {
+        self.user = user
+        self.nameOfUser = name
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.nameOfUser = LogInViewController().logInView.nameTextField.text!
+        self.user = CurrentUserService()
+        super.init(coder: aDecoder)
+    }
+
     private var transparentUIView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -48,12 +63,13 @@ class ProfileViewController: UIViewController {
     func schemeActivator() {
         if SchemeCheck.isInDebugMode {
             tableView.backgroundColor = .red
+            user = TestUserService()
         } else {
             tableView.backgroundColor = .green
+            user = CurrentUserService()
         }
     }
     
-
     private var tableView = UITableView(frame: .zero, style: .grouped)
     
     override func viewDidLoad() {
@@ -181,6 +197,9 @@ extension ProfileViewController: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let profileHeaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: reuseID) as! ProfileHeaderView
+        profileHeaderView.fullNameLabel.text = user.returnUser(name: nameOfUser).fullName
+        profileHeaderView.avatarImageView.image = user.returnUser(name: nameOfUser).avatar
+        profileHeaderView.statusLabel.text = user.returnUser(name: nameOfUser).status
         let tapOnPhoto = UITapGestureRecognizer(target: self, action: #selector(tapOnProfilePhoto))
         profileHeaderView.avatarImageView.addGestureRecognizer(tapOnPhoto)
         profileHeaderView.avatarImageView.isUserInteractionEnabled = true

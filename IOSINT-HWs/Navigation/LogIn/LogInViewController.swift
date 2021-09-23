@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StorageService
 
 class LogInViewController: UIViewController, UITextFieldDelegate {
     
@@ -20,7 +21,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         return vkLogo
     }()
     
-    private let logInView = LogInView()
+    let logInView = LogInView()
 
     private(set) lazy var logInButton: UIButton = {
         var button = UIButton()
@@ -48,9 +49,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
 
     }
    @objc private func buttonTapped() {
-    let profileVC = storyboard?.instantiateViewController(identifier: "ProfileVC") as! ProfileViewController
+       let profileVC = storyboard?.instantiateViewController(identifier: "ProfileVC") as! ProfileViewController
+       profileVC.nameOfUser = logInView.nameTextField.text!
+       profileVC.user = CurrentUserService()
     navigationController?.pushViewController(profileVC, animated: true)
-   
     }
     
     private func setupConstraints() {

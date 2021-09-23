@@ -24,6 +24,7 @@
 		306FD87B266E8AB50038CA8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 306FD87A266E8AB50038CA8F /* Assets.xcassets */; };
 		308A099D26726524004A18C4 /* PostsInProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308A099C26726524004A18C4 /* PostsInProfile.swift */; };
 		30A87C52267285DD002FFC4D /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A87C51267285DD002FFC4D /* PostTableViewCell.swift */; };
+		30B8F00A26F650E600EA4534 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B8F00926F650E600EA4534 /* User.swift */; };
 		30B97D4E26E8DD27004DDC78 /* StorageService.h in Headers */ = {isa = PBXBuildFile; fileRef = 30B97D4C26E8DD27004DDC78 /* StorageService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		30B97D5126E8DD27004DDC78 /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B97D4A26E8DD27004DDC78 /* StorageService.framework */; };
 		30B97D5226E8DD27004DDC78 /* StorageService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 30B97D4A26E8DD27004DDC78 /* StorageService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -77,6 +78,7 @@
 		306FD87A266E8AB50038CA8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		308A099C26726524004A18C4 /* PostsInProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsInProfile.swift; sourceTree = "<group>"; };
 		30A87C51267285DD002FFC4D /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		30B8F00926F650E600EA4534 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		30B97D4A26E8DD27004DDC78 /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B97D4C26E8DD27004DDC78 /* StorageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageService.h; sourceTree = "<group>"; };
 		30B97D4D26E8DD27004DDC78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				060782C9250CEE7200A87020 /* Post.swift */,
+				30B8F00926F650E600EA4534 /* User.swift */,
 				30B97D4C26E8DD27004DDC78 /* StorageService.h */,
 				30B97D4D26E8DD27004DDC78 /* Info.plist */,
 			);
@@ -235,11 +238,8 @@
 				060782AA250CE27700A87020 /* Sources */,
 				060782AB250CE27700A87020 /* Frameworks */,
 				060782AC250CE27700A87020 /* Resources */,
-
 				1B30DF3F2A01D77E122376C9 /* [CP] Embed Pods Frameworks */,
-
 				30B97D5326E8DD27004DDC78 /* Embed Frameworks */,
-
 			);
 			buildRules = (
 			);
@@ -401,6 +401,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30B8F00A26F650E600EA4534 /* User.swift in Sources */,
 				30B97D5726E8DEB4004DDC78 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
