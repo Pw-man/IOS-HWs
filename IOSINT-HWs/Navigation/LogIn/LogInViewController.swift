@@ -11,6 +11,8 @@ import StorageService
 
 class LogInViewController: UIViewController, UITextFieldDelegate {
     
+    var logInVCDelegate: LogInViewControllerDelegate?
+    
     private let scrollView = UIScrollView()
     private let containerView = UIView()
     
@@ -52,7 +54,13 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
        let profileVC = storyboard?.instantiateViewController(identifier: "ProfileVC") as! ProfileViewController
        profileVC.nameOfUser = logInView.nameTextField.text!
        profileVC.user = CurrentUserService()
-    navigationController?.pushViewController(profileVC, animated: true)
+       checker.router.typedLogname = logInView.nameTextField.text!
+       checker.router.typedPass = logInView.passwordTextField.text!
+       if logInVCDelegate?.checkUserData() == true {
+           navigationController?.pushViewController(profileVC, animated: true)
+       } else {
+           print("Password or login is not right")
+       }
     }
     
     private func setupConstraints() {
@@ -118,7 +126,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-
+        
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -135,8 +143,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         scrollView.contentInset.bottom = .zero
         scrollView.verticalScrollIndicatorInsets = .zero
     }
-    
-        
 }
 
 extension UIView {
@@ -162,3 +168,6 @@ extension LogInViewController {
         return true
     }
 }
+
+
+
