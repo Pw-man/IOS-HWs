@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import iOSIntPackage
 
 let screnSize = UIScreen.main.bounds
     
 class ProfileViewController: UIViewController {
+    
+    let imageProcessor = ImageProcessor.init()
     
     private var transparentUIView: UIView = {
      let view = UIView()
@@ -35,6 +38,10 @@ class ProfileViewController: UIViewController {
     }()
         
     private var tableView = UITableView(frame: .zero, style: .grouped)
+    
+    override func viewWillAppear(_ animated: Bool) {
+        filterImages()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -175,4 +182,33 @@ extension ProfileViewController: UITableViewDelegate {
         
     }
 
+}
+// MARK: - ImageProcessor implementation
+
+extension ProfileViewController {
+
+    func imgFiltering() {
+    imageProcessor.processImage(sourceImage: #imageLiteral(resourceName: "roboti"), filter: .colorInvert) { filterImg in
+            filteredImages.append(filterImg!)
+        }
+    imageProcessor.processImage(sourceImage: #imageLiteral(resourceName: "forum"), filter: .colorInvert) { filterImg in
+        filteredImages.append(filterImg!)
+    }
+    imageProcessor.processImage(sourceImage: #imageLiteral(resourceName: "wwdc"), filter: .colorInvert) { filterImg in
+        filteredImages.append(filterImg!)
+    }
+    imageProcessor.processImage(sourceImage: #imageLiteral(resourceName: "tesla"), filter: .colorInvert) { filterImg in
+       filteredImages.append(filterImg!)
+    }
+    }
+    
+    func filterImages() {
+        imgFiltering()
+        
+        Posts.postsArray[1].image = filteredImages[0]
+        Posts.postsArray[2].image = filteredImages[1]
+        Posts.postsArray[3].image = filteredImages[2]
+        Posts.postsArray[4].image = filteredImages[3]
+    }
+    
 }
