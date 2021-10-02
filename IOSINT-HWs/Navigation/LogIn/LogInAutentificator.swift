@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol LoginFactory {
-    func makeLogInLogInAutentificator() -> LogInAutentificator
-}
-
 protocol LogInViewControllerDelegate {
     func enterConfirmation(login: String, password: String) -> Bool
 }
@@ -33,8 +29,3 @@ struct LogInAutentificator: LogInViewControllerDelegate {
     }
 }
 
-class MyLoginFactory: LoginFactory {
-    func makeLogInLogInAutentificator() -> LogInAutentificator {
-        return LogInAutentificator(checker: Checker.shared)
-    }
-}
