@@ -9,14 +9,14 @@
 import UIKit
 
 public protocol UserService {
-    func returnUser(name: String) -> User
+    func returnUser(name: String) -> User?
 }
 
 public class TestUserService: UserService {
     public init() {}
    public let user = User(fullName: "Sun", avatar: UIImage(systemName: "sun.max")!, status: "Shining")
-    public func returnUser(name: String) -> User {
-        guard name == user.fullName else { return User(fullName: "Unidentified user", avatar: UIImage(systemName: "questionmark.circle")!, status: "Who am I?")}
+    public func returnUser(name: String) -> User? {
+        guard name == user.fullName else { return nil}
         return user
     }
 }
@@ -37,8 +37,8 @@ public class User {
 public class CurrentUserService: UserService {
     public init() {}
     public var user = User(fullName: "Coolest Dog Ever", avatar: UIImage(named: "dachshundPhoto")!, status: "Hello buddy")
-    public func returnUser(name: String) -> User {
-        guard name == user.fullName else { return User(fullName: "Unidentified user", avatar: UIImage(systemName: "questionmark.circle")!, status: "Who am I?")}
+    public func returnUser(name: String) -> User? {
+        guard name == user.fullName else { return nil }
         return user
     }
 }

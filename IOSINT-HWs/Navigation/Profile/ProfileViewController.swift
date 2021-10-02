@@ -30,14 +30,12 @@ class ProfileViewController: UIViewController {
         self.user = user
         self.nameOfUser = name
         super.init(nibName: nil, bundle: nil)
-    }
+}
     
-    required init?(coder aDecoder: NSCoder) {
-        self.nameOfUser = LogInViewController().logInView.nameTextField.text!
-        self.user = CurrentUserService()
-        super.init(coder: aDecoder)
-    }
-
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+}
+    
     private var transparentUIView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -197,9 +195,9 @@ extension ProfileViewController: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let profileHeaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: reuseID) as! ProfileHeaderView
-        profileHeaderView.fullNameLabel.text = user.returnUser(name: nameOfUser).fullName
-        profileHeaderView.avatarImageView.image = user.returnUser(name: nameOfUser).avatar
-        profileHeaderView.statusLabel.text = user.returnUser(name: nameOfUser).status
+        profileHeaderView.fullNameLabel.text = user.returnUser(name: nameOfUser)?.fullName
+        profileHeaderView.avatarImageView.image = user.returnUser(name: nameOfUser)?.avatar
+        profileHeaderView.statusLabel.text = user.returnUser(name: nameOfUser)?.status
         let tapOnPhoto = UITapGestureRecognizer(target: self, action: #selector(tapOnProfilePhoto))
         profileHeaderView.avatarImageView.addGestureRecognizer(tapOnPhoto)
         profileHeaderView.avatarImageView.isUserInteractionEnabled = true

@@ -49,9 +49,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
 
     }
    @objc private func buttonTapped() {
-       let profileVC = storyboard?.instantiateViewController(identifier: "ProfileVC") as! ProfileViewController
-       profileVC.nameOfUser = logInView.nameTextField.text!
-       profileVC.user = CurrentUserService()
+       let profileVC = ProfileViewController(user: CurrentUserService(), name: logInView.nameTextField.text!)
     navigationController?.pushViewController(profileVC, animated: true)
     }
     
