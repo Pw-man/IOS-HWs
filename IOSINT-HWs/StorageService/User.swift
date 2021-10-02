@@ -8,45 +8,6 @@
 
 import UIKit
 
-public protocol LoginFactory {
-    func makeLogInLogInAutentificator() -> LogInAutentificator
-}
-
-public class AppRouter {
-    public var typedLogname: String?
-    public var typedPass: String?
-    var encryptedLogin: AnyHashable?
-    var encryptedPassword: AnyHashable?
-}
-
-public final class Checker {
-    static let shared = Checker()
-    
-    private let login = "Sun"
-    private let password = "qwe"
-    
-    public var router = AppRouter()
-
-    private init() {
-        router.encryptedLogin = login.hash
-        router.encryptedPassword = password.hash
-    }
-}
-
-public let checker = Checker.shared
-
-public struct LogInAutentificator: LogInViewControllerDelegate {
-    public init() {}
-    
-    public func checkUserData() -> Bool {
-        if checker.router.typedLogname?.hash == checker.router.encryptedLogin && checker.router.typedPass?.hash == checker.router.encryptedPassword {
-   return true
-        } else {
-            return false
-        }
-    }
-    }
-
 public protocol UserService: AnyObject {
     func returnUser(name: String) -> User
 }
@@ -81,23 +42,4 @@ public class CurrentUserService: UserService {
         return user
     }
 }
-
-public protocol LogInViewControllerDelegate {
-   mutating func checkUserData() -> Bool
-}
-
-public class MyLoginFactory: LoginFactory {
-    public init() {}
-    public func makeLogInLogInAutentificator() -> LogInAutentificator {
-        return LogInAutentificator()
-    }
-    
-    
-}
-///                              Код к вопросу 2 ↓
-//extension AppRouter: LoginFactory {
-//    public func makeLogInLogInAutentificator() -> LogInAutentificator {
-//        return LogInAutentificator()
-//    }
-//}
 
