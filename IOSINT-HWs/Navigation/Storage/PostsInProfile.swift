@@ -9,8 +9,6 @@
 import UIKit
 import iOSIntPackage
 
-var filteredImages: [UIImage] = []
-
 struct ProfilePost {
     var author: String
     var description: String
@@ -20,7 +18,7 @@ struct ProfilePost {
 }
 
 struct Posts {
-    static var postsArray: [ProfilePost] = [robotiPost ,robotiPost, forumPost, wwdcPost, teslaPost]
+    public static var postsArray: [ProfilePost] = [robotiPost ,robotiPost, forumPost, wwdcPost, teslaPost]
 }
 
 let robotiPost = ProfilePost(author: "Netflix", description: "Вышел 2 сезон сериала Любовь. Смерть. Роботы. Продюсерами второго сезона выступили Тим Миллер («Дэдпул») и Дэвид Финчер («Бойцовский клуб», «Социальная сеть», «Исчезнувшая»). И они сделали то, что умеют лучше всего: показали нам серию триллеров c красивой графикой и продуманным сюжетом.", image: #imageLiteral(resourceName: "roboti"), likes: 160000, views: 200000)

@@ -13,7 +13,7 @@ let screnSize = UIScreen.main.bounds
     
 class ProfileViewController: UIViewController {
     
-    let imageProcessor = ImageProcessor.init()
+    private let imageProcessor = ImageProcessor.init()
     
     private var transparentUIView: UIView = {
      let view = UIView()
@@ -38,10 +38,6 @@ class ProfileViewController: UIViewController {
     }()
         
     private var tableView = UITableView(frame: .zero, style: .grouped)
-    
-    override func viewWillAppear(_ animated: Bool) {
-        filterImages()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -157,10 +153,36 @@ extension ProfileViewController: UITableViewDataSource {
         case 0:
             let cell = PhotosTableViewCell()
             return cell
-        default:
+        case 1:
             let cell : PostTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! PostTableViewCell
             cell.profilePost = Posts.postsArray[indexPath.row]
-            return cell
+            imageProcessor.processImage(sourceImage: Posts.postsArray[1].image, filter: .crystallize(radius: 12)) { filterImg in
+                cell.profilePost?.image = filterImg!
+            }
+                return cell
+        case 2:
+              let cell : PostTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! PostTableViewCell
+            cell.profilePost = Posts.postsArray[indexPath.row]
+            imageProcessor.processImage(sourceImage: Posts.postsArray[2].image, filter: .bloom(intensity: 0.5)) { filterImg in
+                cell.profilePost?.image = filterImg!
+            }
+                return cell
+        case 3:
+            let cell : PostTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! PostTableViewCell
+            cell.profilePost = Posts.postsArray[indexPath.row]
+            imageProcessor.processImage(sourceImage: Posts.postsArray[3].image, filter: .monochrome(color: .blue, intensity: 0.9)) { filterImg in
+                cell.profilePost?.image = filterImg!
+            }
+                return cell
+        case 4:
+            let cell : PostTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! PostTableViewCell
+            cell.profilePost = Posts.postsArray[indexPath.row]
+            imageProcessor.processImage(sourceImage: Posts.postsArray[4].image, filter: .sepia(intensity: 0.7)) { filterImg in
+                cell.profilePost?.image = filterImg!
+            }
+                return cell
+        default:
+            return UITableViewCell()
         }
     }
 }
@@ -178,37 +200,5 @@ extension ProfileViewController: UITableViewDelegate {
         profileHeaderView.avatarImageView.isUserInteractionEnabled = true
 
         return profileHeaderView
-    
-        
     }
-
-}
-// MARK: - ImageProcessor implementation
-
-extension ProfileViewController {
-
-    func imgFiltering() {
-    imageProcessor.processImage(sourceImage: #imageLiteral(resourceName: "roboti"), filter: .colorInvert) { filterImg in
-            filteredImages.append(filterImg!)
-        }
-    imageProcessor.processImage(sourceImage: #imageLiteral(resourceName: "forum"), filter: .colorInvert) { filterImg in
-        filteredImages.append(filterImg!)
-    }
-    imageProcessor.processImage(sourceImage: #imageLiteral(resourceName: "wwdc"), filter: .colorInvert) { filterImg in
-        filteredImages.append(filterImg!)
-    }
-    imageProcessor.processImage(sourceImage: #imageLiteral(resourceName: "tesla"), filter: .colorInvert) { filterImg in
-       filteredImages.append(filterImg!)
-    }
-    }
-    
-    func filterImages() {
-        imgFiltering()
-        
-        Posts.postsArray[1].image = filteredImages[0]
-        Posts.postsArray[2].image = filteredImages[1]
-        Posts.postsArray[3].image = filteredImages[2]
-        Posts.postsArray[4].image = filteredImages[3]
-    }
-    
 }
