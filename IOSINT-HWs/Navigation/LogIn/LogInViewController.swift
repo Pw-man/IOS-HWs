@@ -48,10 +48,15 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         logInButton.setBackgroundImage(pixelImage.alpha(0.8), for: .highlighted)
 
     }
-   @objc private func buttonTapped() {
-       let profileVC = ProfileViewController(user: CurrentUserService(), name: logInView.nameTextField.text!)
-    navigationController?.pushViewController(profileVC, animated: true)
+    @objc private func buttonTapped() {
+        if SchemeCheck.isInDebugMode == true {
+            let profileVC = ProfileViewController(user: TestUserService(), name: logInView.nameTextField.text!)
+            navigationController?.pushViewController(profileVC, animated: true)
+        } else {
+            let profileVC = ProfileViewController(user: CurrentUserService(), name: logInView.nameTextField.text!)
+            navigationController?.pushViewController(profileVC, animated: true)
     }
+}
     
     private func setupConstraints() {
         VkLogoImage.onAutoLayout()

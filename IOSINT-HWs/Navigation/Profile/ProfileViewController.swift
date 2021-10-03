@@ -60,13 +60,11 @@ class ProfileViewController: UIViewController {
 
     func schemeActivator() {
         if SchemeCheck.isInDebugMode {
-            tableView.backgroundColor = .red
-            user = TestUserService()
+            tableView.backgroundColor = .systemYellow
         } else {
             tableView.backgroundColor = .green
-            user = CurrentUserService()
-        }
     }
+}
     
     private var tableView = UITableView(frame: .zero, style: .grouped)
     
@@ -191,13 +189,20 @@ extension ProfileViewController: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 220
-    }
-    
-    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+}
+
+    public func configureHeaderView() -> ProfileHeaderView {
         let profileHeaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: reuseID) as! ProfileHeaderView
+        
         profileHeaderView.fullNameLabel.text = user.returnUser(name: nameOfUser)?.fullName
         profileHeaderView.avatarImageView.image = user.returnUser(name: nameOfUser)?.avatar
         profileHeaderView.statusLabel.text = user.returnUser(name: nameOfUser)?.status
+        
+        return profileHeaderView
+}
+    
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let profileHeaderView = configureHeaderView()
         let tapOnPhoto = UITapGestureRecognizer(target: self, action: #selector(tapOnProfilePhoto))
         profileHeaderView.avatarImageView.addGestureRecognizer(tapOnPhoto)
         profileHeaderView.avatarImageView.isUserInteractionEnabled = true
