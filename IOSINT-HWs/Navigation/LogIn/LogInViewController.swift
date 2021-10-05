@@ -21,7 +21,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         return vkLogo
     }()
     
-    let logInView = LogInView()
+    private let logInView = LogInView()
 
     private(set) lazy var logInButton: UIButton = {
         var button = UIButton()
@@ -49,13 +49,9 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
 
     }
     @objc private func buttonTapped() {
-        if SchemeCheck.isInDebugMode == true {
-            let profileVC = ProfileViewController(user: TestUserService(), name: logInView.nameTextField.text!)
-            navigationController?.pushViewController(profileVC, animated: true)
-        } else {
-            let profileVC = ProfileViewController(user: CurrentUserService(), name: logInView.nameTextField.text!)
-            navigationController?.pushViewController(profileVC, animated: true)
-    }
+        let userService = SchemeCheck.isInDebugMode ? TestUserService() as UserService : CurrentUserService() as UserService
+        let profileVC = ProfileViewController(user: userService, name: logInView.nameTextField.text!)
+        navigationController?.pushViewController(profileVC, animated: true)
 }
     
     private func setupConstraints() {

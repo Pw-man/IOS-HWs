@@ -9,22 +9,10 @@
 import UIKit
 import StorageService
 
-let screnSize = UIScreen.main.bounds
-
-struct SchemeCheck {
-    static var isInDebugMode: Bool {
-        #if DEBUG
-        return true
-        #else
-        return false
-        #endif
-    }
-}
-
 class ProfileViewController: UIViewController {
     
-    var user : UserService
-    var nameOfUser: String
+    private var user : UserService
+    private var nameOfUser: String
     
     init(user : UserService, name: String) {
         self.user = user
@@ -191,15 +179,20 @@ extension ProfileViewController: UITableViewDelegate {
         return 220
 }
 
-    public func configureHeaderView() -> ProfileHeaderView {
+    func configureHeaderView() -> ProfileHeaderView {
         let profileHeaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: reuseID) as! ProfileHeaderView
-        
-        profileHeaderView.fullNameLabel.text = user.returnUser(name: nameOfUser)?.fullName
-        profileHeaderView.avatarImageView.image = user.returnUser(name: nameOfUser)?.avatar
-        profileHeaderView.statusLabel.text = user.returnUser(name: nameOfUser)?.status
-        
+        if let theUser = user.returnUser(name: nameOfUser) {
+            profileHeaderView.fullNameLabel.text = theUser.fullName
+            profileHeaderView.avatarImageView.image = theUser.avatar
+            profileHeaderView.statusLabel.text = theUser.status
+        } else {
+            let someone = User(fullName: "Unidentified user", avatar: UIImage(systemName: "questionmark.circle")!, status: "Who am I?")
+            profileHeaderView.fullNameLabel.text = someone.fullName
+            profileHeaderView.avatarImageView.image = someone.avatar
+            profileHeaderView.statusLabel.text = someone.status
+        }
         return profileHeaderView
-}
+    }
     
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let profileHeaderView = configureHeaderView()

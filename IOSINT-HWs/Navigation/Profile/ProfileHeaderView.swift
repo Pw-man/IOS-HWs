@@ -19,7 +19,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     var setStatusButton = UIButton()
     var statusTextField = UITextField()
     
-    
     func subViewsSettings(){
         avatarImageView.layer.borderWidth = 3
         avatarImageView.layer.borderColor = UIColor.white.cgColor
@@ -120,7 +119,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             setStatusButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
         ]
         NSLayoutConstraint.activate(constraints)
-
     }
     
     required init?(coder: NSCoder) {
