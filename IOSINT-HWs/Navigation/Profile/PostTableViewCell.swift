@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import iOSIntPackage
 
 class PostTableViewCell: UITableViewCell {
             
@@ -67,12 +66,7 @@ class PostTableViewCell: UITableViewCell {
     }()
     
     private func setupViews() {
-        imgFiltering()
-        Posts.postsArray[1].image = filteredImages[0]
-        Posts.postsArray[2].image = filteredImages[1]
-        Posts.postsArray[3].image = filteredImages[2]
-        Posts.postsArray[4].image = filteredImages[3]
-        
+
         contentView.addSubview(postViewsLabel)
         contentView.addSubview(postLikesLabel)
         contentView.addSubview(postTextLabel)

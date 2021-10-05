@@ -9,9 +9,6 @@
 import UIKit
 import iOSIntPackage
 
-let imageProcessor = ImageProcessor.init()
-var filteredImages: [UIImage] = []
-
 struct ProfilePost {
     var author: String
     var description: String
@@ -20,20 +17,6 @@ struct ProfilePost {
     var views: Int
 }
 
-func imgFiltering() {
-imageProcessor.processImage(sourceImage: #imageLiteral(resourceName: "roboti"), filter: .colorInvert) { filterImg in
-        filteredImages.append(filterImg!)
-    }
-imageProcessor.processImage(sourceImage: #imageLiteral(resourceName: "forum"), filter: .colorInvert) { filterImg in
-    filteredImages.append(filterImg!)
-}
-imageProcessor.processImage(sourceImage: #imageLiteral(resourceName: "wwdc"), filter: .colorInvert) { filterImg in
-    filteredImages.append(filterImg!)
-}
-imageProcessor.processImage(sourceImage: #imageLiteral(resourceName: "tesla"), filter: .colorInvert) { filterImg in
-   filteredImages.append(filterImg!)
-}
-}
 struct Posts {
     static var postsArray: [ProfilePost] = [robotiPost ,robotiPost, forumPost, wwdcPost, teslaPost]
 }
