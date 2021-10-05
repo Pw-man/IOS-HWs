@@ -7,20 +7,22 @@
 //
 
 import UIKit
-
-let screnSize = UIScreen.main.bounds
-
-struct SchemeCheck {
-    static var isInDebugMode: Bool {
-        #if DEBUG
-        return true
-        #else
-        return false
-        #endif
-    }
-}
+import StorageService
 
 class ProfileViewController: UIViewController {
+    
+    private var user : UserService
+    private var nameOfUser: String
+    
+    init(user : UserService, name: String) {
+        self.user = user
+        self.nameOfUser = name
+        super.init(nibName: nil, bundle: nil)
+}
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+}
     
     private var transparentUIView: UIView = {
         let view = UIView()
@@ -29,8 +31,7 @@ class ProfileViewController: UIViewController {
         view.onAutoLayout()
         return view
     }()
-    
-    
+        
     private var animatedProfileHeaderView: ProfileHeaderView = {
         let phv = ProfileHeaderView()
         phv.onAutoLayout()
@@ -44,14 +45,14 @@ class ProfileViewController: UIViewController {
         button.onAutoLayout()
         return button
     }()
-    
+
     func schemeActivator() {
         if SchemeCheck.isInDebugMode {
-            tableView.backgroundColor = .red
+            tableView.backgroundColor = .systemYellow
         } else {
             tableView.backgroundColor = .green
-        }
     }
+}
     
     private var tableView = UITableView(frame: .zero, style: .grouped)
     
@@ -69,7 +70,7 @@ class ProfileViewController: UIViewController {
         view.addSubview(closeButton)
         
         animatedProfileHeaderView.avatarImageView.alpha = 0
-        
+
         let constraints = [
             transparentUIView.topAnchor.constraint(equalTo: view.topAnchor),
             transparentUIView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -111,7 +112,7 @@ class ProfileViewController: UIViewController {
                 self.animatedProfileHeaderView.avatarImageView.layer.cornerRadius = 60
                 self.transparentUIView.alpha = 0
                 self.animatedProfileHeaderView.avatarImageView.alpha = 0
-                
+
             }, completion: {_ in
                 
                 UIView.animate(withDuration: 0.3, animations: {
@@ -120,7 +121,7 @@ class ProfileViewController: UIViewController {
             })
         }
         deAnimate()
-    }
+        }
     
     private func setupTableView() {
         view.addSubview(tableView)
@@ -176,10 +177,25 @@ extension ProfileViewController: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 220
+}
+
+    func configureHeaderView() -> ProfileHeaderView {
+        let profileHeaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: reuseID) as! ProfileHeaderView
+        if let theUser = user.returnUser(name: nameOfUser) {
+            profileHeaderView.fullNameLabel.text = theUser.fullName
+            profileHeaderView.avatarImageView.image = theUser.avatar
+            profileHeaderView.statusLabel.text = theUser.status
+        } else {
+            let someone = User(fullName: "Unidentified user", avatar: UIImage(systemName: "questionmark.circle")!, status: "Who am I?")
+            profileHeaderView.fullNameLabel.text = someone.fullName
+            profileHeaderView.avatarImageView.image = someone.avatar
+            profileHeaderView.statusLabel.text = someone.status
+        }
+        return profileHeaderView
     }
     
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let profileHeaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: reuseID) as! ProfileHeaderView
+        let profileHeaderView = configureHeaderView()
         let tapOnPhoto = UITapGestureRecognizer(target: self, action: #selector(tapOnProfilePhoto))
         profileHeaderView.avatarImageView.addGestureRecognizer(tapOnPhoto)
         profileHeaderView.avatarImageView.isUserInteractionEnabled = true

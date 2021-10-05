@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StorageService
 
 class LogInViewController: UIViewController, UITextFieldDelegate {
     
@@ -47,11 +48,11 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         logInButton.setBackgroundImage(pixelImage.alpha(0.8), for: .highlighted)
 
     }
-   @objc private func buttonTapped() {
-    let profileVC = storyboard?.instantiateViewController(identifier: "ProfileVC") as! ProfileViewController
-    navigationController?.pushViewController(profileVC, animated: true)
-   
-    }
+    @objc private func buttonTapped() {
+        let userService = SchemeCheck.isInDebugMode ? TestUserService() as UserService : CurrentUserService() as UserService
+        let profileVC = ProfileViewController(user: userService, name: logInView.nameTextField.text!)
+        navigationController?.pushViewController(profileVC, animated: true)
+}
     
     private func setupConstraints() {
         VkLogoImage.onAutoLayout()

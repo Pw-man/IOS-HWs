@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import iOSIntPackage
 
 class PostTableViewCell: UITableViewCell {
-    
+            
     var profilePost: ProfilePost? {
         didSet {
             guard let profilePost = profilePost else { return }
@@ -17,7 +18,7 @@ class PostTableViewCell: UITableViewCell {
             postTextLabel.text = profilePost.description
             postLikesLabel.text = "Likes: \(profilePost.likes)"
             postViewsLabel.text = "Views: \(profilePost.views)"
-            postImageView.image = UIImage(named: "\(profilePost.image)")
+            postImageView.image = profilePost.image
         } 
     }
     
@@ -66,6 +67,12 @@ class PostTableViewCell: UITableViewCell {
     }()
     
     private func setupViews() {
+        imgFiltering()
+        Posts.postsArray[1].image = filteredImages[0]
+        Posts.postsArray[2].image = filteredImages[1]
+        Posts.postsArray[3].image = filteredImages[2]
+        Posts.postsArray[4].image = filteredImages[3]
+        
         contentView.addSubview(postViewsLabel)
         contentView.addSubview(postLikesLabel)
         contentView.addSubview(postTextLabel)

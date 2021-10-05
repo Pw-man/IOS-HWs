@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 let reuseID = String(describing: ProfileHeaderView.self)
 
@@ -17,7 +18,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     var statusLabel = UILabel()
     var setStatusButton = UIButton()
     var statusTextField = UITextField()
-    
     
     func subViewsSettings(){
         avatarImageView.layer.borderWidth = 3
@@ -66,6 +66,33 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         
         subViewsSettings()
         
+        avatarImageView.snp.makeConstraints { make in
+            make.leading.top.equalToSuperview().inset(16)
+            make.width.height.equalTo(120)
+        }
+        fullNameLabel.snp.makeConstraints { make in
+            make.leading.equalTo(avatarImageView.snp.trailing).inset(-16)
+            make.trailing.equalToSuperview().inset(-16)
+            make.top.equalToSuperview().inset(27)
+        }
+        statusLabel.snp.makeConstraints { make in
+            make.leading.equalTo(avatarImageView.snp.trailing).inset(-16)
+            make.trailing.equalToSuperview().inset(-16)
+            make.top.equalTo(fullNameLabel.snp.bottom).inset(-40)
+        }
+        statusTextField.snp.makeConstraints { make in
+            make.top.equalTo(statusLabel.snp.bottom).inset(-5)
+            make.leading.equalToSuperview().inset(152)
+            make.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(40)
+        }
+        setStatusButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(16)
+            make.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(50)
+            make.bottom.equalToSuperview().inset(10)
+        }
+
         let constraints = [
             avatarImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
