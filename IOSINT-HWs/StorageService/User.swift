@@ -8,15 +8,17 @@
 
 import UIKit
 
+
 public protocol UserService {
     func returnUser(name: String) -> User?
 }
 
 public class TestUserService: UserService {
     public init() {}
-   public let user = User(fullName: "Sun", avatar: UIImage(systemName: "sun.max")!, status: "Shining")
+    
+    public let user = User(fullName: "Sun", avatar: UIImage(systemName: "sun.max")!, status: "Shining")
     public func returnUser(name: String) -> User? {
-        guard name == user.fullName else { return nil}
+        guard name == user.fullName else { return nil }
         return user
     }
 }

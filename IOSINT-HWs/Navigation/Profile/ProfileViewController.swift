@@ -49,6 +49,7 @@ class ProfileViewController: UIViewController {
     func schemeActivator() {
         if SchemeCheck.isInDebugMode {
             tableView.backgroundColor = .systemYellow
+            user = TestUserService()
         } else {
             tableView.backgroundColor = .green
     }
@@ -203,3 +204,4 @@ extension ProfileViewController: UITableViewDelegate {
         return profileHeaderView
     }
 }
+    

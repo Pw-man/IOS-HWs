@@ -35,8 +35,6 @@ struct PeseliPhotos {
         PeselPhoto(photo: "pexels-rodnae-productions-7516789"),
         PeselPhoto(photo: "pexels-visually-us-1686790")
     ]
-
-    
 }
 
 

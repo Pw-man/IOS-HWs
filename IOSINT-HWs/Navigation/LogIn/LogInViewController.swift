@@ -11,18 +11,21 @@ import StorageService
 
 class LogInViewController: UIViewController, UITextFieldDelegate {
     
+    var logInVCDelegate: LogInViewControllerDelegate?
+    
     private let scrollView = UIScrollView()
+    
     private let containerView = UIView()
     
     private let VkLogoImage: UIImageView = {
-      var vkLogo = UIImageView()
+        var vkLogo = UIImageView()
         vkLogo.image = #imageLiteral(resourceName: "logo")
         vkLogo.clipsToBounds = true
         return vkLogo
     }()
     
     private let logInView = LogInView()
-
+    
     private(set) lazy var logInButton: UIButton = {
         var button = UIButton()
         return button
@@ -46,21 +49,26 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         logInButton.setBackgroundImage(pixelImage.alpha(1), for: .normal)
         logInButton.setBackgroundImage(pixelImage.alpha(0.8), for: .disabled)
         logInButton.setBackgroundImage(pixelImage.alpha(0.8), for: .highlighted)
-
     }
+    
     @objc private func buttonTapped() {
         let userService = SchemeCheck.isInDebugMode ? TestUserService() as UserService : CurrentUserService() as UserService
         let profileVC = ProfileViewController(user: userService, name: logInView.nameTextField.text!)
-        navigationController?.pushViewController(profileVC, animated: true)
+        if logInVCDelegate?.enterConfirmation(login: logInView.nameTextField.text!, password: logInView.passwordTextField.text!) == true {
+            navigationController?.pushViewController(profileVC, animated: true)
+        } else {
+            print("Password or login is not right")
+    }
 }
     
     private func setupConstraints() {
+        
         VkLogoImage.onAutoLayout()
         logInView.onAutoLayout()
         logInButton.onAutoLayout()
         scrollView.onAutoLayout()
         containerView.onAutoLayout()
-
+        
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -88,10 +96,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             logInButton.heightAnchor.constraint(equalToConstant: 50),
             logInButton.topAnchor.constraint(equalTo: logInView.bottomAnchor, constant: 16),
             logInButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20)
-
-            
-    ])
-    }
+        ])
+}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,42 +112,41 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         setupConstraints()
         self.logInView.nameTextField.delegate = self
         self.logInView.passwordTextField.delegate = self
- 
-    }
+}
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-
+        
+}
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-
+        
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-
+}
+    
     @objc fileprivate func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-
+            
             scrollView.contentInset.bottom = keyboardSize.height
             scrollView.verticalScrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
-        }
     }
-
+}
+    
     @objc fileprivate func keyboardWillHide(notification: NSNotification) {
         scrollView.contentInset.bottom = .zero
         scrollView.verticalScrollIndicatorInsets = .zero
     }
-    
-        
 }
 
 extension UIView {
     func onAutoLayout() {
         self.translatesAutoresizingMaskIntoConstraints = false
-}
+    }
 }
 
 extension UIImage {
@@ -161,3 +166,6 @@ extension LogInViewController {
         return true
     }
 }
+
+
+
