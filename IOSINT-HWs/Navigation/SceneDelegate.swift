@@ -17,7 +17,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let home = MyTabBarController()
+        self.window?.rootViewController = home
+        window?.makeKeyAndVisible()
+        window?.windowScene = windowScene
         
         if let tabController = window?.rootViewController as? UITabBarController, let loginNavigation = tabController.viewControllers?.last as? UINavigationController, let loginController = loginNavigation.viewControllers.first as? LogInViewController {
             loginController.logInVCDelegate = myLoginFactory.makeLogInLogInAutentificator()

@@ -9,12 +9,9 @@
 import UIKit
 
 class InfoViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
-    @IBAction func showAlert(_ sender: Any) {
+    private lazy var alertButton: CustomButton = .init(title: "Show alert", font: .boldSystemFont(ofSize: 15), titleColor: .white) { [weak self] in
+        guard let self = self else { return }
         let alertController = UIAlertController(title: "Удалить пост?", message: "Пост нельзя будет восстановить", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Отмена", style: .default) { _ in
             print("Отмена")
@@ -26,4 +23,16 @@ class InfoViewController: UIViewController {
         alertController.addAction(deleteAction)
         self.present(alertController, animated: true, completion: nil)
     }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.addSubview(alertButton)
+        view.backgroundColor = .systemYellow
+        
+        alertButton.snp.makeConstraints { make in
+            make.centerY.centerX.equalToSuperview()
+        }
+        
+    }
+    
 }

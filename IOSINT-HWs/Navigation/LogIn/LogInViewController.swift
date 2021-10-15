@@ -26,10 +26,16 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     private let logInView = LogInView()
     
-    private(set) lazy var logInButton: UIButton = {
-        var button = UIButton()
-        return button
-    }()
+    private(set) lazy var logInButton = CustomButton(title: "Log In", font: .boldSystemFont(ofSize: 15), titleColor: .white) { [weak self] in
+        guard let self = self else { return }
+        let userService = SchemeCheck.isInDebugMode ? TestUserService() as UserService : CurrentUserService() as UserService
+        let profileVC = ProfileViewController(user: userService, name: self.logInView.nameTextField.text!)
+        if self.logInVCDelegate?.enterConfirmation(login: self.logInView.nameTextField.text!, password: self.logInView.passwordTextField.text!) == true {
+            self.navigationController?.pushViewController(profileVC, animated: true)
+                } else {
+                    print("Password or login is not right")
+            }
+    }
     
     private func UIElementsSettings() {
         logInView.backgroundColor = .systemGray6
@@ -37,12 +43,9 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         logInView.layer.borderWidth = 0.5
         logInView.layer.cornerRadius = 10
         
-        logInButton.titleLabel?.font = .boldSystemFont(ofSize: 15)
-        logInButton.setTitleColor(.white, for: [.disabled,.selected,.highlighted,.normal])
-        logInButton.setTitle("Log In", for: .normal)
         logInButton.layer.cornerRadius = 10
         logInButton.layer.masksToBounds = true
-        logInButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+
         
         guard let pixelImage = UIImage(named: "blue_pixel") else { return }
         logInButton.setBackgroundImage(pixelImage.alpha(0.8), for: .selected)
@@ -50,16 +53,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         logInButton.setBackgroundImage(pixelImage.alpha(0.8), for: .disabled)
         logInButton.setBackgroundImage(pixelImage.alpha(0.8), for: .highlighted)
     }
-    
-    @objc private func buttonTapped() {
-        let userService = SchemeCheck.isInDebugMode ? TestUserService() as UserService : CurrentUserService() as UserService
-        let profileVC = ProfileViewController(user: userService, name: logInView.nameTextField.text!)
-        if logInVCDelegate?.enterConfirmation(login: logInView.nameTextField.text!, password: logInView.passwordTextField.text!) == true {
-            navigationController?.pushViewController(profileVC, animated: true)
-        } else {
-            print("Password or login is not right")
-    }
-}
     
     private func setupConstraints() {
         

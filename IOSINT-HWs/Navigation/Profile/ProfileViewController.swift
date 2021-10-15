@@ -40,13 +40,25 @@ class ProfileViewController: UIViewController {
         return phv
     }()
     
-    private var closeButton: UIButton = {
-        let button = UIButton()
-        button.addTarget(self, action: #selector(closeBigProfileImage), for: .touchUpInside)
-        button.alpha = 0
-        button.onAutoLayout()
-        return button
-    }()
+    private lazy var closeButton: CustomButton = .init(title: "", font: .systemFont(ofSize: 15), titleColor: .systemRed) { [weak self] in
+        guard let self = self else { return }
+        func deAnimate() {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.animatedProfileHeaderView.avatarImageView.transform = CGAffineTransform.init(scaleX: 1, y: 1)
+                self.animatedProfileHeaderView.avatarImageView.frame = .init(x: 16, y: 63, width: 120, height: 120)
+                self.animatedProfileHeaderView.avatarImageView.layer.cornerRadius = 60
+                self.transparentUIView.alpha = 0
+                self.animatedProfileHeaderView.avatarImageView.alpha = 0
+
+            }, completion: {_ in
+                
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.closeButton.alpha = 0
+                })
+            })
+        }
+        deAnimate()
+    }
 
     func schemeActivator() {
         if SchemeCheck.isInDebugMode {
@@ -67,6 +79,8 @@ class ProfileViewController: UIViewController {
         let redCross = crossImg.withTintColor(.systemRed)
         closeButton.setBackgroundImage(redCross.alpha(1), for: .normal)
         closeButton.setBackgroundImage(redCross.alpha(0.6), for: .highlighted)
+        closeButton.alpha = 0
+        closeButton.onAutoLayout()
         
         view.addSubview(transparentUIView)
         view.addSubview(animatedProfileHeaderView.avatarImageView)
@@ -106,26 +120,7 @@ class ProfileViewController: UIViewController {
         }
         animate()
     }
-    
-    @objc func closeBigProfileImage() {
-        func deAnimate() {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.animatedProfileHeaderView.avatarImageView.transform = CGAffineTransform.init(scaleX: 1, y: 1)
-                self.animatedProfileHeaderView.avatarImageView.frame = .init(x: 16, y: 63, width: 120, height: 120)
-                self.animatedProfileHeaderView.avatarImageView.layer.cornerRadius = 60
-                self.transparentUIView.alpha = 0
-                self.animatedProfileHeaderView.avatarImageView.alpha = 0
-
-            }, completion: {_ in
-                
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.closeButton.alpha = 0
-                })
-            })
-        }
-        deAnimate()
-        }
-    
+        
     private func setupTableView() {
         view.addSubview(tableView)
         tableView.onAutoLayout()
