@@ -19,5 +19,4 @@ class FeedViewControllerModel {
             return false
         }
     }
-    
 }

@@ -51,7 +51,6 @@ final class FeedViewController: UIViewController {
         let postVC = PostViewController()
         postVC.post = self.post
         self.navigationController?.pushViewController(postVC, animated: true)
-
     }
     
     let post: Post = Post(title: "Post")
@@ -95,10 +94,10 @@ final class FeedViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+        super.viewWillAppear(animated)        
         
        notificationCenter.addObserver(self, selector: #selector(pickLabelColor), name: .boolChanged, object: nil)
+        
         print(type(of: self), #function)
     }
     
