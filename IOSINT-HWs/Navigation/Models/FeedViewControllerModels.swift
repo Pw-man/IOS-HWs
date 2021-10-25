@@ -8,7 +8,11 @@
 
 import UIKit
 
-class FeedViewControllerModel {
+protocol Model {
+    // some requirements for model
+}
+
+class FeedViewControllerModel: Model {
 
     private let storedPassword = "Pass"
         

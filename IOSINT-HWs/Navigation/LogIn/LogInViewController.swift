@@ -11,10 +11,12 @@ import StorageService
 
 class LogInViewController: UIViewController, UITextFieldDelegate {
     
+    weak var loginCoordinator: LoginCoordinator?
+    
     var logInVCDelegate: LogInViewControllerDelegate?
     
     private let scrollView = UIScrollView()
-    
+        
     private let containerView = UIView()
     
     private let VkLogoImage: UIImageView = {

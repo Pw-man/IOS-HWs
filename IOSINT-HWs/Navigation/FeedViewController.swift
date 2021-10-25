@@ -11,11 +11,14 @@ import StorageService
 
 final class FeedViewController: UIViewController {
     
-    private let notificationCenter = NotificationCenter.default
-    private let model: FeedViewControllerModel
+    let viewModel: FeedViewControllerViewModel
     
-    init(model: FeedViewControllerModel) {
-        self.model = model
+    private let notificationCenter = NotificationCenter.default
+    
+    var feedVCCompletion: (() -> Void)?
+    
+    init(viewModel: FeedViewControllerViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -48,12 +51,8 @@ final class FeedViewController: UIViewController {
     
     private lazy var pushPostVCButton: CustomButton = .init(title: "Click me", font: .boldSystemFont(ofSize: 15), titleColor: .systemBlue) { [weak self] in
         guard let self = self else { return }
-        let postVC = PostViewController()
-        postVC.post = self.post
-        self.navigationController?.pushViewController(postVC, animated: true)
+        self.feedVCCompletion?()
     }
-    
-    let post: Post = Post(title: "Post")
  
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +85,7 @@ final class FeedViewController: UIViewController {
     }
     
     @objc func pickLabelColor(_ notification: Notification) {
-        if model.check(word: passTextField.text!) {
+        if viewModel.model.check(word: passTextField.text!) {
             self.coloredLabel.textColor = .green
         } else {
             self.coloredLabel.textColor = .systemRed
@@ -113,6 +112,9 @@ final class FeedViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        
+//        feedCoordinator?.feedVCDidClose()
+        
         print(type(of: self), #function)
     }
     

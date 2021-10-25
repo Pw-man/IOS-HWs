@@ -13,7 +13,8 @@ protocol FeedViewControllerFactory {
 }
 
 class MyFeedViewControllerFactory: FeedViewControllerFactory {
+    
     func makeFeedViewContoller() -> FeedViewController {
-        return FeedViewController(model: FeedViewControllerModel())
+        return FeedViewController(viewModel: FeedViewControllerViewModel(model: FeedViewControllerModel()))
     }   
 }

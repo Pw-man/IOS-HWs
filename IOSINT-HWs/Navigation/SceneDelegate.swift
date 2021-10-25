@@ -14,14 +14,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let myLoginFactory = MyLoginFactory()
     
     var window: UIWindow?
+
+    let mainTabBarVC = MainTabBarController()
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        let home = MyTabBarController()
-        self.window?.rootViewController = home
+
+        self.window?.rootViewController = mainTabBarVC
         window?.makeKeyAndVisible()
         window?.windowScene = windowScene
         

@@ -13,6 +13,8 @@ class PostViewController: UIViewController {
     
     var post: Post?
     
+    var postVCCompletion: (() -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = post?.title
@@ -22,7 +24,6 @@ class PostViewController: UIViewController {
     }
     
     @objc private func presentVC() {
-        let infoVC = InfoViewController()
-        self.present(infoVC, animated: true, completion: nil)
+        postVCCompletion?()
     }
 }
