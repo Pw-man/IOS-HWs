@@ -8,7 +8,7 @@
 
 import UIKit
 
-let screnSize = UIScreen.main.bounds
+let screenSize = UIScreen.main.bounds
 
 struct SchemeCheck {
     static var isInDebugMode: Bool {
