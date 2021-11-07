@@ -13,7 +13,7 @@ protocol Model {
 }
 
 class FeedViewControllerModel: Model {
-
+    
     private let storedPassword = "Pass"
         
     func check(word: String) -> Bool {

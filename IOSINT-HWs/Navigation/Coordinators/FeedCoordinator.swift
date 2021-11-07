@@ -8,11 +8,9 @@
 
 import UIKit
 
-class FeedCoordinator: Coordinator {
+class FeedCoordinator: Coordinator & FeedModuleFactory {
         
     weak var parentCoordinator: MainCoordinator?
-    
-    let feedVCFactory = MyFeedViewControllerFactory()
     
     var childCoordinators = [Coordinator]()
     
@@ -22,16 +20,17 @@ class FeedCoordinator: Coordinator {
         self.navigationController = navigationController
     }
     
+    func makeVC() -> FeedViewController {
+        return FeedViewController(viewModel: FeedViewControllerViewModel(model: FeedViewControllerModel()))
+    }
+    
     func start() {
-        let myFeedModuleFactory = myFeedModelFactory()
-        let feedModule = myFeedModuleFactory.makeModule()
-        feedModule.viewController.viewModel.onDataChanged = {
-            print("228")
-        }
-        let feedVC = feedVCFactory.makeFeedViewContoller()
+        let feedVC = makeVC()
+        feedVC.viewModel.coordinator = self
+        
         feedVC.navigationItem.title = "Feed"
         
-        feedVC.feedVCCompletion = { [weak self] in
+        feedVC.pushNextVC = { [weak self] in
             guard let self = self else { return }
             let postCoordinator = PostCordinator(navigationController: self.navigationController)
             postCoordinator.start()
@@ -44,7 +43,7 @@ class FeedCoordinator: Coordinator {
         navigationController.pushViewController(feedVC, animated: false)
     }
     
-    func feedVCDidClose() {
+    func VCDidDissapear() {
         parentCoordinator?.childDidFinish(self)
     }
 }
