@@ -18,16 +18,17 @@ class PhotosViewController: UIViewController {
     
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layoutForPhotosVC)
     
-    private func collectionViewFillingLogic(repeatCount: Int, time: TimeInterval) {
-        imagePublisherFacade.addImagesWithTimer(time: time, repeat: repeatCount, userImages: PeseliPhotos.photosArray)
-        func createTimer() {
-            eraseTimer = Timer.scheduledTimer(withTimeInterval: Double(repeatCount) * time + 2.0, repeats: false) { [weak self] _ in
+    func createTimer(repeatAmount: Int, timeInterval: TimeInterval) {
+        eraseTimer = Timer.scheduledTimer(withTimeInterval: Double(repeatAmount) * timeInterval + 2.0, repeats: false) { [weak self] _ in
             guard let self = self else { return }
             self.imagePublisherFacade.rechargeImageLibrary()
             self.imagePublisherFacade.removeSubscription(for: self)
         }
-        }
-        createTimer()
+    }
+    
+    private func collectionViewFillingLogic(repeatCount: Int, time: TimeInterval) {
+        imagePublisherFacade.addImagesWithTimer(time: time, repeat: repeatCount, userImages: PeseliPhotos.photosArray)
+        createTimer(repeatAmount: repeatCount, timeInterval: time)
     }
       
     override func viewDidLoad() {
