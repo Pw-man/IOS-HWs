@@ -36,14 +36,32 @@ final class FeedViewController: UIViewController {
         return label
     }()
     
+    /// Observing property
+//    private var password = "" {
+//        didSet {
+//            if self.model.check(word: password) {
+//                self.coloredLabel.textColor = .green
+//            } else {
+//                self.coloredLabel.textColor = .systemRed
+//            }
+//        }
+//    }
+    
     private lazy var checkPassButton: CustomButton = .init(title: "Verify password", font: .boldSystemFont(ofSize: 15), titleColor: .white) { [weak self] in
         guard let self = self else { return }
-        self.notificationCenter.post(name: .boolChanged, object: nil)
-//        if self.model.check(word: self.passTextField.text!) {
-//            self.coloredLabel.textColor = .green
-//        } else {
-//            self.coloredLabel.textColor = .systemRed
-//        }
+        
+        ///  Through Notification Center
+//        self.notificationCenter.post(name: .boolChanged, object: nil)
+        
+       /// Through closures
+        if self.model.check(word: self.passTextField.text!) {
+            self.coloredLabel.textColor = .green
+        } else {
+            self.coloredLabel.textColor = .systemRed
+        }
+
+        /// Through property observer  (DidSet)
+//        self.password = self.passTextField.text!
     }
     
     private lazy var pushPostVCButton: CustomButton = .init(title: "Click me", font: .boldSystemFont(ofSize: 15), titleColor: .systemBlue) { [weak self] in
@@ -94,9 +112,9 @@ final class FeedViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)        
+        super.viewWillAppear(animated)
         
-       notificationCenter.addObserver(self, selector: #selector(pickLabelColor), name: .boolChanged, object: nil)
+//       notificationCenter.addObserver(self, selector: #selector(pickLabelColor), name: .boolChanged, object: nil)
         
         print(type(of: self), #function)
     }
@@ -127,7 +145,7 @@ final class FeedViewController: UIViewController {
     }
 }
 
-extension Notification.Name {
-    static let boolChanged = Notification.Name("boolChanged")
-}
+//extension Notification.Name {
+//    static let boolChanged = Notification.Name("boolChanged")
+//}
 

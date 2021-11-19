@@ -30,9 +30,6 @@ final class CustomButton: UIButton {
         
         self.setTitle(title, for: .normal)
         self.titleLabel?.font = font
-        self.setTitleColor(titleColor, for: .disabled)
-        self.setTitleColor(titleColor, for: .selected)
-        self.setTitleColor(titleColor, for: .highlighted)
         self.setTitleColor(titleColor, for: .normal)
         self.addTarget(self, action: #selector(buttonTap), for: .touchUpInside)
     }
