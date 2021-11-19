@@ -10,10 +10,10 @@ import UIKit
 
 class PhotosCollectionViewCell: UICollectionViewCell {
     
-    var peselPhoto: PeselPhoto? {
+    var peselPhoto: UIImage? {
         didSet {
             guard let peselPhoto = peselPhoto else { return }
-            photoImageView.image = UIImage(named: "\(peselPhoto.photo)")
+            photoImageView.image = peselPhoto
         }
     }
     
