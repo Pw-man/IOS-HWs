@@ -15,6 +15,12 @@ class PhotosViewController: UIViewController {
     private var imagesFromTimer = [UIImage]()
     private let layoutForPhotosVC = UICollectionViewFlowLayout()
     private let imagePublisherFacade = ImagePublisherFacade()
+    private let imageProcessor = ImageProcessor()
+    private var imagesFromThreads: [UIImage] = [] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layoutForPhotosVC)
     
@@ -35,6 +41,7 @@ class PhotosViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         imagePublisherFacade.subscribe(self)
+        preparePhotosOnParrallelThreads()
         setupCollectionView()
         collectionViewFillingLogic(repeatCount: 21, time: 0.2)
 
@@ -69,6 +76,49 @@ private extension PhotosViewController {
         collectionView.backgroundColor = .white
     }
 }
+    // MARK: - обработка фотографий на параллельных потоках
+
+extension PhotosViewController {
+
+    func executeInInitiatedThread() {
+        imageProcessor.processImagesOnThread(sourceImages: pesiki2, filter: .bloom(intensity: 0.75), qos: .userInitiated) { images in
+            DispatchQueue.main.async {
+                images.forEach {
+                    self.imagesFromThreads.insert(UIImage(cgImage: $0!), at: 0)
+                }
+            }
+            print("Initiated loading finished :\(NSDate.now)") // Загрузился последний. Всё загрузилось на разных потоках, посмотрел через дебаггер.
+        }
+    }
+    
+    func executeInUtilityThread() {
+        imageProcessor.processImagesOnThread(sourceImages: pesiki3, filter: .colorInvert, qos: .utility) { images in
+            DispatchQueue.main.async {
+                images.forEach {
+                    self.imagesFromThreads.insert(UIImage(cgImage: $0!), at: 0)
+                }
+            }
+            print("Utility loading :\(NSDate.now)") // Т.к. на 1 фотографию меньше обрабатывать, загрузился быстрее, хотя приоритет утилити!
+        }
+    }
+    
+    func executeInInteractiveThread() {
+        imageProcessor.processImagesOnThread(sourceImages: pesiki1, filter: .chrome, qos: .userInteractive) { images in
+            DispatchQueue.main.async {
+                images.forEach {
+                    self.imagesFromThreads.insert(UIImage(cgImage: $0!), at: 0)
+                }
+            }
+            print("Interactive loading : \(NSDate.now)") // Грузится 2, как и должно быть
+        }
+    }
+    
+    func preparePhotosOnParrallelThreads() {
+        executeInInteractiveThread()
+        executeInInitiatedThread()
+        executeInUtilityThread()
+    }
+}
 
 extension PhotosViewController: UICollectionViewDataSource {
     
@@ -77,12 +127,12 @@ extension PhotosViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        imagesFromTimer.count
+        imagesFromThreads.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: PhotosCollectionViewCell.self), for: indexPath) as! PhotosCollectionViewCell
-        cell.peselPhoto = imagesFromTimer[indexPath.item]
+        cell.peselPhoto = imagesFromThreads[indexPath.item]
         return cell
     }
 }
