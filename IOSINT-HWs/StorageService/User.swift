@@ -8,17 +8,21 @@
 
 import UIKit
 
+public enum UserServiceError: Error {
+    case unnownUser(user: User)
+}
 
 public protocol UserService {
-    func returnUser(name: String) -> User?
+    func returnUser(name: String) throws -> User?
 }
 
 public class TestUserService: UserService {
     public init() {}
     
     public let user = User(fullName: "Sun", avatar: UIImage(systemName: "sun.max")!, status: "Shining")
-    public func returnUser(name: String) -> User? {
-        guard name == user.fullName else { return nil }
+    public func returnUser(name: String) throws -> User? {
+        guard name == user.fullName else { throw UserServiceError.unnownUser(user: User(fullName: "Stranger", avatar: UIImage(systemName: "questionmark.circle")!, status: "Unnown user"))
+        }
         return user
     }
 }

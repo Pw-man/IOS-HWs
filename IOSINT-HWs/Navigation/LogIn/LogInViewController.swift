@@ -11,6 +11,10 @@ import StorageService
 
 class LogInViewController: UIViewController, UITextFieldDelegate {
     
+    enum LoginError: Error {
+        case wrongData
+    }
+    
     var logInVCDelegate: LogInViewControllerDelegate?
     
     private let scrollView = UIScrollView()
@@ -26,15 +30,40 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     private let logInView = LogInView()
     
-    private(set) lazy var logInButton = CustomButton(title: "Log In", font: .boldSystemFont(ofSize: 15), titleColor: .white) { [weak self] in
-        guard let self = self else { return }
+    private let logInButton: UIButton = {
+       let button = UIButton()
+        button.setTitle("Log In", for: .normal)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 15)
+        button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(catchingLogErrors), for: .touchUpInside)
+        return button
+    }()
+    
+    func userLogin() throws {
         let userService = SchemeCheck.isInDebugMode ? TestUserService() as UserService : CurrentUserService() as UserService
         let profileVC = ProfileViewController(user: userService, name: self.logInView.nameTextField.text!)
-        if self.logInVCDelegate?.enterConfirmation(login: self.logInView.nameTextField.text!, password: self.logInView.passwordTextField.text!) == true {
-            self.navigationController?.pushViewController(profileVC, animated: true)
-                } else {
-                    print("Password or login is not right")
+        /// для проверки задания 3 закомментить от сих
+        guard self.logInVCDelegate?.enterConfirmation(login: self.logInView.nameTextField.text!, password: self.logInView.passwordTextField.text!) == true else {
+            throw LoginError.wrongData
+        }
+        /// до сих, чтобы не мешала сверка логина+пароля
+        self.navigationController?.pushViewController(profileVC, animated: true)
+    }
+    
+    @objc func catchingLogErrors() {
+        do {
+            try userLogin()
+            print("User logged successfully!")
+        } catch LoginError.wrongData  {
+            let alertController = UIAlertController(title: "Неправильный логин или пароль", message: "Проверьте корректность данных", preferredStyle: .alert)
+            let userTapToContinue = UIAlertAction(title: "Исправить", style: .default) { _ in
+                print("User исправляет введённые данные")
             }
+            alertController.addAction(userTapToContinue)
+            self.present(alertController, animated: true, completion: nil)
+        } catch {
+            print("Unexpected error \(error)")
+        }
     }
     
     private func UIElementsSettings() {
@@ -46,7 +75,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         logInButton.layer.cornerRadius = 10
         logInButton.layer.masksToBounds = true
 
-        
         guard let pixelImage = UIImage(named: "blue_pixel") else { return }
         logInButton.setBackgroundImage(pixelImage.alpha(0.8), for: .selected)
         logInButton.setBackgroundImage(pixelImage.alpha(1), for: .normal)
