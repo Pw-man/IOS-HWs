@@ -15,10 +15,10 @@ protocol Model {
 class FeedViewControllerModel: Model {
     
     private let storedPassword = "Pass"
-        
+    
     func check(word: String) -> Bool {
-        if word.count != 0 && word == storedPassword  {
-        return true
+        if !word.isEmpty && word == storedPassword  {
+            return true
         } else {
             return false
         }

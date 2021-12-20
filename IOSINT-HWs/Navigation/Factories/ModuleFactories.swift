@@ -15,6 +15,8 @@ protocol CustomViewController {
     init(viewModel: ViewInput & ViewOutput)
 }
 
+typealias MVVMController = UIViewController & CustomViewController
+
 protocol FeedModuleFactory {
     func makeVC() -> FeedViewController
 }

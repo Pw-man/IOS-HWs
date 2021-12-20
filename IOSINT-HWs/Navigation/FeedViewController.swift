@@ -9,7 +9,7 @@
 import UIKit
 import StorageService
 
-final class FeedViewController: UIViewController & CustomViewController {
+final class FeedViewController: MVVMController {
     
     var viewModel: ViewInput & ViewOutput
     
@@ -39,14 +39,15 @@ final class FeedViewController: UIViewController & CustomViewController {
         return label
     }()
     
-    private lazy var checkPassButton: UIButton = {
+    private let checkPassButton: UIButton = {
         let button = UIButton()
         button.setTitle("Verify password", for: .normal)
         return button
     }()
     
     @objc func checkPass() {
-        viewModel.onDataChanged!("\(passTextField.text!)")
+        guard let enteredText = passTextField.text else { return }
+        viewModel.onDataChanged?("\(enteredText)")
         
         switch viewModel.configuration {
         case .first:
@@ -115,8 +116,7 @@ final class FeedViewController: UIViewController & CustomViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        let feedCoord = viewModel.coordinator as! FeedCoordinator
-        feedCoord.VCDidDissapear()
+        viewModel.onDidDissapear?()
         print(type(of: self), #function)
     }
     

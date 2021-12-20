@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedCoordinator: Coordinator & FeedModuleFactory {
+class FeedCoordinator: Coordinator & FeedModuleFactory {    
         
     weak var parentCoordinator: MainCoordinator?
     
@@ -27,7 +27,10 @@ class FeedCoordinator: Coordinator & FeedModuleFactory {
     func start() {
         let feedVC = makeVC()
         feedVC.viewModel.coordinator = self
-        
+        feedVC.viewModel.onDidDissapear = { [weak self] in
+            guard let self = self else { return }
+            self.parentCoordinator?.childDidFinish(self)
+        }
         feedVC.navigationItem.title = "Feed"
         
         feedVC.pushNextVC = { [weak self] in
@@ -41,9 +44,5 @@ class FeedCoordinator: Coordinator & FeedModuleFactory {
         navigationController.tabBarItem.image = UIImage(systemName: "house")!
         navigationController.navigationBar.prefersLargeTitles = false
         navigationController.pushViewController(feedVC, animated: false)
-    }
-    
-    func VCDidDissapear() {
-        parentCoordinator?.childDidFinish(self)
     }
 }

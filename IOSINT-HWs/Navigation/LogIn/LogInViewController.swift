@@ -16,7 +16,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     var logInVCDelegate: LogInViewControllerDelegate?
     
     private let scrollView = UIScrollView()
-        
+    
     private let containerView = UIView()
     
     private let VkLogoImage: UIImageView = {
@@ -30,13 +30,15 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     private(set) lazy var logInButton = CustomButton(title: "Log In", font: .boldSystemFont(ofSize: 15), titleColor: .white) { [weak self] in
         guard let self = self else { return }
-        let userService = SchemeCheck.isInDebugMode ? TestUserService() as UserService : CurrentUserService() as UserService
-        let profileVC = ProfileViewController(user: userService, name: self.logInView.nameTextField.text!)
-        if self.logInVCDelegate?.enterConfirmation(login: self.logInView.nameTextField.text!, password: self.logInView.passwordTextField.text!) == true {
+        let userService: UserService = SchemeCheck.isInDebugMode ? TestUserService() : CurrentUserService()
+        guard let enteredText = self.logInView.nameTextField.text else { return }
+        guard let enteredPassword = self.logInView.passwordTextField.text else { return }
+        let profileVC = ProfileViewController(user: userService, name: enteredText)
+        if self.logInVCDelegate?.enterConfirmation(login: enteredText, password: enteredPassword) == true {
             self.navigationController?.pushViewController(profileVC, animated: true)
-                } else {
-                    print("Password or login is not right")
-            }
+        } else {
+            print("Password or login is not right")
+        }
     }
     
     private func UIElementsSettings() {
@@ -47,7 +49,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
         logInButton.layer.cornerRadius = 10
         logInButton.layer.masksToBounds = true
-
+        
         
         guard let pixelImage = UIImage(named: "blue_pixel") else { return }
         logInButton.setBackgroundImage(pixelImage.alpha(0.8), for: .selected)
@@ -92,7 +94,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             logInButton.topAnchor.constraint(equalTo: logInView.bottomAnchor, constant: 16),
             logInButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20)
         ])
-}
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,7 +109,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         setupConstraints()
         self.logInView.nameTextField.delegate = self
         self.logInView.passwordTextField.delegate = self
-}
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -115,22 +117,22 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-}
+    }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-}
+    }
     
     @objc fileprivate func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             
             scrollView.contentInset.bottom = keyboardSize.height
             scrollView.verticalScrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+        }
     }
-}
     
     @objc fileprivate func keyboardWillHide(notification: NSNotification) {
         scrollView.contentInset.bottom = .zero

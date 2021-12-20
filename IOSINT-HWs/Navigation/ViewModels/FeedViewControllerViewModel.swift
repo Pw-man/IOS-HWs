@@ -14,12 +14,12 @@ enum ConfigType {
 }
 
 protocol ViewOutput {
-    
     var configuration: ConfigType? { get }
     var onSelectAction: (() -> Void)? { get }
 }
 
 protocol ViewInput {
+    var onDidDissapear: (() -> Void)? { get set }
     var coordinator: Coordinator? { get set }
     var onDataChanged: ((String) -> Void)? { get set }
 }
@@ -27,7 +27,7 @@ protocol ViewInput {
 class FeedViewControllerViewModel: ViewInput & ViewOutput {
 
     var configuration: ConfigType? {
-        if modelLogic {
+        if boolFlagForModelLogicExecution {
             return .first
         } else {
             return .second
@@ -35,28 +35,26 @@ class FeedViewControllerViewModel: ViewInput & ViewOutput {
     }
     
     var model: FeedViewControllerModel
-    var modelLogic = false
+    var boolFlagForModelLogicExecution = false
     
     weak var coordinator: Coordinator?
+    
+    var onDidDissapear: (() -> Void)?
         
     var onDataChanged: ((String) -> Void)?
             
-    var onSelectAction: (() -> Void)? {
-        return {
-            self.onDataChanged = { [weak self] text in
-                guard let self = self else { return }
-                if self.model.check(word: text) {
-                    self.modelLogic = true
-                } else {
-                    self.modelLogic = false
-                }
-            }
-        }
-    }
+    var onSelectAction: (() -> Void)?
 
     init(model: FeedViewControllerModel) {
         self.model = model
         
-        onSelectAction?()
+        onDataChanged = { [weak self] text in
+            guard let self = self else { return }
+            if self.model.check(word: text) {
+                self.boolFlagForModelLogicExecution = true
+            } else {
+                self.boolFlagForModelLogicExecution = false
+            }
+        }
     }
 }

@@ -30,15 +30,6 @@ final class MainCoordinator: Coordinator {
         loginCoordinator.parentCoordinator = self
         childCoordinators.append(feedCoordinator)
         childCoordinators.append(loginCoordinator)
-    }
-    
-    func childDidFinish(_ child: Coordinator?) {
-        for (index, coordinator) in childCoordinators.enumerated() {
-            if coordinator === child {
-                childCoordinators.remove(at: index)
-            }
-        }
-    }
-
+    }    
 }
 

@@ -9,7 +9,7 @@
 import UIKit
 import StorageService
 
-class PostCordinator: Coordinator {
+class PostCordinator: Coordinator {    
     
     var childCoordinators = [Coordinator]()
     
