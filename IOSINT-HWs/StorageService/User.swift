@@ -13,14 +13,14 @@ public enum UserServiceError: Error {
 }
 
 public protocol UserService {
-    func returnUser(name: String) throws -> User?
+    func returnUser(name: String) throws -> User
 }
 
 public class TestUserService: UserService {
     public init() {}
     
     public let user = User(fullName: "Sun", avatar: UIImage(systemName: "sun.max")!, status: "Shining")
-    public func returnUser(name: String) throws -> User? {
+    public func returnUser(name: String) throws -> User {
         guard name == user.fullName else { throw UserServiceError.unnownUser(user: User(fullName: "Stranger", avatar: UIImage(systemName: "questionmark.circle")!, status: "Unnown user"))
         }
         return user
@@ -43,8 +43,10 @@ public class User {
 public class CurrentUserService: UserService {
     public init() {}
     public var user = User(fullName: "Coolest Dog Ever", avatar: UIImage(named: "dachshundPhoto")!, status: "Hello buddy")
-    public func returnUser(name: String) -> User? {
-        guard name == user.fullName else { return nil }
+    public func returnUser(name: String) throws -> User {
+        guard name == user.fullName else {
+            throw UserServiceError.unnownUser(user: User(fullName: "Stranger", avatar: UIImage(systemName: "questionmark.circle")!, status: "Unnown user"))
+        }
         return user
     }
 }
