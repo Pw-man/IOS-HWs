@@ -13,6 +13,8 @@ final class FeedViewController: UIViewController {
     
     private let notificationCenter = NotificationCenter.default
     private let model: FeedViewControllerModel
+    private var hackedPass = ""
+    private let spinner = UIActivityIndicatorView()
     
     init(model: FeedViewControllerModel) {
         self.model = model
@@ -27,41 +29,43 @@ final class FeedViewController: UIViewController {
         let textField = UITextField()
         textField.placeholder = "Insert password"
         textField.backgroundColor = .systemGray6
+        textField.isSecureTextEntry = true
         return textField
     }()
     
     private let coloredLabel : UILabel = {
         let label = UILabel()
         label.text = "It's test text"
+        label.textColor = .systemGray
         return label
     }()
     
     /// Observing property
-//    private var password = "" {
-//        didSet {
-//            if self.model.check(word: password) {
-//                self.coloredLabel.textColor = .green
-//            } else {
-//                self.coloredLabel.textColor = .systemRed
-//            }
-//        }
-//    }
+    //    private var password = "" {
+    //        didSet {
+    //            if self.model.check(word: password) {
+    //                self.coloredLabel.textColor = .green
+    //            } else {
+    //                self.coloredLabel.textColor = .systemRed
+    //            }
+    //        }
+    //    }
     
     private lazy var checkPassButton: CustomButton = .init(title: "Verify password", font: .boldSystemFont(ofSize: 15), titleColor: .white) { [weak self] in
         guard let self = self else { return }
         
         ///  Through Notification Center
-//        self.notificationCenter.post(name: .boolChanged, object: nil)
+        //        self.notificationCenter.post(name: .boolChanged, object: nil)
         
-       /// Through closures
+        /// Through closures
         if self.model.check(word: self.passTextField.text!) {
             self.coloredLabel.textColor = .green
         } else {
             self.coloredLabel.textColor = .systemRed
         }
-
+        
         /// Through property observer  (DidSet)
-//        self.password = self.passTextField.text!
+        //        self.password = self.passTextField.text!
     }
     
     private lazy var pushPostVCButton: CustomButton = .init(title: "Click me", font: .boldSystemFont(ofSize: 15), titleColor: .systemBlue) { [weak self] in
@@ -71,8 +75,38 @@ final class FeedViewController: UIViewController {
         self.navigationController?.pushViewController(postVC, animated: true)
     }
     
+    private lazy var generatePassButton: CustomButton = .init(title: "Подобрать пароль", font: .boldSystemFont(ofSize: 15), titleColor: .black) { [weak self] in
+        guard let self = self else { return }
+        let randomStr = self.randomString(length: 3)
+        self.spinner.startAnimating()
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.bruteForce(passwordToUnlock: randomStr)
+            DispatchQueue.main.async {
+                self.spinner.stopAnimating()
+                self.passTextField.isSecureTextEntry = false
+                self.passTextField.text = self.hackedPass
+            }
+        }
+    }
+    
+    func bruteForce(passwordToUnlock: String) {
+        let ALLOWED_CHARACTERS:   [String] = String().printable.map { String($0) }
+        
+        var password: String = ""
+        
+        while password != passwordToUnlock {
+            password = generateBruteForce(password, fromArray: ALLOWED_CHARACTERS)
+        }
+        hackedPass = password
+    }
+    
+    func randomString(length: Int) -> String {
+        let letters = String().printable
+        return String((0..<length).map{ _ in letters.randomElement()! })
+    }
+    
     let post: Post = Post(title: "Post")
- 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print(type(of: self), #function)
@@ -82,14 +116,17 @@ final class FeedViewController: UIViewController {
         view.addSubview(checkPassButton)
         view.addSubview(passTextField)
         view.addSubview(coloredLabel)
+        view.addSubview(spinner)
+        view.addSubview(generatePassButton)
+        spinner.style = .large
         
         pushPostVCButton.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
         }
-    
+        
         checkPassButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(pushPostVCButton.snp.top).inset(-100)
+            make.top.equalTo(pushPostVCButton.snp.top).inset(-90)
         }
         
         passTextField.snp.makeConstraints { make in
@@ -99,22 +136,33 @@ final class FeedViewController: UIViewController {
         
         coloredLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(pushPostVCButton.snp.top).inset(100)
+            make.top.equalTo(pushPostVCButton.snp.top).inset(90)
+        }
+        
+        generatePassButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(passTextField.snp.bottom).inset(-30)
+        }
+        
+        spinner.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(passTextField.snp.top).inset(-30)
         }
     }
     
-    @objc func pickLabelColor(_ notification: Notification) {
-        if model.check(word: passTextField.text!) {
-            self.coloredLabel.textColor = .green
-        } else {
-            self.coloredLabel.textColor = .systemRed
-        }
-    }
+    /// Notification Center  method
+    //    @objc func pickLabelColor(_ notification: Notification) {
+    //        if model.check(word: passTextField.text!) {
+    //            self.coloredLabel.textColor = .green
+    //        } else {
+    //            self.coloredLabel.textColor = .systemRed
+    //        }
+    //    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//       notificationCenter.addObserver(self, selector: #selector(pickLabelColor), name: .boolChanged, object: nil)
+        //       notificationCenter.addObserver(self, selector: #selector(pickLabelColor), name: .boolChanged, object: nil)
         
         print(type(of: self), #function)
     }
@@ -148,4 +196,49 @@ final class FeedViewController: UIViewController {
 //extension Notification.Name {
 //    static let boolChanged = Notification.Name("boolChanged")
 //}
+
+//MARK: - Bruteforce settings
+
+extension String {
+    var digits:      String { return "0123456789" }
+    var lowercase:   String { return "abcdefghijklmnopqrstuvwxyz" }
+    var uppercase:   String { return "ABCDEFGHIJKLMNOPQRSTUVWXYZ" }
+    var punctuation: String { return "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~" }
+    var letters:     String { return lowercase + uppercase }
+    var printable:   String { return digits + letters + punctuation }
+    
+    
+    
+    mutating func replace(at index: Int, with character: Character) {
+        var stringArray = Array(self)
+        stringArray[index] = character
+        self = String(stringArray)
+    }
+}
+
+func indexOf(character: Character, _ array: [String]) -> Int {
+    return array.firstIndex(of: String(character))!
+}
+
+func characterAt(index: Int, _ array: [String]) -> Character {
+    return index < array.count ? Character(array[index])
+    : Character("")
+}
+
+func generateBruteForce(_ string: String, fromArray array: [String]) -> String {
+    var str: String = string
+    
+    if str.count <= 0 {
+        str.append(characterAt(index: 0, array))
+    }
+    else {
+        str.replace(at: str.count - 1,
+                    with: characterAt(index: (indexOf(character: str.last!, array) + 1) % array.count, array))
+        
+        if indexOf(character: str.last!, array) == 0 {
+            str = String(generateBruteForce(String(str.dropLast()), fromArray: array)) + String(str.last!)
+        }
+    }
+    return str
+}
 
