@@ -43,4 +43,15 @@ final class CustomButton: UIButton {
     }
 }
 
+struct Videofile {
+    let url: URL
+    let image: UIImage
+    let name: String
+}
+
+struct Song {
+    let name: String
+    let url: URL
+}
+
 

@@ -215,6 +215,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+<<<<<<< HEAD
             uuid = "4D48D7E8-6CF6-467C-874C-653C56F2FBB1"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -226,11 +227,57 @@
             endingLineNumber = "119"
             landmarkName = "preparePhotosOnParrallelThreads()"
             landmarkType = "7">
+=======
+            uuid = "B7E5DA16-A564-4DFF-A343-24A8D9B475DA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Navigation/Video/VideoViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "videos"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "B7E5DA16-A564-4DFF-A343-24A8D9B475DA - e90c0d8dc771d469"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Navigation.VideoViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Navigation.VideoViewController"
+                  moduleName = "Navigation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Roman/Documents/IOSINT%20Homeworks/IOSINT-HWs/IOSINT-HWs/Navigation/Video/VideoViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "287">
+               </Location>
+               <Location
+                  uuid = "B7E5DA16-A564-4DFF-A343-24A8D9B475DA - e622905eb3b7bf62"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Navigation.VideoViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Navigation.VideoViewController&gt;"
+                  moduleName = "Navigation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Roman/Documents/IOSINT%20Homeworks/IOSINT-HWs/IOSINT-HWs/Navigation/Video/VideoViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "229">
+               </Location>
+            </Locations>
+>>>>>>> feature/iosint-12
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+<<<<<<< HEAD
             uuid = "9ACEDD54-DC51-4FD0-B31A-A4EB150B6D5F"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -242,11 +289,25 @@
             endingLineNumber = "118"
             landmarkName = "preparePhotosOnParrallelThreads()"
             landmarkType = "7">
+=======
+            uuid = "B1F991BF-12C2-4243-A909-15C684C51BDB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Navigation/Video/VideoViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "videos"
+            landmarkType = "24">
+>>>>>>> feature/iosint-12
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+<<<<<<< HEAD
             uuid = "116B5411-9D30-437E-9948-617C9F039955"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -258,11 +319,25 @@
             endingLineNumber = "117"
             landmarkName = "preparePhotosOnParrallelThreads()"
             landmarkType = "7">
+=======
+            uuid = "3E0DFE2F-2631-47B4-8C63-C6C905A14932"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Navigation/Video/VideoViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "videos"
+            landmarkType = "24">
+>>>>>>> feature/iosint-12
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+<<<<<<< HEAD
             uuid = "59414471-C761-463B-80B1-216DF1E7AB92"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -386,6 +461,19 @@
             endingLineNumber = "100"
             landmarkName = "executeInUtilityThread()"
             landmarkType = "7">
+=======
+            uuid = "CA259717-8E27-4D7F-93CD-D9FF939F0344"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Navigation/Video/VideoViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "videos"
+            landmarkType = "24">
+>>>>>>> feature/iosint-12
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
