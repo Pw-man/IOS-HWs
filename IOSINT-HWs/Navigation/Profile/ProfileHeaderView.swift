@@ -26,7 +26,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         avatarImageView.clipsToBounds = true
         avatarImageView.image = #imageLiteral(resourceName: "dachshundPhoto")
         avatarImageView.onAutoLayout()
-        
+            
         fullNameLabel.text = "Coolest Dog Ever"
         fullNameLabel.textColor = .black
         fullNameLabel.numberOfLines = 0
