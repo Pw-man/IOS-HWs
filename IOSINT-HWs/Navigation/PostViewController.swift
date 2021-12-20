@@ -27,12 +27,27 @@ class PostViewController: UIViewController {
     
     private var countdownLabel = UILabel()
     private var interval: Decimal = 2
-
+    
     private lazy var startDownloadButton : CustomButton = .init(title: "Download", font: .boldSystemFont(ofSize: 15), titleColor: .black) { [weak self] in
         guard let self = self else { return }
         self.imageViewForTopPic.load(url: URL(string: "https://images.freeimages.com/images/large-previews/25d/eagle-1523807.jpg"
-)!)
-        self.imageViewForBotPic.load(url: URL(string: "https://images.freeimages.com/images/large-previews/afa/black-jaguar-1402097.jpg")!)
+                                             )!) { result in
+            switch result {
+            case .success(let successString):
+                print(successString)
+            case .failure(let error):
+                print("\(error)")
+            }
+        }
+        
+        self.imageViewForBotPic.load(url: URL(string: "https://images.freeimages.com/images/large-previews/afa/black-jaguar-1402097.jpg")!) { result in
+            switch result {
+            case .success(let successString):
+                print(successString)
+            case .failure(let error):
+                print("\(error)")
+            }
+        }
         
         let countdown = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
             if self.interval > 0 {
@@ -100,16 +115,21 @@ class PostViewController: UIViewController {
 //MARK: - UIImageView
 
 extension UIImageView {
-    func load(url: URL) {
+    func load(url: URL, completionHandler: @escaping (Result<String,NetworkError>) -> Void) {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let self = self else { return }
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self.image = image
-                    }
-                }
+            guard let data = try? Data(contentsOf: url) else { completionHandler(.failure(.badURL))
+                return
+            }
+            guard let image = UIImage(data: data) else { completionHandler(.failure(.badData))
+                return
+            }
+            DispatchQueue.main.async {
+                self.image = image
+                completionHandler(.success("All data is downloaded succesfully"))
             }
         }
     }
 }
+
+

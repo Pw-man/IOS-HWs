@@ -10,6 +10,12 @@ import UIKit
 
 let screenSize = UIScreen.main.bounds
 
+enum NetworkError: Error {
+    case noInternetConnection
+    case badURL
+    case badData
+}
+
 struct SchemeCheck {
     static var isInDebugMode: Bool {
         #if DEBUG

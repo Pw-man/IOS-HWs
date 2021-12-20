@@ -205,15 +205,18 @@ extension ProfileViewController: UITableViewDelegate {
 
     func configureHeaderView() -> ProfileHeaderView {
         let profileHeaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: reuseID) as! ProfileHeaderView
-        if let theUser = user.returnUser(name: nameOfUser) {
+        do {
+            let theUser = try user.returnUser(name: nameOfUser)
             profileHeaderView.fullNameLabel.text = theUser.fullName
             profileHeaderView.avatarImageView.image = theUser.avatar
             profileHeaderView.statusLabel.text = theUser.status
-        } else {
-            let someone = User(fullName: "Unidentified user", avatar: UIImage(systemName: "questionmark.circle")!, status: "Who am I?")
-            profileHeaderView.fullNameLabel.text = someone.fullName
-            profileHeaderView.avatarImageView.image = someone.avatar
-            profileHeaderView.statusLabel.text = someone.status
+            
+        } catch UserServiceError.unnownUser(let wrongUser) {
+            profileHeaderView.fullNameLabel.text = wrongUser.fullName
+            profileHeaderView.avatarImageView.image = wrongUser.avatar
+            profileHeaderView.statusLabel.text = wrongUser.status
+        } catch {
+            print("\(error)")
         }
         return profileHeaderView
     }
