@@ -32,7 +32,5 @@ class InfoViewController: UIViewController {
         alertButton.snp.makeConstraints { make in
             make.centerY.centerX.equalToSuperview()
         }
-        
     }
-    
 }

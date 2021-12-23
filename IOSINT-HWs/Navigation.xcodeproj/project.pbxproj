@@ -29,6 +29,7 @@
 		30397DF32762970D0024B13D /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30397DF22762970D0024B13D /* AudioViewController.swift */; };
 		30417C7B271740F300EF672A /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30417C7A271740F300EF672A /* MyTabBarController.swift */; };
 		30417C7D2717420D00EF672A /* FeedViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30417C7C2717420D00EF672A /* FeedViewControllerFactory.swift */; };
+		304964092773877600D2A093 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304964082773877600D2A093 /* NetworkService.swift */; };
 		304AAA3C27089B030060DAC2 /* LogInAutentificator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304AAA3B27089B030060DAC2 /* LogInAutentificator.swift */; };
 		304AAA3E27089C6C0060DAC2 /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304AAA3D27089C6C0060DAC2 /* Checker.swift */; };
 		304AAA402708F45E0060DAC2 /* LoginFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304AAA3F2708F45E0060DAC2 /* LoginFactory.swift */; };
@@ -100,6 +101,7 @@
 		30397DF22762970D0024B13D /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
 		30417C7A271740F300EF672A /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		30417C7C2717420D00EF672A /* FeedViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewControllerFactory.swift; sourceTree = "<group>"; };
+		304964082773877600D2A093 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		304AAA3B27089B030060DAC2 /* LogInAutentificator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInAutentificator.swift; sourceTree = "<group>"; };
 		304AAA3D27089C6C0060DAC2 /* Checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checker.swift; sourceTree = "<group>"; };
 		304AAA3F2708F45E0060DAC2 /* LoginFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFactory.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 			children = (
 				3011CB2A2689BDBC00C1692E /* PeseliPhotos.swift */,
 				308A099C26726524004A18C4 /* PostsInProfile.swift */,
+				304964082773877600D2A093 /* NetworkService.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				30E77E2C2642B6A5009C9D34 /* ProfileHeaderView.swift in Sources */,
 				060782B4250CE27700A87020 /* SceneDelegate.swift in Sources */,
 				30417C7D2717420D00EF672A /* FeedViewControllerFactory.swift in Sources */,
+				304964092773877600D2A093 /* NetworkService.swift in Sources */,
 				30E77E2F2642B727009C9D34 /* ProfileViewController.swift in Sources */,
 				308A099D26726524004A18C4 /* PostsInProfile.swift in Sources */,
 				3011CB2B2689BDBC00C1692E /* PeseliPhotos.swift in Sources */,
