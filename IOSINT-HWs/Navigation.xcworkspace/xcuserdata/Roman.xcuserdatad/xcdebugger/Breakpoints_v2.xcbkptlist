@@ -199,6 +199,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+<<<<<<< HEAD
             uuid = "A27B9697-089A-48A8-92F7-5878AD4D7835"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -209,12 +210,25 @@
             startingLineNumber = "46"
             endingLineNumber = "46"
             landmarkName = "viewDidLoad()"
+=======
+            uuid = "F613D1A6-B7E4-4D50-8D38-54967A1637BA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Navigation/Coordinator/AppMainCoordinator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "start()"
+>>>>>>> feature/iosint-7
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+<<<<<<< HEAD
 <<<<<<< HEAD
             uuid = "4D48D7E8-6CF6-467C-874C-653C56F2FBB1"
             shouldBeEnabled = "No"
@@ -474,6 +488,19 @@
             landmarkName = "videos"
             landmarkType = "24">
 >>>>>>> feature/iosint-12
+=======
+            uuid = "DB18DFD6-6B50-46AF-A903-E1BB967E7383"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Navigation/ViewModels/FeedViewControllerViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "FeedViewControllerViewModel"
+            landmarkType = "3">
+>>>>>>> feature/iosint-7
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
