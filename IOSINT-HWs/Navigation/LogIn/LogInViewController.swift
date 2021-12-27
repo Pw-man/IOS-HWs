@@ -15,6 +15,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         case wrongData
     }
     
+    weak var loginCoordinator: LoginCoordinator?
+    
     var logInVCDelegate: LogInViewControllerDelegate?
     
     private let scrollView = UIScrollView()
@@ -40,13 +42,13 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     }()
     
     func userLogin() throws {
-        let userService = SchemeCheck.isInDebugMode ? TestUserService() as UserService : CurrentUserService() as UserService
-        let profileVC = ProfileViewController(user: userService, name: self.logInView.nameTextField.text!)
-        /// для проверки задания 3 закомментить от сих
-        guard self.logInVCDelegate?.enterConfirmation(login: self.logInView.nameTextField.text!, password: self.logInView.passwordTextField.text!) == true else {
+        let userService: UserService = SchemeCheck.isInDebugMode ? TestUserService() : CurrentUserService()
+        guard let enteredText = self.logInView.nameTextField.text else { return }
+        guard let enteredPassword = self.logInView.passwordTextField.text else { return }
+        let profileVC = ProfileViewController(user: userService, name: enteredText)
+        guard self.logInVCDelegate?.enterConfirmation(login: enteredText, password: enteredPassword) == true else {
             throw LoginError.wrongData
         }
-        /// до сих, чтобы не мешала сверка логина+пароля
         self.navigationController?.pushViewController(profileVC, animated: true)
     }
     
@@ -65,6 +67,19 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             print("Unexpected error \(error)")
         }
     }
+    
+//    private(set) lazy var logInButton = CustomButton(title: "Log In", font: .boldSystemFont(ofSize: 15), titleColor: .white) { [weak self] in
+//        guard let self = self else { return }
+//        let userService: UserService = SchemeCheck.isInDebugMode ? TestUserService() : CurrentUserService()
+//        guard let enteredText = self.logInView.nameTextField.text else { return }
+//        guard let enteredPassword = self.logInView.passwordTextField.text else { return }
+//        let profileVC = ProfileViewController(user: userService, name: enteredText)
+//        if self.logInVCDelegate?.enterConfirmation(login: enteredText, password: enteredPassword) == true {
+//            self.navigationController?.pushViewController(profileVC, animated: true)
+//        } else {
+//            print("Password or login is not right")
+//        }
+//    }
     
     private func UIElementsSettings() {
         logInView.backgroundColor = .systemGray6
@@ -118,7 +133,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             logInButton.topAnchor.constraint(equalTo: logInView.bottomAnchor, constant: 16),
             logInButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20)
         ])
-}
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,7 +148,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         setupConstraints()
         self.logInView.nameTextField.delegate = self
         self.logInView.passwordTextField.delegate = self
-}
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -141,22 +156,22 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-}
+    }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-}
+    }
     
     @objc fileprivate func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             
             scrollView.contentInset.bottom = keyboardSize.height
             scrollView.verticalScrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+        }
     }
-}
     
     @objc fileprivate func keyboardWillHide(notification: NSNotification) {
         scrollView.contentInset.bottom = .zero

@@ -9,21 +9,25 @@
 import UIKit
 import StorageService
 
-final class FeedViewController: UIViewController {
+final class FeedViewController: MVVMController {
     
-    private let notificationCenter = NotificationCenter.default
-    private let model: FeedViewControllerModel
+//    private let notificationCenter = NotificationCenter.default
     private var hackedPass = ""
     private let spinner = UIActivityIndicatorView()
+
+    var viewModel: ViewInput & ViewOutput
     
-    init(model: FeedViewControllerModel) {
-        self.model = model
+    init(viewModel: ViewInput & ViewOutput) {
+        self.viewModel = viewModel
+        
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    var pushNextVC: (() -> Void)?
     
     private let passTextField : UITextField = {
         let textField = UITextField()
@@ -58,21 +62,36 @@ final class FeedViewController: UIViewController {
         //        self.notificationCenter.post(name: .boolChanged, object: nil)
         
         /// Through closures
-        if self.model.check(word: self.passTextField.text!) {
-            self.coloredLabel.textColor = .green
-        } else {
-            self.coloredLabel.textColor = .systemRed
-        }
+//        if self.viewModel.check(word: self.passTextField.text!) {
+//            self.coloredLabel.textColor = .green
+//        } else {
+//            self.coloredLabel.textColor = .systemRed
+//        }
         
         /// Through property observer  (DidSet)
         //        self.password = self.passTextField.text!
     }
     
+    
+    @objc func checkPass() {
+        guard let enteredText = passTextField.text else { return }
+        viewModel.onDataChanged?("\(enteredText)")
+        
+        switch viewModel.configuration {
+        case .first:
+            coloredLabel.textColor = .green
+        case .second:
+            coloredLabel.textColor = .systemRed
+        case .none:
+            break
+        }
+        
+        print(type(of: self), #function)
+    }
+    
     private lazy var pushPostVCButton: CustomButton = .init(title: "Click me", font: .boldSystemFont(ofSize: 15), titleColor: .systemBlue) { [weak self] in
         guard let self = self else { return }
-        let postVC = PostViewController()
-        postVC.post = self.post
-        self.navigationController?.pushViewController(postVC, animated: true)
+        self.pushNextVC?()
     }
     
     private lazy var generatePassButton: CustomButton = .init(title: "Подобрать пароль", font: .boldSystemFont(ofSize: 15), titleColor: .black) { [weak self] in
@@ -110,6 +129,8 @@ final class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print(type(of: self), #function)
+        
+        checkPassButton.addTarget(self, action: #selector(checkPass), for: .touchUpInside)
         
         view.backgroundColor = .systemGreen
         view.addSubview(pushPostVCButton)
@@ -163,8 +184,6 @@ final class FeedViewController: UIViewController {
         super.viewWillAppear(animated)
         
         //       notificationCenter.addObserver(self, selector: #selector(pickLabelColor), name: .boolChanged, object: nil)
-        
-        print(type(of: self), #function)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -179,6 +198,7 @@ final class FeedViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        viewModel.onDidDissapear?()
         print(type(of: self), #function)
     }
     
@@ -241,4 +261,3 @@ func generateBruteForce(_ string: String, fromArray array: [String]) -> String {
     }
     return str
 }
-
