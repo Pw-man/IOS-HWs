@@ -14,6 +14,6 @@ protocol LoginFactory {
 
 class MyLoginFactory: LoginFactory {
     func makeLogInLogInAutentificator() -> LogInAutentificator {
-        return LogInAutentificator(checker: Checker.shared)
+        return LogInAutentificator()
     }
 }
