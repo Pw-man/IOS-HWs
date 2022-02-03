@@ -22,6 +22,12 @@
 		3011CB372689C12E00C1692E /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3011CB342689C12D00C1692E /* PhotosCollectionViewCell.swift */; };
 		3011CB382689C12E00C1692E /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3011CB352689C12D00C1692E /* PhotosTableViewCell.swift */; };
 		3011CB392689C12E00C1692E /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3011CB362689C12E00C1692E /* PhotosViewController.swift */; };
+		302963ED27A6DBB0007B9E58 /* LikedPostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302963EC27A6DBB0007B9E58 /* LikedPostsViewModel.swift */; };
+		302963EF27A6DBD8007B9E58 /* LikedPostsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302963EE27A6DBD8007B9E58 /* LikedPostsCoordinator.swift */; };
+		302963F127A6DCEA007B9E58 /* LikedPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302963F027A6DCEA007B9E58 /* LikedPostsViewController.swift */; };
+		302963F327A6DDB7007B9E58 /* LikePostsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302963F227A6DDB7007B9E58 /* LikePostsModel.swift */; };
+		3029641927A71D73007B9E58 /* DataModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3029641727A71D72007B9E58 /* DataModels.xcdatamodeld */; };
+		3029641B27A7233B007B9E58 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3029641A27A7233B007B9E58 /* CoreDataStack.swift */; };
 		302CC788278F1D4600C8D737 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 302CC787278F1D4600C8D737 /* GoogleService-Info.plist */; };
 		302CC789278F1D4600C8D737 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 302CC787278F1D4600C8D737 /* GoogleService-Info.plist */; };
 		30397DE92760F44F0024B13D /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30397DE82760F44F0024B13D /* VideoViewController.swift */; };
@@ -103,6 +109,12 @@
 		3011CB342689C12D00C1692E /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotosCollectionViewCell.swift; path = Navigation/Profile/PhotoGallery/PhotosCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		3011CB352689C12D00C1692E /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotosTableViewCell.swift; path = Navigation/Profile/PhotoGallery/PhotosTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		3011CB362689C12E00C1692E /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotosViewController.swift; path = Navigation/Profile/PhotoGallery/PhotosViewController.swift; sourceTree = SOURCE_ROOT; };
+		302963EC27A6DBB0007B9E58 /* LikedPostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedPostsViewModel.swift; sourceTree = "<group>"; };
+		302963EE27A6DBD8007B9E58 /* LikedPostsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedPostsCoordinator.swift; sourceTree = "<group>"; };
+		302963F027A6DCEA007B9E58 /* LikedPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedPostsViewController.swift; sourceTree = "<group>"; };
+		302963F227A6DDB7007B9E58 /* LikePostsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikePostsModel.swift; sourceTree = "<group>"; };
+		3029641827A71D72007B9E58 /* LikedPostDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LikedPostDataModel.xcdatamodel; sourceTree = "<group>"; };
+		3029641A27A7233B007B9E58 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		302CC787278F1D4600C8D737 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		30397DE82760F44F0024B13D /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		30397DEB2761020C0024B13D /* VideoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
@@ -188,6 +200,9 @@
 				060782B1250CE27700A87020 /* AppDelegate.swift */,
 				30417C7A271740F300EF672A /* MainTabBarController.swift */,
 				060782B3250CE27700A87020 /* SceneDelegate.swift */,
+				302963F027A6DCEA007B9E58 /* LikedPostsViewController.swift */,
+				3029641A27A7233B007B9E58 /* CoreDataStack.swift */,
+				3029641727A71D72007B9E58 /* DataModels.xcdatamodeld */,
 				30417C8C2725D89A00EF672A /* ViewModels */,
 				30E0F6ED27160E0D0080DF60 /* Models */,
 				30417C7F27206B8C00EF672A /* Coordinators */,
@@ -256,6 +271,7 @@
 				30417C8027206B9D00EF672A /* Coordinator.swift */,
 				30417C822720719900EF672A /* MainCoordinator.swift */,
 				30417C842723375300EF672A /* FeedCoordinator.swift */,
+				302963EE27A6DBD8007B9E58 /* LikedPostsCoordinator.swift */,
 				30417C882723725D00EF672A /* PostCoordinator.swift */,
 				30417C8A2725CADB00EF672A /* InfoCoordinator.swift */,
 				30417C8627233FC600EF672A /* LoginCoordinator.swift */,
@@ -267,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				30417C8D2725D8CD00EF672A /* FeedViewControllerViewModel.swift */,
+				302963EC27A6DBB0007B9E58 /* LikedPostsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -325,6 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				30E0F6EE27160E230080DF60 /* FeedViewControllerModel.swift */,
+				302963F227A6DDB7007B9E58 /* LikePostsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -527,15 +545,20 @@
 				3011CB372689C12E00C1692E /* PhotosCollectionViewCell.swift in Sources */,
 				060782B6250CE27700A87020 /* FeedViewController.swift in Sources */,
 				30397DEC2761020C0024B13D /* VideoTableViewCell.swift in Sources */,
+				302963F327A6DDB7007B9E58 /* LikePostsModel.swift in Sources */,
 				30417C8727233FC600EF672A /* LoginCoordinator.swift in Sources */,
 				306FD878266E55CE0038CA8F /* LogInView.swift in Sources */,
 				3011CB372689C12E00C1692E /* PhotosCollectionViewCell.swift in Sources */,
+				302963EF27A6DBD8007B9E58 /* LikedPostsCoordinator.swift in Sources */,
 				060782B6250CE27700A87020 /* FeedViewController.swift in Sources */,
 				30417C8E2725D8CD00EF672A /* FeedViewControllerViewModel.swift in Sources */,
 				30417C892723725D00EF672A /* PostCoordinator.swift in Sources */,
+				3029641927A71D73007B9E58 /* DataModels.xcdatamodeld in Sources */,
 				060782B2250CE27700A87020 /* AppDelegate.swift in Sources */,
 				306FD874266E414A0038CA8F /* LogInViewController.swift in Sources */,
+				302963F127A6DCEA007B9E58 /* LikedPostsViewController.swift in Sources */,
 				3081855A270CA96300573949 /* Constants.swift in Sources */,
+				302963ED27A6DBB0007B9E58 /* LikedPostsViewModel.swift in Sources */,
 				060782C6250CEB0A00A87020 /* InfoViewController.swift in Sources */,
 				304AAA3E27089C6C0060DAC2 /* Checker.swift in Sources */,
 				30417C7B271740F300EF672A /* MainTabBarController.swift in Sources */,
@@ -543,6 +566,7 @@
 				060782B4250CE27700A87020 /* SceneDelegate.swift in Sources */,
 				30417C7D2717420D00EF672A /* ModuleFactories.swift in Sources */,
 				30417C7D2717420D00EF672A /* ModuleFactories.swift in Sources */,
+				3029641B27A7233B007B9E58 /* CoreDataStack.swift in Sources */,
 				304964092773877600D2A093 /* NetworkService.swift in Sources */,
 				30E77E2F2642B727009C9D34 /* ProfileViewController.swift in Sources */,
 				308A099D26726524004A18C4 /* PostsInProfile.swift in Sources */,
@@ -855,6 +879,20 @@
 			productName = iOSIntPackage;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		3029641727A71D72007B9E58 /* DataModels.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3029641827A71D72007B9E58 /* LikedPostDataModel.xcdatamodel */,
+			);
+			currentVersion = 3029641827A71D72007B9E58 /* LikedPostDataModel.xcdatamodel */;
+			name = DataModels.xcdatamodeld;
+			path = ../DataModels.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 060782A6250CE27700A87020 /* Project object */;
 }
