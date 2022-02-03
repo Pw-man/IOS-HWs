@@ -13,6 +13,7 @@ class InfoViewController: UIViewController {
     let cellID = "ID"
     var residentsUrls: [String] = []
     var residentsNames: [String] = []
+    let dispatchGroup = DispatchGroup()
     
     private lazy var alertButton: CustomButton = .init(title: "Show alert", font: .boldSystemFont(ofSize: 15), titleColor: .white) { [weak self] in
         guard let self = self else { return }
@@ -69,8 +70,11 @@ class InfoViewController: UIViewController {
                     let planet : Planet = try decoder.decode(Planet.self, from: data)
                     self.residentsUrls = planet.residents
                     self.downloadResident()
+                    self.dispatchGroup.notify(queue: DispatchQueue.main) {
+                        self.tableView.reloadData()
+                    }
                     DispatchQueue.main.async {
-                        self.planetOrbitalPeriodLabel.text = "\(planet.orbitalPeriod)"
+                        self.planetOrbitalPeriodLabel.text = "\(planet.orbitalPeriod)"                        
                     }
                 } catch let err as NSError {
                     print(err.localizedDescription)
@@ -82,6 +86,7 @@ class InfoViewController: UIViewController {
     
     func downloadResident() {
         residentsUrls.forEach { adress in
+            dispatchGroup.enter()
             guard let url = URL(string: adress) else { return }
             let session = URLSession(configuration: .default)
             let request = URLRequest(url: url)
@@ -94,9 +99,7 @@ class InfoViewController: UIViewController {
                         decoder1.keyDecodingStrategy = .convertFromSnakeCase
                         let resident: Resident = try decoder1.decode(Resident.self, from: data)
                         self.residentsNames.append(resident.name)
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                        }
+                        self.dispatchGroup.leave()
                     } catch let eror as NSError {
                         print(eror.localizedDescription)
                     }
