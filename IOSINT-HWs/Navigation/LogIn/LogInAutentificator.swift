@@ -19,25 +19,6 @@ class LogInAutentificator {
     
     weak var loginVCDelegate: LogInViewController?
     
-//    var noDataCaseController: UIAlertController!
-//    var wrongDataCaseController: UIAlertController!
-//    var loginSuccessCaseController: ProfileViewController!
-//    var createUserCaseController: UIAlertController!
-//
-//    var noDataCaseFlag = false
-//    var wrongDataCaseFlag = false
-//    var loginSuccessCaseFlag = false
-//    var createUserCaseFlag = false
-//
-//    func renewFlags() {
-//        if noDataCaseFlag == true && wrongDataCaseFlag == true && loginSuccessCaseFlag == true && createUserCaseFlag == true {
-//            noDataCaseFlag = false
-//            wrongDataCaseFlag = false
-//            loginSuccessCaseFlag = false
-//            createUserCaseFlag = false
-//        }
-//    }
-    
     func enterConfirmation(mail: String, password: String) {
         let userService: UserService = SchemeCheck.isInDebugMode ? TestUserService() : CurrentUserService()
         guard password.isEmpty == false && mail.isEmpty == false else {
@@ -69,7 +50,8 @@ class LogInAutentificator {
                 }
                 return
             }
-            let profileVC = ProfileViewController(user: userService, name: user.email!)
+            guard let reseivedEmail = user.email else { return }
+            let profileVC = ProfileViewController(user: userService, name: reseivedEmail)
             self.loginVCDelegate?.pushProfileViewController(viewController: profileVC)
         }
     }
