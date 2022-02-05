@@ -8,8 +8,8 @@
 
 import Foundation
 
-class LikePostsModel {
+class LikedPostsModel: Model {
     
-    
+    var likedPosts: [LikedPost] = []
     
 }

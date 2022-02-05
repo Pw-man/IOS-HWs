@@ -60,4 +60,6 @@ struct Song {
     let url: URL
 }
 
+let coreDataStack = CoreDataStack()
+
 

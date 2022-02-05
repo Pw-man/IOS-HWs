@@ -22,10 +22,11 @@
 		3011CB372689C12E00C1692E /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3011CB342689C12D00C1692E /* PhotosCollectionViewCell.swift */; };
 		3011CB382689C12E00C1692E /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3011CB352689C12D00C1692E /* PhotosTableViewCell.swift */; };
 		3011CB392689C12E00C1692E /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3011CB362689C12E00C1692E /* PhotosViewController.swift */; };
+		301CF4F627AECB390072849D /* LikedPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301CF4F527AECB390072849D /* LikedPostTableViewCell.swift */; };
 		302963ED27A6DBB0007B9E58 /* LikedPostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302963EC27A6DBB0007B9E58 /* LikedPostsViewModel.swift */; };
 		302963EF27A6DBD8007B9E58 /* LikedPostsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302963EE27A6DBD8007B9E58 /* LikedPostsCoordinator.swift */; };
 		302963F127A6DCEA007B9E58 /* LikedPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302963F027A6DCEA007B9E58 /* LikedPostsViewController.swift */; };
-		302963F327A6DDB7007B9E58 /* LikePostsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302963F227A6DDB7007B9E58 /* LikePostsModel.swift */; };
+		302963F327A6DDB7007B9E58 /* LikedPostsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302963F227A6DDB7007B9E58 /* LikedPostsModel.swift */; };
 		3029641927A71D73007B9E58 /* DataModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3029641727A71D72007B9E58 /* DataModels.xcdatamodeld */; };
 		3029641B27A7233B007B9E58 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3029641A27A7233B007B9E58 /* CoreDataStack.swift */; };
 		302CC788278F1D4600C8D737 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 302CC787278F1D4600C8D737 /* GoogleService-Info.plist */; };
@@ -109,10 +110,11 @@
 		3011CB342689C12D00C1692E /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotosCollectionViewCell.swift; path = Navigation/Profile/PhotoGallery/PhotosCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		3011CB352689C12D00C1692E /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotosTableViewCell.swift; path = Navigation/Profile/PhotoGallery/PhotosTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		3011CB362689C12E00C1692E /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotosViewController.swift; path = Navigation/Profile/PhotoGallery/PhotosViewController.swift; sourceTree = SOURCE_ROOT; };
+		301CF4F527AECB390072849D /* LikedPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedPostTableViewCell.swift; sourceTree = "<group>"; };
 		302963EC27A6DBB0007B9E58 /* LikedPostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedPostsViewModel.swift; sourceTree = "<group>"; };
 		302963EE27A6DBD8007B9E58 /* LikedPostsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedPostsCoordinator.swift; sourceTree = "<group>"; };
 		302963F027A6DCEA007B9E58 /* LikedPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedPostsViewController.swift; sourceTree = "<group>"; };
-		302963F227A6DDB7007B9E58 /* LikePostsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikePostsModel.swift; sourceTree = "<group>"; };
+		302963F227A6DDB7007B9E58 /* LikedPostsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedPostsModel.swift; sourceTree = "<group>"; };
 		3029641827A71D72007B9E58 /* LikedPostDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LikedPostDataModel.xcdatamodel; sourceTree = "<group>"; };
 		3029641A27A7233B007B9E58 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		302CC787278F1D4600C8D737 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				060782BF250CE27A00A87020 /* Info.plist */,
 				302CC787278F1D4600C8D737 /* GoogleService-Info.plist */,
 				060782B5250CE27700A87020 /* FeedViewController.swift */,
+				301CF4F527AECB390072849D /* LikedPostTableViewCell.swift */,
 				060782C5250CEB0A00A87020 /* InfoViewController.swift */,
 				060782C7250CEE5D00A87020 /* PostViewController.swift */,
 				30397DED276102180024B13D /* Video */,
@@ -342,7 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				30E0F6EE27160E230080DF60 /* FeedViewControllerModel.swift */,
-				302963F227A6DDB7007B9E58 /* LikePostsModel.swift */,
+				302963F227A6DDB7007B9E58 /* LikedPostsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -545,7 +548,7 @@
 				3011CB372689C12E00C1692E /* PhotosCollectionViewCell.swift in Sources */,
 				060782B6250CE27700A87020 /* FeedViewController.swift in Sources */,
 				30397DEC2761020C0024B13D /* VideoTableViewCell.swift in Sources */,
-				302963F327A6DDB7007B9E58 /* LikePostsModel.swift in Sources */,
+				302963F327A6DDB7007B9E58 /* LikedPostsModel.swift in Sources */,
 				30417C8727233FC600EF672A /* LoginCoordinator.swift in Sources */,
 				306FD878266E55CE0038CA8F /* LogInView.swift in Sources */,
 				3011CB372689C12E00C1692E /* PhotosCollectionViewCell.swift in Sources */,
@@ -569,6 +572,7 @@
 				3029641B27A7233B007B9E58 /* CoreDataStack.swift in Sources */,
 				304964092773877600D2A093 /* NetworkService.swift in Sources */,
 				30E77E2F2642B727009C9D34 /* ProfileViewController.swift in Sources */,
+				301CF4F627AECB390072849D /* LikedPostTableViewCell.swift in Sources */,
 				308A099D26726524004A18C4 /* PostsInProfile.swift in Sources */,
 				30417C8B2725CADB00EF672A /* InfoCoordinator.swift in Sources */,
 				3011CB2B2689BDBC00C1692E /* PeseliPhotos.swift in Sources */,

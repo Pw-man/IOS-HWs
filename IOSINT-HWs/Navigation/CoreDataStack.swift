@@ -61,10 +61,24 @@ class CoreDataStack {
         }
     }
     
-    func createNewLikedPost() {
-        let newLikedPost = LikedPost(context: viewContext)
-        
+    func fetchLikedPosts() -> [LikedPost] {
+        let request: NSFetchRequest<LikedPost> = LikedPost.fetchRequest()
+        do {
+            return try viewContext.fetch(request)
+        } catch {
+            fatalError("app crashed with: \(error.localizedDescription)")
+        }
     }
     
-    
+    func createNewLikedPost(profilePost: ProfilePost) {
+        let newLikedPost = LikedPost(context: viewContext)
+        newLikedPost.author = profilePost.author
+        newLikedPost.likes = Int32(profilePost.likes)
+        newLikedPost.views = Int32(profilePost.views)
+        newLikedPost.postDescription = profilePost.description
+        newLikedPost.image = profilePost.image
+        newLikedPost.id = UUID()
+        
+        save(context: viewContext)
+    }
 }

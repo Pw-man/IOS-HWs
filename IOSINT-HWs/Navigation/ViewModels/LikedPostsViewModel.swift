@@ -19,9 +19,10 @@ class LikedPostsViewModel: ViewInput & ViewOutput {
     
     var onSelectAction: (() -> Void)?
     
-    var model: LikePostsModel
+    var model: LikedPostsModel
     
-    init(model: LikePostsModel) {
+    init(model: LikedPostsModel) {
         self.model = model
+        
     }    
 }

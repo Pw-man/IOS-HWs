@@ -18,7 +18,7 @@ class LikedPostsCoordinator: Coordinator & LikedPostsModuleFactory {
     var navigationController: UINavigationController
         
     func makeLikePostsVC() -> LikedPostsViewController {
-     return LikedPostsViewController(viewModel: LikedPostsViewModel(model: LikePostsModel()))
+     return LikedPostsViewController(viewModel: LikedPostsViewModel(model: LikedPostsModel()))
     }
     
     init(navigationController: UINavigationController) {
@@ -32,6 +32,7 @@ class LikedPostsCoordinator: Coordinator & LikedPostsModuleFactory {
             guard let self = self else { return }
             self.parentCoordinator?.childDidFinish(self)
         }
+        likePostsVC.navigationItem.title = "Liked Posts"
         navigationController.tabBarItem.title = "Liked"
         navigationController.tabBarItem.image = UIImage(systemName: "heart")!
         navigationController.navigationBar.prefersLargeTitles = false
