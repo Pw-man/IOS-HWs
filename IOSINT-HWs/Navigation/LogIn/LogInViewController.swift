@@ -63,19 +63,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate, LoginAutentifi
     @objc func userLogin() {
         guard let password = logInView.passwordTextField.text, let mail = logInView.nameTextField.text else { return }
         logInAuthentificator.enterConfirmation(mail: mail, password: password)
-//        logInAuthentificator.enterConfirmation(mail: mail, password: password)
-//        if logInAuthentificator.noDataCaseFlag {
-//            self.present(logInAuthentificator.noDataCaseController, animated: true, completion: nil)
-//        }
-//        if logInAuthentificator.wrongDataCaseFlag {
-//            self.present(logInAuthentificator.wrongDataCaseController, animated: true, completion: nil)
-//        }
-//        if logInAuthentificator.loginSuccessCaseFlag {
-//            self.navigationController?.pushViewController(logInAuthentificator.loginSuccessCaseController, animated: true)
-//        }
-//        if logInAuthentificator.createUserCaseFlag {
-//            self.navigationController?.pushViewController(logInAuthentificator.createUserCaseController, animated: true)
-//        }
     }
     
     private func UIElementsSettings() {
