@@ -12,17 +12,14 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
+        
         let appConfiguration = AppConfiguration.allCases.randomElement()
         if let appConfig = appConfiguration {
-        let networkService = NetworkService()
+            let networkService = NetworkService()
             networkService.executeURLSessionDataTask(configuration: appConfig)
         }
-
         return true
     }
-    
-    
 
     // MARK: UISceneSession Lifecycle
 
