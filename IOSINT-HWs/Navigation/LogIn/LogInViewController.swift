@@ -52,12 +52,16 @@ class LogInViewController: UIViewController, UITextFieldDelegate, LoginAutentifi
         return button
     }()
     
-    func presentAlertController(alertController: UIAlertController) {
+    func presentAlertController(title: String, message: String, actionMessage: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let userTapToContinue = UIAlertAction(title: actionMessage, style: .default)
+        alertController.addAction(userTapToContinue)
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func pushProfileViewController(viewController: ProfileViewController) {
-        self.navigationController?.pushViewController(viewController, animated: true)
+    func pushProfileViewController(user: UserService, name: String) {
+        let profileVC = ProfileViewController(user: user, name: name)
+        self.navigationController?.pushViewController(profileVC, animated: true)
     }
     
     @objc func userLogin() {
