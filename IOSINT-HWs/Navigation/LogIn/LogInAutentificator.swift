@@ -6,25 +6,49 @@
 //  Copyright © 2021 Artem Novichkov. All rights reserved.
 //
 
-import UIKit
-
-protocol LogInViewControllerDelegate {
-    func enterConfirmation(login: String, password: String) -> Bool
+protocol LoginAutentificatorDelegate {
+    func presentAlertController(title: String, message: String, actionMessage: String)
+    func pushProfileViewController(user: UserService, name: String)
 }
 
-struct LogInAutentificator: LogInViewControllerDelegate {
+import Foundation
+import FirebaseAuth
+import StorageService
+
+class LogInAutentificator {
     
-    private let checker: Checker
+    weak var loginVCDelegate: LogInViewController?
     
-    init(checker: Checker) {
-        self.checker = checker
+    func performAuthorization(user: UserService, name: String) {
+        self.loginVCDelegate?.pushProfileViewController(user: user, name: name)
     }
     
-    func enterConfirmation(login: String, password: String) -> Bool {
-        if checker.checkUserData(enteredLogin: login, enteredPassword: password) {
-            return true
-        } else {
-            return false
+    func createUser(mail: String, password: String) {
+        Auth.auth().createUser(withEmail: mail, password: password) { [weak self] authResult, error in
+            guard let self = self else { return }
+            guard let user = authResult?.user, error == nil else {
+                self.loginVCDelegate?.presentAlertController(title: error!.localizedDescription, message: "Check the data validity", actionMessage: "Fix")
+                return
+            }
+            print("\(user.email!) created!")
+            self.loginVCDelegate?.presentAlertController(title: "User: \(user.email!) created!", message: "", actionMessage: "Continue")
+        }
+    }
+    
+    func enterConfirmation(mail: String, password: String) {
+        let userService: UserService = SchemeCheck.isInDebugMode ? TestUserService() : CurrentUserService()
+        guard password.isEmpty == false || mail.isEmpty == false else {
+            loginVCDelegate?.presentAlertController(title: "Email and password field are empty", message: "Please, fill in all input fields", actionMessage: "Continue")
+            print("User вводит данные")
+            return
+        }
+        Auth.auth().signIn(withEmail: mail, password: password) { result, err in
+            guard let user = result?.user, err == nil else {
+                print(err!.localizedDescription)
+                self.createUser(mail: mail, password: password)
+                return
+            }
+            self.performAuthorization(user: userService, name: user.email!)
         }
     }
 }

@@ -21,7 +21,7 @@ class LoginCoordinator: Coordinator {
     }
     
     func start() {
-        let loginVC = LogInViewController()
+        let loginVC = LogInViewController(logInAuthentificator: LogInAutentificator())
         loginVC.navigationItem.title = "Login"
         loginVC.loginCoordinator = self
         navigationController.tabBarItem.title = "Login"

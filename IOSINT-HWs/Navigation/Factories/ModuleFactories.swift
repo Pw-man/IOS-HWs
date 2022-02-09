@@ -29,8 +29,14 @@ protocol InfoModuleFactory {
     func makeVC() -> InfoViewController
 }
 
-enum Modules {
+protocol LikedPostsModuleFactory {
+    func makeLikePostsVC() -> LikedPostsViewController
+}
+
+enum ModuleList {
     case feedVC
     case postVC
     case infoVC
+    case likedPostsVC
 }
+

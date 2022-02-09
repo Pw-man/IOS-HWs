@@ -47,7 +47,7 @@ class FeedViewControllerViewModel: ViewInput & ViewOutput {
 
     init(model: FeedViewControllerModel) {
         self.model = model
-        
+    
         onDataChanged = { [weak self] text in
             guard let self = self else { return }
             if self.model.check(word: text) {

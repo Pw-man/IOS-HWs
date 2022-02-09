@@ -13,6 +13,8 @@ final class MainCoordinator: Coordinator {
     let feedCoordinator = FeedCoordinator(navigationController: UINavigationController())
     
     let loginCoordinator = LoginCoordinator(navigationController: UINavigationController())
+    
+    let likedPostsCoordinator = LikedPostsCoordinator(navigationController: UINavigationController())
 
     var navigationController: UINavigationController
 
@@ -26,10 +28,13 @@ final class MainCoordinator: Coordinator {
     func start() {
         feedCoordinator.start()
         loginCoordinator.start()
+        likedPostsCoordinator.start()
         feedCoordinator.parentCoordinator = self
         loginCoordinator.parentCoordinator = self
+        likedPostsCoordinator.parentCoordinator = self
         childCoordinators.append(feedCoordinator)
         childCoordinators.append(loginCoordinator)
+        childCoordinators.append(likedPostsCoordinator)
     }    
 }
 
