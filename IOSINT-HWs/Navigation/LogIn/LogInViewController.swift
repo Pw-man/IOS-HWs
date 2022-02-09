@@ -8,8 +8,9 @@
 
 import UIKit
 import StorageService
+import FirebaseAuth
 
-class LogInViewController: UIViewController, UITextFieldDelegate {
+class LogInViewController: UIViewController, UITextFieldDelegate, LoginAutentificatorDelegate {
     
     enum LoginError: Error {
         case wrongData
@@ -17,7 +18,17 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     weak var loginCoordinator: LoginCoordinator?
     
-    var logInVCDelegate: LogInViewControllerDelegate?
+    var logInAuthentificator: LogInAutentificator
+    
+    init(logInAuthentificator: LogInAutentificator) {
+        self.logInAuthentificator = logInAuthentificator
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private let scrollView = UIScrollView()
     
@@ -37,49 +48,22 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         button.setTitle("Log In", for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 15)
         button.setTitleColor(.white, for: .normal)
-        button.addTarget(self, action: #selector(catchingLogErrors), for: .touchUpInside)
+        button.addTarget(self, action: #selector(userLogin), for: .touchUpInside)
         return button
     }()
     
-    func userLogin() throws {
-        let userService: UserService = SchemeCheck.isInDebugMode ? TestUserService() : CurrentUserService()
-        guard let enteredText = self.logInView.nameTextField.text else { return }
-        guard let enteredPassword = self.logInView.passwordTextField.text else { return }
-        let profileVC = ProfileViewController(user: userService, name: enteredText)
-        guard self.logInVCDelegate?.enterConfirmation(login: enteredText, password: enteredPassword) == true else {
-            throw LoginError.wrongData
-        }
-        self.navigationController?.pushViewController(profileVC, animated: true)
+    func presentAlertController(alertController: UIAlertController) {
+        self.present(alertController, animated: true, completion: nil)
     }
     
-    @objc func catchingLogErrors() {
-        do {
-            try userLogin()
-            print("User logged successfully!")
-        } catch LoginError.wrongData  {
-            let alertController = UIAlertController(title: "Неправильный логин или пароль", message: "Проверьте корректность данных", preferredStyle: .alert)
-            let userTapToContinue = UIAlertAction(title: "Исправить", style: .default) { _ in
-                print("User исправляет введённые данные")
-            }
-            alertController.addAction(userTapToContinue)
-            self.present(alertController, animated: true, completion: nil)
-        } catch {
-            print("Unexpected error \(error)")
-        }
+    func pushProfileViewController(viewController: ProfileViewController) {
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-//    private(set) lazy var logInButton = CustomButton(title: "Log In", font: .boldSystemFont(ofSize: 15), titleColor: .white) { [weak self] in
-//        guard let self = self else { return }
-//        let userService: UserService = SchemeCheck.isInDebugMode ? TestUserService() : CurrentUserService()
-//        guard let enteredText = self.logInView.nameTextField.text else { return }
-//        guard let enteredPassword = self.logInView.passwordTextField.text else { return }
-//        let profileVC = ProfileViewController(user: userService, name: enteredText)
-//        if self.logInVCDelegate?.enterConfirmation(login: enteredText, password: enteredPassword) == true {
-//            self.navigationController?.pushViewController(profileVC, animated: true)
-//        } else {
-//            print("Password or login is not right")
-//        }
-//    }
+    @objc func userLogin() {
+        guard let password = logInView.passwordTextField.text, let mail = logInView.nameTextField.text else { return }
+        logInAuthentificator.enterConfirmation(mail: mail, password: password)
+    }
     
     private func UIElementsSettings() {
         logInView.backgroundColor = .systemGray6
@@ -148,6 +132,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         setupConstraints()
         self.logInView.nameTextField.delegate = self
         self.logInView.passwordTextField.delegate = self
+        self.logInAuthentificator.loginVCDelegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -159,40 +159,13 @@ extension ProfileViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 0:
+        if indexPath.row == 0 {
             let cell = PhotosTableViewCell()
             return cell
-        case 1:
-            let cell : PostTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! PostTableViewCell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! PostTableViewCell
             cell.profilePost = Posts.postsArray[indexPath.row]
-            imageProcessor.processImage(sourceImage: Posts.postsArray[1].image, filter: .crystallize(radius: 12)) { filterImg in
-                cell.profilePost?.image = filterImg!
-            }
-                return cell
-        case 2:
-              let cell : PostTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! PostTableViewCell
-            cell.profilePost = Posts.postsArray[indexPath.row]
-            imageProcessor.processImage(sourceImage: Posts.postsArray[2].image, filter: .bloom(intensity: 0.5)) { filterImg in
-                cell.profilePost?.image = filterImg!
-            }
-                return cell
-        case 3:
-            let cell : PostTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! PostTableViewCell
-            cell.profilePost = Posts.postsArray[indexPath.row]
-            imageProcessor.processImage(sourceImage: Posts.postsArray[3].image, filter: .monochrome(color: .blue, intensity: 0.9)) { filterImg in
-                cell.profilePost?.image = filterImg!
-            }
-                return cell
-        case 4:
-            let cell : PostTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! PostTableViewCell
-            cell.profilePost = Posts.postsArray[indexPath.row]
-            imageProcessor.processImage(sourceImage: Posts.postsArray[4].image, filter: .sepia(intensity: 0.7)) { filterImg in
-                cell.profilePost?.image = filterImg!
-            }
-                return cell
-        default:
-            return UITableViewCell()
+            return cell
         }
     }
 }

@@ -19,7 +19,7 @@ public protocol UserService {
 public class TestUserService: UserService {
     public init() {}
     
-    public let user = User(fullName: "Sun", avatar: UIImage(systemName: "sun.max")!, status: "Shining")
+    public let user = User(fullName: "sun@mail.ru", avatar: UIImage(systemName: "sun.max")!, status: "Shining")
     public func returnUser(name: String) throws -> User {
         guard name == user.fullName else { throw UserServiceError.unnownUser(user: User(fullName: "Stranger", avatar: UIImage(systemName: "questionmark.circle")!, status: "Unnown user"))
         }
