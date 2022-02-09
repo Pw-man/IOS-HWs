@@ -7,11 +7,11 @@
 //
 
 protocol LoginAutentificatorDelegate {
-    func presentAlertController(alertController: UIAlertController)
-    func pushProfileViewController(viewController: ProfileViewController)
+    func presentAlertController(title: String, message: String, actionMessage: String)
+    func pushProfileViewController(user: UserService, name: String)
 }
 
-import UIKit
+import Foundation
 import FirebaseAuth
 import StorageService
 
@@ -19,58 +19,36 @@ class LogInAutentificator {
     
     weak var loginVCDelegate: LogInViewController?
     
-//    var noDataCaseController: UIAlertController!
-//    var wrongDataCaseController: UIAlertController!
-//    var loginSuccessCaseController: ProfileViewController!
-//    var createUserCaseController: UIAlertController!
-//
-//    var noDataCaseFlag = false
-//    var wrongDataCaseFlag = false
-//    var loginSuccessCaseFlag = false
-//    var createUserCaseFlag = false
-//
-//    func renewFlags() {
-//        if noDataCaseFlag == true && wrongDataCaseFlag == true && loginSuccessCaseFlag == true && createUserCaseFlag == true {
-//            noDataCaseFlag = false
-//            wrongDataCaseFlag = false
-//            loginSuccessCaseFlag = false
-//            createUserCaseFlag = false
-//        }
-//    }
+    func performAuthorization(user: UserService, name: String) {
+        self.loginVCDelegate?.pushProfileViewController(user: user, name: name)
+    }
+    
+    func createUser(mail: String, password: String) {
+        Auth.auth().createUser(withEmail: mail, password: password) { [weak self] authResult, error in
+            guard let self = self else { return }
+            guard let user = authResult?.user, error == nil else {
+                self.loginVCDelegate?.presentAlertController(title: error!.localizedDescription, message: "Check the data validity", actionMessage: "Fix")
+                return
+            }
+            print("\(user.email!) created!")
+            self.loginVCDelegate?.presentAlertController(title: "User: \(user.email!) created!", message: "", actionMessage: "Continue")
+        }
+    }
     
     func enterConfirmation(mail: String, password: String) {
         let userService: UserService = SchemeCheck.isInDebugMode ? TestUserService() : CurrentUserService()
-        guard password.isEmpty == false && mail.isEmpty == false else {
-            let alertController = UIAlertController(title: "Email or password field is empty", message: "Please, fill in all the input fields", preferredStyle: .alert)
-            let userTapToContinue = UIAlertAction(title: "Continue", style: .default) { _ in
-                print("User исправляет введённые данные")
-            }
-            alertController.addAction(userTapToContinue)
-            loginVCDelegate?.presentAlertController(alertController: alertController)
+        guard password.isEmpty == false || mail.isEmpty == false else {
+            loginVCDelegate?.presentAlertController(title: "Email and password field are empty", message: "Please, fill in all input fields", actionMessage: "Continue")
+            print("User вводит данные")
             return
         }
         Auth.auth().signIn(withEmail: mail, password: password) { result, err in
             guard let user = result?.user, err == nil else {
                 print(err!.localizedDescription)
-                Auth.auth().createUser(withEmail: mail, password: password) { [weak self] authResult, error in
-                    guard let self = self else { return }
-                    guard let user = authResult?.user, error == nil else {
-                        let alertControllerTwo = UIAlertController(title: "\(error!.localizedDescription)", message: "Check the data validity", preferredStyle: .alert)
-                        let userTapToContinueTwo = UIAlertAction(title: "Fix", style: .default)
-                        alertControllerTwo.addAction(userTapToContinueTwo)
-                        self.loginVCDelegate?.presentAlertController(alertController: alertControllerTwo)
-                        return
-                    }
-                    print("\(user.email!) created!")
-                    let alertControllerThree = UIAlertController(title: "User: \(user.email!) created!", message: "", preferredStyle: .alert)
-                    let userTapToContinueThree = UIAlertAction(title: "Continue", style: .default) { _ in }
-                    alertControllerThree.addAction(userTapToContinueThree)
-                    self.loginVCDelegate?.presentAlertController(alertController: alertControllerThree)
-                }
+                self.createUser(mail: mail, password: password)
                 return
             }
-            let profileVC = ProfileViewController(user: userService, name: user.email!)
-            self.loginVCDelegate?.pushProfileViewController(viewController: profileVC)
+            self.performAuthorization(user: userService, name: user.email!)
         }
     }
 }
