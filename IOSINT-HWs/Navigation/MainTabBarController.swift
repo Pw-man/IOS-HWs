@@ -15,7 +15,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         mainCoordinator.start()
-        viewControllers = [mainCoordinator.feedCoordinator.navigationController, mainCoordinator.loginCoordinator.navigationController]
+        viewControllers = [mainCoordinator.feedCoordinator.navigationController, mainCoordinator.loginCoordinator.navigationController, mainCoordinator.likedPostsCoordinator.navigationController]
     }
     
     override func viewWillAppear(_ animated: Bool) {

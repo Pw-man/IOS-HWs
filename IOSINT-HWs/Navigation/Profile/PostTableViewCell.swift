@@ -17,11 +17,11 @@ class PostTableViewCell: UITableViewCell {
             postTextLabel.text = profilePost.description
             postLikesLabel.text = "Likes: \(profilePost.likes)"
             postViewsLabel.text = "Views: \(profilePost.views)"
-            postImageView.image = profilePost.image
+            postImageView.image = UIImage(named: profilePost.image)
         } 
     }
     
-    private var postImageView: UIImageView = {
+    var postImageView: UIImageView = {
         var iv = UIImageView()
         iv.contentMode = .scaleAspectFit
         iv.backgroundColor = .black
@@ -29,7 +29,7 @@ class PostTableViewCell: UITableViewCell {
         return iv
     }()
     
-    private var postAuthorLabel: UILabel = {
+    var postAuthorLabel: UILabel = {
         var pal = UILabel()
         pal.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         pal.textColor = .black
@@ -38,7 +38,7 @@ class PostTableViewCell: UITableViewCell {
         return pal
     }()
     
-    private var postTextLabel: UILabel = {
+    var postTextLabel: UILabel = {
         var ptl = UILabel()
         ptl.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         ptl.textColor = .systemGray
@@ -47,7 +47,7 @@ class PostTableViewCell: UITableViewCell {
         return ptl
     }()
     
-    private var postLikesLabel: UILabel = {
+    var postLikesLabel: UILabel = {
         var pll = UILabel()
         pll.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         pll.textColor = .black
@@ -56,7 +56,7 @@ class PostTableViewCell: UITableViewCell {
         return pll
     }()
     
-    private var postViewsLabel: UILabel = {
+    var postViewsLabel: UILabel = {
         var pvl = UILabel()
         pvl.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         pvl.textColor = .black
@@ -97,8 +97,19 @@ class PostTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate(constraints)
     }
     
+    @objc func doubleTapAction() {
+        guard let profilePost = profilePost else {
+            return
+        }
+        coreDataStack.createNewLikedPost(profilePost: profilePost)
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        let doupleTap = UITapGestureRecognizer(target: self, action: #selector(doubleTapAction))
+        doupleTap.numberOfTapsRequired = 2
+        self.addGestureRecognizer(doupleTap)
         
         setupViews()
     }
