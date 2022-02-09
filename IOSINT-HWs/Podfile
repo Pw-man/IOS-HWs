@@ -2,11 +2,11 @@ target 'Navigation' do
 
 use_frameworks!
 
- pod 'SnapKit', '~> 5.0.0'
+pod 'SnapKit', '~> 5.0.0'
 
- pod 'Firebase', '~> 8.10'
+pod 'FirebaseCore', '~> 8.12'
 
- pod 'Firebase/Auth'
+ pod 'FirebaseAuth', '~> 8.12'
 
 end
 
