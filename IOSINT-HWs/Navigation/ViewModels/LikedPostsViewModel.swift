@@ -9,6 +9,7 @@
 import UIKit
 
 class LikedPostsViewModel: ViewInput & ViewOutput {
+    
     var onDidDissapear: (() -> Void)?
     
     var coordinator: Coordinator?
@@ -23,6 +24,5 @@ class LikedPostsViewModel: ViewInput & ViewOutput {
     
     init(model: LikedPostsModel) {
         self.model = model
-        
     }    
 }

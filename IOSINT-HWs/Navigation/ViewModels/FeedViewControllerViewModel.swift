@@ -24,7 +24,7 @@ protocol ViewInput {
 }
 
 class FeedViewControllerViewModel: ViewInput & ViewOutput {
-
+    
     var configuration: ConfigType? {
         if boolFlagForModelLogicExecution {
             return .first

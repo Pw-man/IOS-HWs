@@ -9,23 +9,18 @@
 import UIKit
 import CoreData
 
-final class LikedPostsViewController: MVVMController {
-    var viewModel: ViewInput & ViewOutput
+final class LikedPostsViewController: UIViewController {
+    var viewModel: LikedPostsViewModel
     
     private var tableView = UITableView()
     private let cellId = "reusableCell"
-    
-    func createLikedPostsViewModel() -> LikedPostsViewModel {
-        let likedPostsViewModel = viewModel as! LikedPostsViewModel
-        return likedPostsViewModel
-    }
-    
+        
     func fetchAndReloadPosts() {
-        createLikedPostsViewModel().model.likedPosts = coreDataStack.fetchLikedPosts()
+        viewModel.model.likedPosts = coreDataStack.fetchLikedPosts()
         tableView.reloadData()
     }
     
-    init(viewModel: ViewInput & ViewOutput) {
+    init(viewModel: LikedPostsViewModel) {
         self.viewModel = viewModel
         
         super.init(nibName: nil, bundle: nil)
@@ -61,12 +56,13 @@ final class LikedPostsViewController: MVVMController {
 
 extension LikedPostsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        createLikedPostsViewModel().model.likedPosts.count
+        viewModel.model.likedPosts.count
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! LikedPostTableViewCell
-        cell.likedPost = createLikedPostsViewModel().model.likedPosts[indexPath.row]
+        cell.likedPost = viewModel.model.likedPosts[indexPath.row]
         return cell
     }
 }
