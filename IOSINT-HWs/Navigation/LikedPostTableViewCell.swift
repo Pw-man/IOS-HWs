@@ -13,6 +13,7 @@ class LikedPostTableViewCell: PostTableViewCell {
     var likedPost: LikedPost? {
         didSet {
             guard let likedPost = likedPost else { return }
+//            let stringTransformerToLower = StringTransform("Cyrillic")
             postAuthorLabel.text = likedPost.author
             postTextLabel.text = likedPost.postDescription
             postLikesLabel.text = "Likes: \(likedPost.likes)"
@@ -24,4 +25,17 @@ class LikedPostTableViewCell: PostTableViewCell {
     @objc override func doubleTapAction() {
         // nothing happens now
     }
+}
+
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
+    
+
+    
 }

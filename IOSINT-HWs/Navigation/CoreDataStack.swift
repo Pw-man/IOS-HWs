@@ -89,14 +89,7 @@ class CoreDataStack {
         backgroundViewContext.perform { [weak self] in
             guard let self = self else { return }
             let newLikedPost = LikedPost(context: self.backgroundViewContext)
-//            Попытка оптимизировать запись
-            let stringTransformerToLower = StringTransform("Lower (Upper)")
-            let stringTransformerToUpper = StringTransform("Upper")
-            let newStr = profilePost.author.applyingTransform(stringTransformerToLower, reverse: false)
-            print(newStr)
-            let newStr2 = profilePost.author.applyingTransform(stringTransformerToLower, reverse: true)
-            print(newStr2)
-// Попытка закончена
+//            let stringTransformerToLower = StringTransform("Latin; Lower")
             newLikedPost.author = profilePost.author
             newLikedPost.likes = Int32(profilePost.likes)
             newLikedPost.views = Int32(profilePost.views)
