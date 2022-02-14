@@ -14,9 +14,36 @@ final class LikedPostsViewController: UIViewController {
     
     private var tableView = UITableView()
     private let cellId = "reusableCell"
+    
+    func setupNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Show all posts", style: .plain, target: self, action: #selector(undoSortingLikedPosts))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sort by author", style: .plain, target: self, action: #selector(sortLikedPost))
+    }
+    
+    @objc func sortLikedPost() {
+        let alertController = UIAlertController(title: "Preferred author", message: "", preferredStyle: .alert)
+        alertController.addTextField { textField in
+            textField.placeholder = "Enter author's name"
+        }
+        let sortAction = UIAlertAction(title: "Sort posts", style: .default) { [weak self] action in
+            guard let self = self else { return }
+            let textField = alertController.textFields![0]
+            guard let enteredText = textField.text else { return }
+            self.viewModel.onDataChanged?(enteredText)
+            self.tableView.reloadData()
+        }
+        alertController.addAction(sortAction)
+        self.present(alertController, animated: true) {
+        }
+    }
+    
+    @objc func undoSortingLikedPosts() {
+     fetchAndReloadPosts()
+    }
         
     func fetchAndReloadPosts() {
         viewModel.model.likedPosts = coreDataStack.fetchLikedPosts()
+        print(viewModel.model.likedPosts)
         tableView.reloadData()
     }
     
@@ -37,6 +64,7 @@ final class LikedPostsViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationBar()
         view.backgroundColor = .systemBackground
         view.addSubview(tableView)
         tableView.delegate = self
@@ -51,6 +79,14 @@ final class LikedPostsViewController: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
+        
+        viewModel.presentAlertVC = { [weak self] title, message, actionTitle in
+            guard let self = self else { return }
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let userTapToContinue = UIAlertAction(title: actionTitle, style: .default)
+            alertController.addAction(userTapToContinue)
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
 }
 
@@ -64,5 +100,17 @@ extension LikedPostsViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! LikedPostTableViewCell
         cell.likedPost = viewModel.model.likedPosts[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete post") { [weak self] action, view, completionHandler in
+            guard let self = self else { return }
+            coreDataStack.remove(likedPost: self.viewModel.model.likedPosts[indexPath.row])
+            self.fetchAndReloadPosts()
+            completionHandler(true)
+        }
+        deleteAction.image = UIImage(systemName: "minus.circle.fill")
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        return configuration
     }
 }
