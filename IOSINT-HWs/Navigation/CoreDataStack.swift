@@ -51,11 +51,11 @@ class CoreDataStack {
     }
     
     func remove(likedPost: LikedPost) {
-        backgroundViewContext.perform { [weak self] in
+        viewContext.perform { [weak self] in
             guard let self = self else { return }
-            self.backgroundViewContext.delete(likedPost)
+            self.viewContext.delete(likedPost)
             
-            self.save(context: self.backgroundViewContext)
+            self.save(context: self.viewContext)
         }
     }
     
@@ -73,11 +73,12 @@ class CoreDataStack {
     func fetchLikedPosts() -> [LikedPost] {
         var likedPostsArray = [LikedPost]()
         
-        backgroundViewContext.performAndWait {
+        viewContext.perform { [weak self] in
+            guard let self = self else { return }
             let request: NSFetchRequest<LikedPost> = LikedPost.fetchRequest()
             request.returnsObjectsAsFaults = true
             do {
-                likedPostsArray = try backgroundViewContext.fetch(request)
+                likedPostsArray = try self.viewContext.fetch(request)
             } catch {
                 fatalError("app crashed with: \(error.localizedDescription)")
             }
@@ -86,9 +87,9 @@ class CoreDataStack {
     }
     
     func createNewLikedPost(profilePost: ProfilePost) {
-        backgroundViewContext.perform { [weak self] in
+        viewContext.performAndWait { [weak self] in
             guard let self = self else { return }
-            let newLikedPost = LikedPost(context: self.backgroundViewContext)
+            let newLikedPost = LikedPost(context: self.viewContext)
 //            let stringTransformerToLower = StringTransform("Latin; Lower")
             newLikedPost.author = profilePost.author
             newLikedPost.likes = Int32(profilePost.likes)
@@ -97,7 +98,7 @@ class CoreDataStack {
             newLikedPost.image = profilePost.image
             newLikedPost.id = UUID()
             
-            self.save(context: self.backgroundViewContext)
+            self.save(context: self.viewContext)
         }
     }
 }
