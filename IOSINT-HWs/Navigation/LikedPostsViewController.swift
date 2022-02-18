@@ -74,17 +74,10 @@ final class LikedPostsViewController: UIViewController {
                                     actionTitle: "Ok")
                 return
             }
-            let fetchResultControllerForSorted: NSFetchedResultsController<LikedPost> = {
-                let request: NSFetchRequest<LikedPost> = LikedPost.fetchRequest()
-                request.sortDescriptors = [NSSortDescriptor(key: "likes", ascending: false)]
-                let predicate = NSPredicate(format: "%K == %@", #keyPath(LikedPost.author), enteredText)
-                request.predicate = predicate
-                let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-                controller.delegate = self
-                return controller
-            }()
-            self.startFetchResultControllerSync(fetchResultControllerForSorted)
-            guard let bufferArray = fetchResultControllerForSorted.fetchedObjects else {
+            let predicate = NSPredicate(format: "%K == %@", #keyPath(LikedPost.author), enteredText)
+            self.fetchResultController.fetchRequest.predicate = predicate
+            self.startFetchResultControllerSync(self.fetchResultController)
+            guard let bufferArray = self.fetchResultController.fetchedObjects else {
                 print("problem with fetching")
                 return
             }
@@ -92,9 +85,10 @@ final class LikedPostsViewController: UIViewController {
                 self.presentAlertVC(title: "No such authors",
                                     message: "Correct request, please",
                                     actionTitle: "Ok")
+                self.fetchResultController.fetchRequest.predicate = nil
+                self.startFetchResultController()
                 return
             }
-            self.fetchResultController = fetchResultControllerForSorted
             self.isPostsSorted = true
             self.startFetchResultController()
         }
@@ -104,16 +98,9 @@ final class LikedPostsViewController: UIViewController {
     
     @objc func undoSortingLikedPosts() {
         if isPostsSorted {
-            let fetchResultController: NSFetchedResultsController<LikedPost> = {
-                let request: NSFetchRequest<LikedPost> = LikedPost.fetchRequest()
-                request.sortDescriptors = [NSSortDescriptor(key: "likes", ascending: false)]
-                let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-                controller.delegate = self
-                return controller
-            }()
-            self.fetchResultController = fetchResultController
+            fetchResultController.fetchRequest.predicate = nil
             isPostsSorted = false
-            self.startFetchResultController()
+            startFetchResultController()
         }
     }
     
@@ -213,4 +200,49 @@ extension LikedPostsViewController: NSFetchedResultsControllerDelegate {
         tableView.endUpdates()
     }
 }
+
+//MARK: - Old func sortLikedPosts() logic, to save screen condition
+
+//    @objc func sortLikedPost() {
+//        let alertController = UIAlertController(title: "Preferred author", message: "", preferredStyle: .alert)
+//        alertController.addTextField { textField in
+//            textField.placeholder = "Enter author's name"
+//        }
+//        let sortAction = UIAlertAction(title: "Sort posts", style: .default) { [weak self] _ in
+//            let textField = alertController.textFields![0]
+//            guard let self = self, let enteredText = textField.text else { return }
+//
+//            guard !enteredText.isEmpty else {
+//                self.presentAlertVC(title: "Input field is empty!",
+//                                    message: "Enter some text, please",
+//                                    actionTitle: "Ok")
+//                return
+//            }
+//            let fetchResultControllerForSorted: NSFetchedResultsController<LikedPost> = {
+//                let request: NSFetchRequest<LikedPost> = LikedPost.fetchRequest()
+//                request.sortDescriptors = [NSSortDescriptor(key: "likes", ascending: false)]
+//                let predicate = NSPredicate(format: "%K == %@", #keyPath(LikedPost.author), enteredText)
+//                request.predicate = predicate
+//                let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+//                controller.delegate = self
+//                return controller
+//            }()
+//            self.startFetchResultControllerSync(fetchResultControllerForSorted)
+//            guard let bufferArray = fetchResultControllerForSorted.fetchedObjects else {
+//                print("problem with fetching")
+//                return
+//            }
+//            guard !bufferArray.isEmpty else {
+//                self.presentAlertVC(title: "No such authors",
+//                                    message: "Correct request, please",
+//                                    actionTitle: "Ok")
+//                return
+//            }
+//            self.fetchResultController = fetchResultControllerForSorted
+//            self.isPostsSorted = true
+//            self.startFetchResultController()
+//        }
+//        alertController.addAction(sortAction)
+//        self.present(alertController, animated: true)
+//    }
 
