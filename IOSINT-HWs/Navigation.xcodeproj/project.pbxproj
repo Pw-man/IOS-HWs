@@ -55,6 +55,23 @@
 		306FD87B266E8AB50038CA8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 306FD87A266E8AB50038CA8F /* Assets.xcassets */; };
 		3081855A270CA96300573949 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30818559270CA96300573949 /* Constants.swift */; };
 		308A099D26726524004A18C4 /* PostsInProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308A099C26726524004A18C4 /* PostsInProfile.swift */; };
+		3095173D27F5EE4E0020D266 /* PromisesObjC in Resources */ = {isa = PBXBuildFile; fileRef = 3095170527F5EE4C0020D266 /* PromisesObjC */; };
+		3095173E27F5EE4E0020D266 /* Manifest.lock in Resources */ = {isa = PBXBuildFile; fileRef = 3095170627F5EE4C0020D266 /* Manifest.lock */; };
+		3095173F27F5EE4E0020D266 /* FirebaseAnalytics in Resources */ = {isa = PBXBuildFile; fileRef = 3095170727F5EE4C0020D266 /* FirebaseAnalytics */; };
+		3095174027F5EE4E0020D266 /* FirebaseCoreDiagnostics in Resources */ = {isa = PBXBuildFile; fileRef = 3095170827F5EE4C0020D266 /* FirebaseCoreDiagnostics */; };
+		3095174127F5EE4E0020D266 /* GTMSessionFetcher in Resources */ = {isa = PBXBuildFile; fileRef = 3095170927F5EE4C0020D266 /* GTMSessionFetcher */; };
+		3095174227F5EE4E0020D266 /* GoogleDataTransport in Resources */ = {isa = PBXBuildFile; fileRef = 3095170A27F5EE4C0020D266 /* GoogleDataTransport */; };
+		3095174327F5EE4E0020D266 /* GoogleUtilities in Resources */ = {isa = PBXBuildFile; fileRef = 3095170B27F5EE4C0020D266 /* GoogleUtilities */; };
+		3095174427F5EE4E0020D266 /* Local Podspecs in Resources */ = {isa = PBXBuildFile; fileRef = 3095170C27F5EE4C0020D266 /* Local Podspecs */; };
+		3095174527F5EE4E0020D266 /* GoogleAppMeasurement in Resources */ = {isa = PBXBuildFile; fileRef = 3095170D27F5EE4C0020D266 /* GoogleAppMeasurement */; };
+		3095174627F5EE4E0020D266 /* FirebaseAuth in Resources */ = {isa = PBXBuildFile; fileRef = 3095170E27F5EE4C0020D266 /* FirebaseAuth */; };
+		3095174727F5EE4E0020D266 /* FirebaseInstallations in Resources */ = {isa = PBXBuildFile; fileRef = 3095170F27F5EE4C0020D266 /* FirebaseInstallations */; };
+		3095174827F5EE4E0020D266 /* SnapKit in Resources */ = {isa = PBXBuildFile; fileRef = 3095173727F5EE4D0020D266 /* SnapKit */; };
+		3095174927F5EE4E0020D266 /* Target Support Files in Resources */ = {isa = PBXBuildFile; fileRef = 3095173827F5EE4D0020D266 /* Target Support Files */; };
+		3095174A27F5EE4E0020D266 /* FirebaseCore in Resources */ = {isa = PBXBuildFile; fileRef = 3095173927F5EE4D0020D266 /* FirebaseCore */; };
+		3095174B27F5EE4E0020D266 /* nanopb in Resources */ = {isa = PBXBuildFile; fileRef = 3095173A27F5EE4D0020D266 /* nanopb */; };
+		3095174C27F5EE4E0020D266 /* Headers in Resources */ = {isa = PBXBuildFile; fileRef = 3095173B27F5EE4D0020D266 /* Headers */; };
+		3095174D27F5EE4E0020D266 /* Firebase in Resources */ = {isa = PBXBuildFile; fileRef = 3095173C27F5EE4E0020D266 /* Firebase */; };
 		30A87C52267285DD002FFC4D /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A87C51267285DD002FFC4D /* PostTableViewCell.swift */; };
 		30B8F00A26F650E600EA4534 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B8F00926F650E600EA4534 /* User.swift */; };
 		30B97D4E26E8DD27004DDC78 /* StorageService.h in Headers */ = {isa = PBXBuildFile; fileRef = 30B97D4C26E8DD27004DDC78 /* StorageService.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -68,6 +85,83 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3095172127F5EE4D0020D266 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3095171027F5EE4D0020D266 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 43B1E4CD7B30B9FD278100133C2AC788;
+			remoteInfo = FirebaseAuth;
+		};
+		3095172327F5EE4D0020D266 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3095171027F5EE4D0020D266 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E2B63D462DB7F827C4B11FD51E4F8E2D;
+			remoteInfo = FirebaseCore;
+		};
+		3095172527F5EE4D0020D266 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3095171027F5EE4D0020D266 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8CC9178C366942FD6FF6A115604EAD58;
+			remoteInfo = FirebaseCoreDiagnostics;
+		};
+		3095172727F5EE4D0020D266 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3095171027F5EE4D0020D266 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 13C8C8B254851998F9289F71229B28A2;
+			remoteInfo = FirebaseInstallations;
+		};
+		3095172927F5EE4D0020D266 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3095171027F5EE4D0020D266 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 856B5CD56F194FAD26EA91620B66D614;
+			remoteInfo = GoogleDataTransport;
+		};
+		3095172B27F5EE4D0020D266 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3095171027F5EE4D0020D266 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B43874C6CBB50E7134FBEC24BABFE14F;
+			remoteInfo = GoogleUtilities;
+		};
+		3095172D27F5EE4D0020D266 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3095171027F5EE4D0020D266 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C1998E0D8085221AD87F89B614C10E52;
+			remoteInfo = GTMSessionFetcher;
+		};
+		3095172F27F5EE4D0020D266 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3095171027F5EE4D0020D266 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06FC5C9CF96D60C50FCD47D339C91951;
+			remoteInfo = nanopb;
+		};
+		3095173127F5EE4D0020D266 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3095171027F5EE4D0020D266 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5EF07FADF9F5ABC2ACFAAC8977009C07;
+			remoteInfo = "Pods-Navigation";
+		};
+		3095173327F5EE4D0020D266 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3095171027F5EE4D0020D266 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3347A1AB6546F0A3977529B8F199DC41;
+			remoteInfo = PromisesObjC;
+		};
+		3095173527F5EE4D0020D266 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3095171027F5EE4D0020D266 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 979486118B3E90C08386079D57962701;
+			remoteInfo = SnapKit;
+		};
 		30B97D4F26E8DD27004DDC78 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 060782A6250CE27700A87020 /* Project object */;
@@ -141,6 +235,24 @@
 		306FD87A266E8AB50038CA8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		30818559270CA96300573949 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		308A099C26726524004A18C4 /* PostsInProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsInProfile.swift; sourceTree = "<group>"; };
+		3095170527F5EE4C0020D266 /* PromisesObjC */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PromisesObjC; sourceTree = "<group>"; };
+		3095170627F5EE4C0020D266 /* Manifest.lock */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Manifest.lock; sourceTree = "<group>"; };
+		3095170727F5EE4C0020D266 /* FirebaseAnalytics */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FirebaseAnalytics; sourceTree = "<group>"; };
+		3095170827F5EE4C0020D266 /* FirebaseCoreDiagnostics */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FirebaseCoreDiagnostics; sourceTree = "<group>"; };
+		3095170927F5EE4C0020D266 /* GTMSessionFetcher */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GTMSessionFetcher; sourceTree = "<group>"; };
+		3095170A27F5EE4C0020D266 /* GoogleDataTransport */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GoogleDataTransport; sourceTree = "<group>"; };
+		3095170B27F5EE4C0020D266 /* GoogleUtilities */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GoogleUtilities; sourceTree = "<group>"; };
+		3095170C27F5EE4C0020D266 /* Local Podspecs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Local Podspecs"; sourceTree = "<group>"; };
+		3095170D27F5EE4C0020D266 /* GoogleAppMeasurement */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GoogleAppMeasurement; sourceTree = "<group>"; };
+		3095170E27F5EE4C0020D266 /* FirebaseAuth */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FirebaseAuth; sourceTree = "<group>"; };
+		3095170F27F5EE4C0020D266 /* FirebaseInstallations */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FirebaseInstallations; sourceTree = "<group>"; };
+		3095171027F5EE4D0020D266 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Pods.xcodeproj; sourceTree = "<group>"; };
+		3095173727F5EE4D0020D266 /* SnapKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SnapKit; sourceTree = "<group>"; };
+		3095173827F5EE4D0020D266 /* Target Support Files */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Target Support Files"; sourceTree = "<group>"; };
+		3095173927F5EE4D0020D266 /* FirebaseCore */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FirebaseCore; sourceTree = "<group>"; };
+		3095173A27F5EE4D0020D266 /* nanopb */ = {isa = PBXFileReference; lastKnownFileType = folder; path = nanopb; sourceTree = "<group>"; };
+		3095173B27F5EE4D0020D266 /* Headers */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Headers; sourceTree = "<group>"; };
+		3095173C27F5EE4E0020D266 /* Firebase */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Firebase; sourceTree = "<group>"; };
 		30A87C51267285DD002FFC4D /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		30B8F00926F650E600EA4534 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		30B97D4A26E8DD27004DDC78 /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -320,6 +432,24 @@
 			path = LogIn;
 			sourceTree = "<group>";
 		};
+		3095171127F5EE4D0020D266 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3095172227F5EE4D0020D266 /* FirebaseAuth */,
+				3095172427F5EE4D0020D266 /* FirebaseCore */,
+				3095172627F5EE4D0020D266 /* FirebaseCoreDiagnostics */,
+				3095172827F5EE4D0020D266 /* FirebaseInstallations */,
+				3095172A27F5EE4D0020D266 /* GoogleDataTransport */,
+				3095172C27F5EE4D0020D266 /* GoogleUtilities */,
+				3095172E27F5EE4D0020D266 /* GTMSessionFetcher */,
+				3095173027F5EE4D0020D266 /* nanopb */,
+				3095173227F5EE4D0020D266 /* Pods-Navigation */,
+				3095173427F5EE4D0020D266 /* PromisesObjC */,
+				3095173627F5EE4D0020D266 /* SnapKit */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		30B97D4B26E8DD27004DDC78 /* StorageService */ = {
 			isa = PBXGroup;
 			children = (
@@ -364,6 +494,24 @@
 		3A01EEEA59EB72475A5892E5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				3095173C27F5EE4E0020D266 /* Firebase */,
+				3095170727F5EE4C0020D266 /* FirebaseAnalytics */,
+				3095170E27F5EE4C0020D266 /* FirebaseAuth */,
+				3095173927F5EE4D0020D266 /* FirebaseCore */,
+				3095170827F5EE4C0020D266 /* FirebaseCoreDiagnostics */,
+				3095170F27F5EE4C0020D266 /* FirebaseInstallations */,
+				3095170D27F5EE4C0020D266 /* GoogleAppMeasurement */,
+				3095170A27F5EE4C0020D266 /* GoogleDataTransport */,
+				3095170B27F5EE4C0020D266 /* GoogleUtilities */,
+				3095170927F5EE4C0020D266 /* GTMSessionFetcher */,
+				3095173B27F5EE4D0020D266 /* Headers */,
+				3095170C27F5EE4C0020D266 /* Local Podspecs */,
+				3095170627F5EE4C0020D266 /* Manifest.lock */,
+				3095173A27F5EE4D0020D266 /* nanopb */,
+				3095171027F5EE4D0020D266 /* Pods.xcodeproj */,
+				3095170527F5EE4C0020D266 /* PromisesObjC */,
+				3095173727F5EE4D0020D266 /* SnapKit */,
+				3095173827F5EE4D0020D266 /* Target Support Files */,
 				DA10C08E78EF965AAC253A16 /* Pods-Navigation.debug.xcconfig */,
 				475996EB6C3EB3ABC714F943 /* Pods-Navigation.release.xcconfig */,
 			);
@@ -458,6 +606,12 @@
 			);
 			productRefGroup = 060782AF250CE27700A87020 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 3095171127F5EE4D0020D266 /* Products */;
+					ProjectRef = 3095171027F5EE4D0020D266 /* Pods.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				060782AD250CE27700A87020 /* Navigation */,
@@ -466,19 +620,127 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		3095172227F5EE4D0020D266 /* FirebaseAuth */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			name = FirebaseAuth;
+			path = FirebaseAuth.framework;
+			remoteRef = 3095172127F5EE4D0020D266 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3095172427F5EE4D0020D266 /* FirebaseCore */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			name = FirebaseCore;
+			path = FirebaseCore.framework;
+			remoteRef = 3095172327F5EE4D0020D266 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3095172627F5EE4D0020D266 /* FirebaseCoreDiagnostics */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			name = FirebaseCoreDiagnostics;
+			path = FirebaseCoreDiagnostics.framework;
+			remoteRef = 3095172527F5EE4D0020D266 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3095172827F5EE4D0020D266 /* FirebaseInstallations */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			name = FirebaseInstallations;
+			path = FirebaseInstallations.framework;
+			remoteRef = 3095172727F5EE4D0020D266 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3095172A27F5EE4D0020D266 /* GoogleDataTransport */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			name = GoogleDataTransport;
+			path = GoogleDataTransport.framework;
+			remoteRef = 3095172927F5EE4D0020D266 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3095172C27F5EE4D0020D266 /* GoogleUtilities */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			name = GoogleUtilities;
+			path = GoogleUtilities.framework;
+			remoteRef = 3095172B27F5EE4D0020D266 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3095172E27F5EE4D0020D266 /* GTMSessionFetcher */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			name = GTMSessionFetcher;
+			path = GTMSessionFetcher.framework;
+			remoteRef = 3095172D27F5EE4D0020D266 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3095173027F5EE4D0020D266 /* nanopb */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			name = nanopb;
+			path = nanopb.framework;
+			remoteRef = 3095172F27F5EE4D0020D266 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3095173227F5EE4D0020D266 /* Pods-Navigation */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			name = "Pods-Navigation";
+			path = Pods_Navigation.framework;
+			remoteRef = 3095173127F5EE4D0020D266 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3095173427F5EE4D0020D266 /* PromisesObjC */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			name = PromisesObjC;
+			path = FBLPromises.framework;
+			remoteRef = 3095173327F5EE4D0020D266 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3095173627F5EE4D0020D266 /* SnapKit */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			name = SnapKit;
+			path = SnapKit.framework;
+			remoteRef = 3095173527F5EE4D0020D266 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		060782AC250CE27700A87020 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				3010814A275E626C006C4DF8 /* Queen.mp3 in Resources */,
+				3095174027F5EE4E0020D266 /* FirebaseCoreDiagnostics in Resources */,
+				3095174A27F5EE4E0020D266 /* FirebaseCore in Resources */,
+				3095174C27F5EE4E0020D266 /* Headers in Resources */,
 				302CC788278F1D4600C8D737 /* GoogleService-Info.plist in Resources */,
 				3010814F275E88CB006C4DF8 /* The Ink Spots. If I Didn't Care.mp3 in Resources */,
 				30108151275E88CB006C4DF8 /* M83. Midnight City.mp3 in Resources */,
 				30108150275E88CB006C4DF8 /* Louis Armstrong & Ella Fitzgerald. Love Is Here To Stay.mp3 in Resources */,
+				3095173E27F5EE4E0020D266 /* Manifest.lock in Resources */,
+				3095173F27F5EE4E0020D266 /* FirebaseAnalytics in Resources */,
+				3095174D27F5EE4E0020D266 /* Firebase in Resources */,
+				3095174727F5EE4E0020D266 /* FirebaseInstallations in Resources */,
+				3095174827F5EE4E0020D266 /* SnapKit in Resources */,
 				306FD87B266E8AB50038CA8F /* Assets.xcassets in Resources */,
+				3095174227F5EE4E0020D266 /* GoogleDataTransport in Resources */,
+				3095174527F5EE4E0020D266 /* GoogleAppMeasurement in Resources */,
+				3095174927F5EE4E0020D266 /* Target Support Files in Resources */,
+				3095174427F5EE4E0020D266 /* Local Podspecs in Resources */,
+				3095174327F5EE4E0020D266 /* GoogleUtilities in Resources */,
+				3095174627F5EE4E0020D266 /* FirebaseAuth in Resources */,
 				30108152275E88CB006C4DF8 /* Frank Sinatra. Let it snow.mp3 in Resources */,
 				060782BE250CE27A00A87020 /* LaunchScreen.storyboard in Resources */,
+				3095173D27F5EE4E0020D266 /* PromisesObjC in Resources */,
+				3095174B27F5EE4E0020D266 /* nanopb in Resources */,
+				3095174127F5EE4E0020D266 /* GTMSessionFetcher in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
