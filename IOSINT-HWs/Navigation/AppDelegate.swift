@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseCore
 import CoreData
 
 @UIApplicationMain
@@ -16,17 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private(set) lazy var coreDataStack = CoreDataStack()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
+        
         let appConfiguration = AppConfiguration.allCases.randomElement()
         if let appConfig = appConfiguration {
-        let networkService = NetworkService()
+            let networkService = NetworkService()
             networkService.executeURLSessionDataTask(configuration: appConfig)
         }
+
         FirebaseApp.configure()
+
         return true
     }
-    
-    
 
     // MARK: UISceneSession Lifecycle
 
