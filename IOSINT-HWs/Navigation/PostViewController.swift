@@ -28,7 +28,7 @@ class PostViewController: UIViewController {
     private var countdownLabel = UILabel()
     private var interval: Decimal = 2
     
-    private lazy var startDownloadButton : CustomButton = .init(title: "Download", font: .boldSystemFont(ofSize: 15), titleColor: .black) { [weak self] in
+    private lazy var startDownloadButton : CustomButton = .init(title: "Download".localized(), font: .boldSystemFont(ofSize: 15), titleColor: .black) { [weak self] in
         guard let self = self else { return }
         self.imageViewForTopPic.load(url: URL(string: "https://images.freeimages.com/images/large-previews/25d/eagle-1523807.jpg"
                                              )!) { result in
@@ -58,18 +58,18 @@ class PostViewController: UIViewController {
                 self.imageViewForTopPic.alpha = 1
                 self.imageViewForBotPic.alpha = 1
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    self.countdownLabel.text = "All data is uploaded!"
+                    self.countdownLabel.text = "All data is uploaded!".localized()
                 }
             }
         }
     }
         
-    private lazy var toAudioVCButton = CustomButton(title: "Listen to music", font: .boldSystemFont(ofSize: 15), titleColor: .systemBlue) { [unowned self] in
+    private lazy var toAudioVCButton = CustomButton(title: "Listen to music".localized(), font: .boldSystemFont(ofSize: 15), titleColor: .systemBlue) { [unowned self] in
         let audioVC = AudioViewController()
         self.navigationController?.pushViewController(audioVC, animated: true)
     }
     
-    private lazy var toVideoVCButton = CustomButton(title: "Watch video", font: .boldSystemFont(ofSize: 15), titleColor: .systemBlue) { [unowned self] in
+    private lazy var toVideoVCButton = CustomButton(title: "Watch video".localized(), font: .boldSystemFont(ofSize: 15), titleColor: .systemBlue) { [unowned self] in
         let videoVC = VideoViewController()
         self.navigationController?.pushViewController(videoVC, animated: true)
     }
@@ -151,7 +151,7 @@ extension UIImageView {
             }
             DispatchQueue.main.async {
                 self.image = image
-                completionHandler(.success("All data is downloaded succesfully"))
+                completionHandler(.success("All data is downloaded succesfully".localized()))
             }
         }
     }

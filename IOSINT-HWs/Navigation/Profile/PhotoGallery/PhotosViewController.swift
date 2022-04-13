@@ -45,7 +45,7 @@ class PhotosViewController: UIViewController {
         setupCollectionView()
         collectionViewFillingLogic(repeatCount: 21, time: 0.2)
 
-        self.navigationItem.title = "Photo Gallery"
+        self.navigationItem.title = "Photo Gallery".localized()
         self.navigationController?.navigationBar.isHidden = false
     }
     

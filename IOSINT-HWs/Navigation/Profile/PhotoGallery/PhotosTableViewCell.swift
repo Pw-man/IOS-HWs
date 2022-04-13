@@ -14,7 +14,7 @@ class PhotosTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         label.textColor = .black
-        label.text = "Photo gallery"
+        label.text = "Photo gallery".localized()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

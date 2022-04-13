@@ -33,7 +33,7 @@ class AudioViewController: UIViewController, AVAudioRecorderDelegate {
     
     private let songNameLabel : UILabel = {
         let label = UILabel()
-        label.text = "Current song name"
+        label.text = "Current song name".localized()
         label.textColor = .black
         label.font = .boldSystemFont(ofSize: 15)
         return label
@@ -50,7 +50,7 @@ class AudioViewController: UIViewController, AVAudioRecorderDelegate {
         return button
     }()
     
-    private lazy var playRecodedButton = CustomButton(title: "Play recorded sound ", font: .boldSystemFont(ofSize: 15), titleColor: .red) { [weak self] in
+    private lazy var playRecodedButton = CustomButton(title: "Play recorded sound".localized(), font: .boldSystemFont(ofSize: 15), titleColor: .red) { [weak self] in
         guard let self = self else { return }
         let path = self.getDirectory().appendingPathComponent("\(self.numberOfRecords).m4a")
         

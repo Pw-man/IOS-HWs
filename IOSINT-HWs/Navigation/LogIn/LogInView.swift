@@ -23,7 +23,7 @@ class LogInView: UIView {
         passwordTextField.tintColor = UIColor(named: "ColorSet")
         passwordTextField.autocapitalizationType = .none
         passwordTextField.backgroundColor = .systemGray6
-        passwordTextField.placeholder = "Password"
+        passwordTextField.placeholder = "Password".localized()
         passwordTextField.returnKeyType = .done
         
         nameTextField.textColor = .black
@@ -31,7 +31,7 @@ class LogInView: UIView {
         nameTextField.tintColor = UIColor(named: "ColorSet")
         nameTextField.autocapitalizationType = .none
         nameTextField.backgroundColor = .systemGray6
-        nameTextField.placeholder = "Email or phone number"
+        nameTextField.placeholder = "Email or phone number".localized()
         nameTextField.returnKeyType = .done
         
         nameView.backgroundColor = .systemGray6

@@ -22,9 +22,9 @@ class LoginCoordinator: Coordinator {
     
     func start() {
         let loginVC = LogInViewController(logInAuthentificator: LogInAutentificator())
-        loginVC.navigationItem.title = "Login"
+        loginVC.navigationItem.title = "Login".localized()
         loginVC.loginCoordinator = self
-        navigationController.tabBarItem.title = "Login"
+        navigationController.tabBarItem.title = "Login".localized()
         navigationController.tabBarItem.image = UIImage(systemName: "person")!
         navigationController.navigationBar.prefersLargeTitles = false
         navigationController.pushViewController(loginVC, animated: false)

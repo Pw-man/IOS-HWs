@@ -16,8 +16,8 @@ class LikedPostTableViewCell: PostTableViewCell {
 //            let stringTransformerToLower = StringTransform("Cyrillic")
             postAuthorLabel.text = likedPost.author
             postTextLabel.text = likedPost.postDescription
-            postLikesLabel.text = "Likes: \(likedPost.likes)"
-            postViewsLabel.text = "Views: \(likedPost.views)"
+            postLikesLabel.text = "Likes: ".localized() + "\(likedPost.likes)"
+            postViewsLabel.text = "Views: ".localized() + "\(likedPost.views)"
             postImageView.image = UIImage(named: likedPost.image ?? "questionmark.circle")
         }
     }

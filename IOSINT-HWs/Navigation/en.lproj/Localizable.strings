@@ -1,0 +1,63 @@
+/* 
+  Localizable.strings
+  Navigation
+
+  Created by Роман on 10.04.2022.
+  Copyright © 2022 Artem Novichkov. All rights reserved.
+*/
+
+"Season 2 of the TV series Love. Death. Robots. was released. The producers of the second season were Tim Miller («Deadpool») and David Fincher («Fight club», «Social network», «Dissapeared»). And they did what they do best: they showed us a series of thrillers with beautiful graphics and a thoughtful plot." = "Season 2 of the TV series Love. Death. Robots. was released. The producers of the second season were Tim Miller («Deadpool») and David Fincher («Fight club», «Social network», «Dissapeared»). And they did what they do best: they showed us a series of thrillers with beautiful graphics and a thoughtful plot.";
+"The International Economic Forum was held in St. Petersburg." = "The International Economic Forum was held in St. Petersburg.";
+"An updated FaceTime, AirPods instead of a hearing aid, a new Share Play function, reminders of forgotten headphones and much more were demonstrated by Apple at its annual WWDC 2021 developer exhibition." = "An updated FaceTime, AirPods instead of a hearing aid, a new Share Play function, reminders of forgotten headphones and much more were demonstrated by Apple at its annual WWDC 2021 developer exhibition.";
+"Tesla Model S broke the world record at a distance of 1/4 mile. The electric car overcame 402 meters in 9.23 seconds." = "Tesla Model S broke the world record at a distance of 1/4 mile. The electric car overcame 402 meters in 9.23 seconds.";
+"Insert password" = "Insert password";
+"It's test text" = "It's test text";
+"Verify password" = "Verify password";
+"Click me" = "Click me";
+"Pick password" = "Pick password";
+"Post" = "Post";
+"Log In" = "Log In";
+"Password" = "Password";
+"Email or phone number" = "Email or phone number";
+"Show alert" = "Show alert";
+"Delete post?" = "Delete post?";
+"Post couldn't be restored" = "Post couldn't be restored";
+"Cancel" = "Cancel";
+"Delete" = "Delete";
+"Show all posts" = "Show all posts";
+"Sort by author" = "Sort by author";
+"Delete post" = "Delete post";
+"Preferred author" = "Preferred author";
+"Enter author's name" = "Enter author's name";
+"Input field is empty!" = "Input field is empty!";
+"Enter some text, please" = "Enter some text, please";
+"Ok" = "Ok";
+"No such authors" = "No such authors";
+"Correct request, please" = "Correct request, please";
+"Feed" = "Feed";
+"Liked Posts" = "Liked Posts";
+"Liked" = "Liked";
+"Login" = "Login";
+"Check the data validity" = "Check the data validity";
+"Fix" = "Fix";
+"Continue" = "Continue";
+"Email and password field are empty" = "Email and password field are empty";
+"Please, fill in all input fields" = "Please, fill in all input fields";
+"Likes: " = "Likes: ";
+"Views: " = "Views: ";
+"Coolest Dog Ever" = "Coolest Dog Ever";
+"Waiting for something..." = "Waiting for something...";
+"Show Status" = "Show Status";
+"Set your status" = "Set your status";
+"Photo gallery" = "Photo gallery";
+"Photo Gallery" = "Photo Gallery";
+"Download" = "Download";
+"All data is uploaded!" = "All data is uploaded!";
+"Listen to music" = "Listen to music";
+"Watch video" = "Watch video";
+"All data is downloaded succesfully" = "All data is downloaded succesfully";
+"Youtube videos" = "Youtube videos";
+"Current song name" = "Current song name";
+"Play recorded sound" = "Play recorded sound";
+"User: " = "User: ";
+"created!" = "created!";

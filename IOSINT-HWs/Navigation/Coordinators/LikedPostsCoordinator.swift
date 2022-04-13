@@ -32,8 +32,8 @@ class LikedPostsCoordinator: Coordinator & LikedPostsModuleFactory {
             guard let self = self else { return }
             self.parentCoordinator?.childDidFinish(self)
         }
-        likePostsVC.navigationItem.title = "Liked Posts"
-        navigationController.tabBarItem.title = "Liked"
+        likePostsVC.navigationItem.title = "Liked Posts".localized()
+        navigationController.tabBarItem.title = "Liked".localized()
         navigationController.tabBarItem.image = UIImage(systemName: "heart")!
         navigationController.navigationBar.prefersLargeTitles = false
         navigationController.pushViewController(likePostsVC, animated: false)

@@ -61,6 +61,7 @@
 		30B97D5126E8DD27004DDC78 /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B97D4A26E8DD27004DDC78 /* StorageService.framework */; };
 		30B97D5226E8DD27004DDC78 /* StorageService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 30B97D4A26E8DD27004DDC78 /* StorageService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		30B97D5726E8DEB4004DDC78 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060782C9250CEE7200A87020 /* Post.swift */; };
+		30CE15CA280366210007FEBD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30CE15CC280366210007FEBD /* Localizable.strings */; };
 		30E0F6EF27160E230080DF60 /* FeedViewControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E0F6EE27160E230080DF60 /* FeedViewControllerModel.swift */; };
 		30E77E2C2642B6A5009C9D34 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E77E2B2642B6A5009C9D34 /* ProfileHeaderView.swift */; };
 		30E77E2F2642B727009C9D34 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E77E2E2642B727009C9D34 /* ProfileViewController.swift */; };
@@ -146,6 +147,9 @@
 		30B97D4A26E8DD27004DDC78 /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B97D4C26E8DD27004DDC78 /* StorageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageService.h; sourceTree = "<group>"; };
 		30B97D4D26E8DD27004DDC78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30CE15C92803660D0007FEBD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		30CE15CB280366210007FEBD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		30CE15CD280366230007FEBD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		30E0F6EE27160E230080DF60 /* FeedViewControllerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewControllerModel.swift; sourceTree = "<group>"; };
 		30E77E2B2642B6A5009C9D34 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		30E77E2E2642B727009C9D34 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -202,6 +206,7 @@
 				060782B1250CE27700A87020 /* AppDelegate.swift */,
 				30417C7A271740F300EF672A /* MainTabBarController.swift */,
 				060782B3250CE27700A87020 /* SceneDelegate.swift */,
+				30CE15CE280366CD0007FEBD /* FeedModule */,
 				302963F027A6DCEA007B9E58 /* LikedPostsViewController.swift */,
 				3029641A27A7233B007B9E58 /* CoreDataStack.swift */,
 				3029641727A71D72007B9E58 /* DataModels.xcdatamodeld */,
@@ -217,7 +222,7 @@
 				060782BC250CE27A00A87020 /* LaunchScreen.storyboard */,
 				060782BF250CE27A00A87020 /* Info.plist */,
 				302CC787278F1D4600C8D737 /* GoogleService-Info.plist */,
-				060782B5250CE27700A87020 /* FeedViewController.swift */,
+				30CE15CC280366210007FEBD /* Localizable.strings */,
 				301CF4F527AECB390072849D /* LikedPostTableViewCell.swift */,
 				060782C5250CEB0A00A87020 /* InfoViewController.swift */,
 				060782C7250CEE5D00A87020 /* PostViewController.swift */,
@@ -285,7 +290,6 @@
 		30417C8C2725D89A00EF672A /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				30417C8D2725D8CD00EF672A /* FeedViewControllerViewModel.swift */,
 				302963EC27A6DBB0007B9E58 /* LikedPostsViewModel.swift */,
 			);
 			path = ViewModels;
@@ -341,10 +345,19 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
+		30CE15CE280366CD0007FEBD /* FeedModule */ = {
+			isa = PBXGroup;
+			children = (
+				060782B5250CE27700A87020 /* FeedViewController.swift */,
+				30417C8D2725D8CD00EF672A /* FeedViewControllerViewModel.swift */,
+				30E0F6EE27160E230080DF60 /* FeedViewControllerModel.swift */,
+			);
+			path = FeedModule;
+			sourceTree = "<group>";
+		};
 		30E0F6ED27160E0D0080DF60 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				30E0F6EE27160E230080DF60 /* FeedViewControllerModel.swift */,
 				302963F227A6DDB7007B9E58 /* LikedPostsModel.swift */,
 			);
 			path = Models;
@@ -451,6 +464,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 060782A5250CE27700A87020;
 			packageReferences = (
@@ -475,6 +489,7 @@
 				302CC788278F1D4600C8D737 /* GoogleService-Info.plist in Resources */,
 				3010814F275E88CB006C4DF8 /* The Ink Spots. If I Didn't Care.mp3 in Resources */,
 				30108151275E88CB006C4DF8 /* M83. Midnight City.mp3 in Resources */,
+				30CE15CA280366210007FEBD /* Localizable.strings in Resources */,
 				30108150275E88CB006C4DF8 /* Louis Armstrong & Ella Fitzgerald. Love Is Here To Stay.mp3 in Resources */,
 				306FD87B266E8AB50038CA8F /* Assets.xcassets in Resources */,
 				30108152275E88CB006C4DF8 /* Frank Sinatra. Let it snow.mp3 in Resources */,
@@ -612,8 +627,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				060782BD250CE27A00A87020 /* Base */,
+				30CE15C92803660D0007FEBD /* ru */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		30CE15CC280366210007FEBD /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				30CE15CB280366210007FEBD /* ru */,
+				30CE15CD280366230007FEBD /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -623,6 +648,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -684,6 +710,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

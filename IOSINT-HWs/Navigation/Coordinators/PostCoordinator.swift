@@ -21,7 +21,7 @@ class PostCordinator: Coordinator {
     
     func start() {
         let postVC = PostViewController()
-        postVC.post = Post(title: "Post")
+        postVC.post = Post(title: "Post".localized())
         
         postVC.postVCCompletion = { [weak self] in
             guard let self = self else { return }

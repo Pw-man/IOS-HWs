@@ -31,7 +31,7 @@ class FeedCoordinator: Coordinator & FeedModuleFactory {
             guard let self = self else { return }
             self.parentCoordinator?.childDidFinish(self)
         }
-        feedVC.navigationItem.title = "Feed"
+        feedVC.navigationItem.title = "Feed".localized()
         
         feedVC.pushNextVC = { [weak self] in
             guard let self = self else { return }
@@ -40,7 +40,7 @@ class FeedCoordinator: Coordinator & FeedModuleFactory {
             self.childCoordinators.append(postCoordinator)
         }
         
-        navigationController.tabBarItem.title = "Feed"
+        navigationController.tabBarItem.title = "Feed".localized()
         navigationController.tabBarItem.image = UIImage(systemName: "house")!
         navigationController.navigationBar.prefersLargeTitles = false
         navigationController.pushViewController(feedVC, animated: false)

@@ -10,8 +10,6 @@ import UIKit
 import StorageService
 
 final class FeedViewController: MVVMController {
-    
-//    private let notificationCenter = NotificationCenter.default
     private var hackedPass = ""
     private let spinner = UIActivityIndicatorView()
 
@@ -31,7 +29,7 @@ final class FeedViewController: MVVMController {
     
     private let passTextField : UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Insert password"
+        textField.placeholder = "Insert password".localized()
         textField.backgroundColor = .systemGray6
         textField.isSecureTextEntry = true
         return textField
@@ -39,40 +37,15 @@ final class FeedViewController: MVVMController {
     
     private let coloredLabel : UILabel = {
         let label = UILabel()
-        label.text = "It's test text"
+        label.text = "It's test text".localized()
         label.textColor = .systemGray
         return label
     }()
     
-    /// Observing property
-    //    private var password = "" {
-    //        didSet {
-    //            if self.model.check(word: password) {
-    //                self.coloredLabel.textColor = .green
-    //            } else {
-    //                self.coloredLabel.textColor = .systemRed
-    //            }
-    //        }
-    //    }
-    
-    private lazy var checkPassButton: CustomButton = .init(title: "Verify password", font: .boldSystemFont(ofSize: 15), titleColor: .white) { [weak self] in
+    private lazy var checkPassButton: CustomButton = .init(title: "Verify password".localized(), font: .boldSystemFont(ofSize: 15), titleColor: .white) { [weak self] in
         guard let self = self else { return }
-        
-        ///  Through Notification Center
-        //        self.notificationCenter.post(name: .boolChanged, object: nil)
-        
-        /// Through closures
-//        if self.viewModel.check(word: self.passTextField.text!) {
-//            self.coloredLabel.textColor = .green
-//        } else {
-//            self.coloredLabel.textColor = .systemRed
-//        }
-        
-        /// Through property observer  (DidSet)
-        //        self.password = self.passTextField.text!
     }
-    
-    
+        
     @objc func checkPass() {
         guard let enteredText = passTextField.text else { return }
         viewModel.onDataChanged?("\(enteredText)")
@@ -89,12 +62,12 @@ final class FeedViewController: MVVMController {
         print(type(of: self), #function)
     }
     
-    private lazy var pushPostVCButton: CustomButton = .init(title: "Click me", font: .boldSystemFont(ofSize: 15), titleColor: .systemBlue) { [weak self] in
+    private lazy var pushPostVCButton: CustomButton = .init(title: "Click me".localized(), font: .boldSystemFont(ofSize: 15), titleColor: .systemBlue) { [weak self] in
         guard let self = self else { return }
         self.pushNextVC?()
     }
     
-    private lazy var generatePassButton: CustomButton = .init(title: "Подобрать пароль", font: .boldSystemFont(ofSize: 15), titleColor: .black) { [weak self] in
+    private lazy var generatePassButton: CustomButton = .init(title: "Pick password".localized(), font: .boldSystemFont(ofSize: 15), titleColor: .black) { [weak self] in
         guard let self = self else { return }
         let randomStr = self.randomString(length: 3)
         self.spinner.startAnimating()
@@ -124,7 +97,7 @@ final class FeedViewController: MVVMController {
         return String((0..<length).map{ _ in letters.randomElement()! })
     }
     
-    let post: Post = Post(title: "Post")
+    let post: Post = Post(title: "Post".localized())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -171,19 +144,8 @@ final class FeedViewController: MVVMController {
         }
     }
     
-    /// Notification Center  method
-    //    @objc func pickLabelColor(_ notification: Notification) {
-    //        if model.check(word: passTextField.text!) {
-    //            self.coloredLabel.textColor = .green
-    //        } else {
-    //            self.coloredLabel.textColor = .systemRed
-    //        }
-    //    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        //       notificationCenter.addObserver(self, selector: #selector(pickLabelColor), name: .boolChanged, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -212,10 +174,6 @@ final class FeedViewController: MVVMController {
         print(type(of: self), #function)
     }
 }
-
-//extension Notification.Name {
-//    static let boolChanged = Notification.Name("boolChanged")
-//}
 
 //MARK: - Bruteforce settings
 
@@ -260,4 +218,10 @@ func generateBruteForce(_ string: String, fromArray array: [String]) -> String {
         }
     }
     return str
+}
+
+extension String {
+    func localized(bundle: Bundle = .main, tableName: String = "Localizable") -> String {
+           return NSLocalizedString(self, tableName: tableName, value: "**\(self)**", comment: "")
+       }
 }

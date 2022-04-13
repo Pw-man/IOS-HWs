@@ -10,13 +10,13 @@ import UIKit
 
 class InfoViewController: UIViewController {
     
-    private lazy var alertButton: CustomButton = .init(title: "Show alert", font: .boldSystemFont(ofSize: 15), titleColor: .white) { [weak self] in
+    private lazy var alertButton: CustomButton = .init(title: "Show alert".localized(), font: .boldSystemFont(ofSize: 15), titleColor: .white) { [weak self] in
         guard let self = self else { return }
-        let alertController = UIAlertController(title: "Удалить пост?", message: "Пост нельзя будет восстановить", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Отмена", style: .default) { _ in
-            print("Отмена")
+        let alertController = UIAlertController(title: "Delete post?".localized(), message: "Post couldn't be restored".localized(), preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .default) { _ in
+            print("Отмена".localized())
         }
-        let deleteAction = UIAlertAction(title: "Удалить", style: .destructive) { _ in
+        let deleteAction = UIAlertAction(title: "Delete".localized(), style: .destructive) { _ in
             print("Удалить")
         }
         alertController.addAction(cancelAction)

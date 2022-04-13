@@ -27,18 +27,18 @@ class LogInAutentificator {
         Auth.auth().createUser(withEmail: mail, password: password) { [weak self] authResult, error in
             guard let self = self else { return }
             guard let user = authResult?.user, error == nil else {
-                self.loginVCDelegate?.presentAlertController(title: error!.localizedDescription, message: "Check the data validity", actionMessage: "Fix")
+                self.loginVCDelegate?.presentAlertController(title: error!.localizedDescription, message: "Check the data validity".localized(), actionMessage: "Fix".localized())
                 return
             }
             print("\(user.email!) created!")
-            self.loginVCDelegate?.presentAlertController(title: "User: \(user.email!) created!", message: "", actionMessage: "Continue")
+            self.loginVCDelegate?.presentAlertController(title: "User: ".localized() + "\(user.email!)" + "created!".localized(), message: "", actionMessage: "Continue".localized())
         }
     }
     
     func enterConfirmation(mail: String, password: String) {
         let userService: UserService = SchemeCheck.isInDebugMode ? TestUserService() : CurrentUserService()
         guard password.isEmpty == false || mail.isEmpty == false else {
-            loginVCDelegate?.presentAlertController(title: "Email and password field are empty", message: "Please, fill in all input fields", actionMessage: "Continue")
+            loginVCDelegate?.presentAlertController(title: "Email and password field are empty".localized(), message: "Please, fill in all input fields".localized(), actionMessage: "Continue".localized())
             print("User вводит данные")
             return
         }

@@ -1,0 +1,71 @@
+/* 
+  Localizable.strings
+  Navigation
+
+  Created by Роман on 10.04.2022.
+  Copyright © 2022 Artem Novichkov. All rights reserved.
+*/
+
+"Season 2 of the TV series Love. Death. Robots. was released. The producers of the second season were Tim Miller («Deadpool») and David Fincher («Fight club», «Social network», «Dissapeared»). And they did what they do best: they showed us a series of thrillers with beautiful graphics and a thoughtful plot." = "Вышел 2 сезон телесериала Любовь. Смерть. Роботы. Продюсерами второго сезона выступили Тим Миллер («Дэдпул») и Дэвид Финчер («Бойцовский клуб», «Социальная сеть», «Исчезнувшие»). И они сделали то, что у них получается лучше всего: показали нам серию триллеров с красивой графикой и продуманным сюжетом.";
+"The International Economic Forum was held in St. Petersburg." = "В Санкт-Петербурге прошел Международный экономический форум.";
+"An updated FaceTime, AirPods instead of a hearing aid, a new Share Play function, reminders of forgotten headphones and much more were demonstrated by Apple at its annual WWDC 2021 developer exhibition." = "Обновленный FaceTime, AirPods вместо слухового аппарата, новая функция совместного воспроизведения, напоминания о забытых наушниках и многое другое были продемонстрированы Apple на ежегодной выставке разработчиков WWDC 2021.";
+"Tesla Model S broke the world record at a distance of 1/4 mile. The electric car overcame 402 meters in 9.23 seconds." = "Tesla Model S побила мировой рекорд на дистанции 1/4 мили. Электромобиль преодолел 402 метра за 9,23 секунды.";
+"Insert password" = "Введите пароль";
+"It's test text" = "Это проверочный текст";
+"Verify password" = "Подтвердите пароль";
+"Click me" = "Кликни сюда";
+"Pick password" = "Подобрать пароль";
+"Post" = "Пост";
+"Log In" = "Войти";
+"Password" = "Пароль";
+"Email or phone number" = "Адрес эл. почты или номер телефона";
+"Show alert" = "Показать предупреждение";
+"Delete post?" = "Удалить пост?";
+"Post couldn't be restored" = "Пост нельзя будет восстановить";
+"Cancel" = "Отменить";
+"Delete" = "Удалить";
+"Show all posts" = "Показать все посты";
+"Sort by author" = "Отсортировать по автору";
+"Delete post" = "Удалить пост";
+"Preferred author" = "Предпочитаемый автор";
+"Enter author's name" = "Введите имя автора";
+"Input field is empty!" = "Поле ввода не заполнено!";
+"Enter some text, please" = "Введите текст, пожалуйста";
+"Ok" = "Хорошо";
+"No such authors" = "Автор не найден";
+"Correct request, please" = "Уточните запрос, пожалуйста";
+"Feed" = "Лента";
+"Liked Posts" = "Оценённые посты";
+"Liked" = "Понравилось";
+"Login" = "Профиль";
+"Check the data validity" = "Проверьте введённые данные";
+"Fix" = "Исправить";
+"Continue" = "Продолжить";
+"Email and password field are empty" = "Поля ввода пусты";
+"Please, fill in all input fields" = "Заполните все поля, пожалуйста";
+"Likes: " = "Нравится: ";
+"Views: " = "Просмотры: ";
+"Coolest Dog Ever" = "Лучший пёс в мире";
+"Waiting for something..." = "В ожидании чего-то";
+"Show Status" = "Показать статус";
+"Set your status" = "Установить статус";
+"Photo gallery" = "Фото галерея";
+"Photo Gallery" = "Фото Галерея";
+"Download" = "Загрузка";
+"All data is uploaded!" = "Все данные загружены!";
+"Listen to music" = "Слушать музыку";
+"Watch video" = "Смотреть видео";
+"All data is downloaded succesfully" = "Все данные успешно загружены!";
+"Youtube videos" = "Видео с Youtube";
+"Current song name" = "Название композиции";
+"Play recorded sound" = "Проиграть записанный звук";
+"User: " = "Пользователь: ";
+"created!" = "создан!";
+
+
+
+
+
+
+
+

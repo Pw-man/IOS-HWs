@@ -45,7 +45,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate, LoginAutentifi
     
     private let logInButton: UIButton = {
        let button = UIButton()
-        button.setTitle("Log In", for: .normal)
+        button.setTitle("Log In".localized(), for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 15)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(userLogin), for: .touchUpInside)

@@ -14,9 +14,9 @@ class PostTableViewCell: UITableViewCell {
         didSet {
             guard let profilePost = profilePost else { return }
             postAuthorLabel.text = profilePost.author
-            postTextLabel.text = profilePost.description
-            postLikesLabel.text = "Likes: \(profilePost.likes)"
-            postViewsLabel.text = "Views: \(profilePost.views)"
+            postTextLabel.text = profilePost.description.localized()
+            postLikesLabel.text = "Likes: ".localized() + "\(profilePost.likes)"
+            postViewsLabel.text = "Views: ".localized() + "\(profilePost.views)"
             postImageView.image = UIImage(named: profilePost.image)
         } 
     }

@@ -26,8 +26,8 @@ final class LikedPostsViewController: UIViewController {
     }()
     
     private func setupNavigationBar() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Show all posts", style: .plain, target: self, action: #selector(undoSortingLikedPosts))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sort by author", style: .plain, target: self, action: #selector(sortLikedPost))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Show all posts".localized(), style: .plain, target: self, action: #selector(undoSortingLikedPosts))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sort by author".localized(), style: .plain, target: self, action: #selector(sortLikedPost))
     }
     
     private func startFetchResultController() {
@@ -61,17 +61,17 @@ final class LikedPostsViewController: UIViewController {
     }
     
     @objc func sortLikedPost() {
-        let alertController = UIAlertController(title: "Preferred author", message: "", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Preferred author".localized(), message: "", preferredStyle: .alert)
         alertController.addTextField { textField in
-            textField.placeholder = "Enter author's name"
+            textField.placeholder = "Enter author's name".localized()
         }
-        let sortAction = UIAlertAction(title: "Sort posts", style: .default) { [weak self] _ in
+        let sortAction = UIAlertAction(title: "Sort posts".localized(), style: .default) { [weak self] _ in
             let textField = alertController.textFields![0]
             guard let self = self, let enteredText = textField.text else { return }
             guard !enteredText.isEmpty else {
-                self.presentAlertVC(title: "Input field is empty!",
-                                    message: "Enter some text, please",
-                                    actionTitle: "Ok")
+                self.presentAlertVC(title: "Input field is empty!".localized(),
+                                    message: "Enter some text, please".localized(),
+                                    actionTitle: "Ok".localized())
                 return
             }
             let predicate = NSPredicate(format: "%K == %@", #keyPath(LikedPost.author), enteredText)
@@ -82,9 +82,9 @@ final class LikedPostsViewController: UIViewController {
                 return
             }
             guard !bufferArray.isEmpty else {
-                self.presentAlertVC(title: "No such authors",
-                                    message: "Correct request, please",
-                                    actionTitle: "Ok")
+                self.presentAlertVC(title: "No such authors".localized(),
+                                    message: "Correct request, please".localized(),
+                                    actionTitle: "Ok".localized())
                 self.fetchResultController.fetchRequest.predicate = nil
                 self.startFetchResultController()
                 return
@@ -155,7 +155,7 @@ extension LikedPostsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete post") { [weak self] action, view, completionHandler in
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete post".localized()) { [weak self] action, view, completionHandler in
             guard let self = self else { return }
             let likedPost = self.fetchResultController.object(at: indexPath)
             coreDataStack.remove(likedPost: likedPost)

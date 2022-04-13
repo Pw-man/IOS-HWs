@@ -24,7 +24,7 @@ class VideoViewController: UIViewController {
         setupTableView()
         tableView.dataSource = self
         tableView.delegate = self
-        self.title = "Youtube videos"
+        self.title = "Youtube videos".localized()
     }
     
     func setupTableView() {

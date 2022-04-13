@@ -21,10 +21,10 @@ struct Posts {
     static var postsArray: [ProfilePost] = [robotiPost ,robotiPost, forumPost, wwdcPost, teslaPost]
 }
 
-let robotiPost = ProfilePost(author: "Netflix", description: "Вышел 2 сезон сериала Любовь. Смерть. Роботы. Продюсерами второго сезона выступили Тим Миллер («Дэдпул») и Дэвид Финчер («Бойцовский клуб», «Социальная сеть», «Исчезнувшая»). И они сделали то, что умеют лучше всего: показали нам серию триллеров c красивой графикой и продуманным сюжетом.", image: "roboti", likes: 160000, views: 200000)
-let forumPost = ProfilePost(author: "RBK", description: "В Санкт-Петербурге прошёл международный экономический форум", image: "forum", likes: 20, views: 66)
-let wwdcPost = ProfilePost(author: "Gazeta.ru", description: "Обновленный FaceTime, AirPods вместо слухового аппарата, новая функция SharePlay, напоминания о забытых наушниках и многое другое продемонстрировала Apple на своей ежегодной выставке для разработчиков WWDC 2021.", image: "wwdc", likes: 1000, views: 1001)
-let teslaPost = ProfilePost(author: "Elon Musk", description: "Tesla Model S побила мировой рекорд на дистанции 1/4 мили. Электромобиль преодолел 402 метра за 9,23 секунды.", image: "tesla", likes: 15000, views: 50000)
+let robotiPost = ProfilePost(author: "Netflix", description: "Season 2 of the TV series Love. Death. Robots. was released. The producers of the second season were Tim Miller («Deadpool») and David Fincher («Fight club», «Social network», «Dissapeared»). And they did what they do best: they showed us a series of thrillers with beautiful graphics and a thoughtful plot.", image: "roboti", likes: 160000, views: 200000)
+let forumPost = ProfilePost(author: "RBK", description: "The International Economic Forum was held in St. Petersburg.", image: "forum", likes: 20, views: 66)
+let wwdcPost = ProfilePost(author: "Gazeta.ru", description: "An updated FaceTime, AirPods instead of a hearing aid, a new Share Play function, reminders of forgotten headphones and much more were demonstrated by Apple at its annual WWDC 2021 developer exhibition.", image: "wwdc", likes: 1000, views: 1001)
+let teslaPost = ProfilePost(author: "Elon Musk", description: "Tesla Model S broke the world record at a distance of 1/4 mile. The electric car overcame 402 meters in 9.23 seconds.", image: "tesla", likes: 15000, views: 50000)
 
 
 //MARK: - image processor realization with UIImage in ProfileVC

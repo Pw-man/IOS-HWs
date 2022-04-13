@@ -27,13 +27,13 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         avatarImageView.image = #imageLiteral(resourceName: "dachshundPhoto")
         avatarImageView.onAutoLayout()
             
-        fullNameLabel.text = "Coolest Dog Ever"
+        fullNameLabel.text = "Coolest Dog Ever".localized()
         fullNameLabel.textColor = .black
         fullNameLabel.numberOfLines = 0
         fullNameLabel.onAutoLayout()
         
         statusLabel.textColor = .gray
-        statusLabel.text = "Waiting for something..."
+        statusLabel.text = "Waiting for something...".localized()
         statusLabel.onAutoLayout()
         
         setStatusButton.layer.cornerRadius = 4
@@ -42,7 +42,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         setStatusButton.layer.shadowColor = UIColor.black.cgColor
         setStatusButton.layer.shadowOpacity = 0.7
         setStatusButton.setTitleColor(.white, for: .normal)
-        setStatusButton.setTitle("Show Status", for: .normal)
+        setStatusButton.setTitle("Show Status".localized(), for: .normal)
         setStatusButton.backgroundColor = .systemBlue
         setStatusButton.addTarget(self, action: #selector(statusButtonPressed), for: .touchUpInside)
         setStatusButton.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
@@ -52,7 +52,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         statusTextField.layer.cornerRadius = 12
         statusTextField.layer.borderWidth = 1
         statusTextField.onAutoLayout()
-        statusTextField.placeholder = "Set your status"
+        statusTextField.placeholder = "Set your status".localized()
     }
     
     override init(reuseIdentifier: String?) {
